@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
   s.name         = "TableManager"
   s.version      = "0.0.1"
-  s.summary      = "A short description of TableManager."
+  s.summary      = "A wrap for the UITableView features."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -25,9 +25,10 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
+This wrapper was created by Henrique Morbin (http://fb.com/hgmorbin). It was created to use an UITableView easier.
                    DESC
 
-  s.homepage     = "http://EXAMPLE/TableManager"
+  s.homepage     = "https://github.com/Morbix/TableManager"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -79,7 +80,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "http://EXAMPLE/TableManager.git", :tag => "0.0.1" }
+  s.source       = { :git => "http://github.com/Morbix/TableManager.git", :tag => s.version.to_s }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
