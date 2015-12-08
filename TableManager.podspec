@@ -65,7 +65,7 @@ This wrapper was created by Henrique Morbin (http://fb.com/hgmorbin). It was cre
   #
 
   # s.platform     = :ios
-  # s.platform     = :ios, "8.0"
+  s.platform     = :ios, "8.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
