@@ -39,7 +39,7 @@ This wrapper was created by Henrique Morbin (http://fb.com/hgmorbin). It was cre
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = "MIT (example)"
+  s.license      = "MIT"
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
@@ -80,7 +80,7 @@ This wrapper was created by Henrique Morbin (http://fb.com/hgmorbin). It was cre
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "http://github.com/Morbix/TableManager.git", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/Morbix/TableManager.git", :tag => s.version.to_s }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
