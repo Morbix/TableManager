@@ -1,3 +1,4 @@
 # TableManager
 
-In development
+- Lib: In development
+- Doc: In development
