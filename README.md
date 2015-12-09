@@ -43,7 +43,7 @@ Create a UITableViewController and follow this steps for a basic configuration
 ```swift
 class TableViewController: UITableViewController {
 
-    //1 - Declaring a var of TableManager passing the UITableView instance (Required Configuration)
+    //1 - (Required Configuration) Declaring a var of TableManager passing the UITableView instance
     lazy var tableManager : TableManager = TableManager(tableView: self.tableView)
     
     override func viewDidLoad() {
