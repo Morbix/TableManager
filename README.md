@@ -36,7 +36,7 @@ After your `UITableView` `IBOutlet` declaration, declare a lazy var of `TableMan
 lazy var tableManager : TableManager = TableManager(tableView: self.table)
 ```
 
-## Usage - TODO
+## Usage
 
 ### Basic Usage
 Create a UITableViewController and follow this steps for a basic configuration
@@ -87,6 +87,9 @@ class TableViewController: UITableViewController {
 ```
 The `.None` state tells to TableManager to hide any kind of Loading/Empty/Error Cells and show the configured sections and rows that we added before.
 Other thing, every time you change the tableManager.state, the reloadData will be called automatically.
+
+### Other Configurations
+TO DO
 
 ## Contribute
 
