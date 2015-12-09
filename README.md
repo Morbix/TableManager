@@ -89,7 +89,33 @@ The `.None` state tells to TableManager to hide any kind of Loading/Empty/Error 
 Other thing, every time you change the tableManager.state, the reloadData will be called automatically.
 
 ### Other Configurations
+
 TO DO
+
+
+## Progress
+
+### Library
+- Sections & Rows Visibility 
+- Static Header for Section
+- Custom Header for Section
+- Custom Rows
+- Row Selection
+
+- TO DO: 
+	- Static Footer for Section
+	- Custom Footer for Section
+
+### Documentation
+- Basic Usage
+
+- TO DO: 
+	- Sections & Rows Visibility
+	- Row Selection
+	- Static Header for Section
+	- Custom Header for Section
+    - Static Footer for Section
+	- Custom Footer for Section
 
 ## Contribute
 
