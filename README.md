@@ -27,9 +27,8 @@ pod 'TableManager'
 
 You can also install it manually just draging [TableManager](https://github.com/Morbix/TableManager/blob/master/TableManager.swift) file to your project. 
 
-## Usage - TO DO
 
-### ***Required Configuration***
+## Required Configuration
 
 After your `UITableView` `IBOutlet` declaration, declare a lazy var of `TableManager` passing your table as parameter.
 ```swift
@@ -37,10 +36,57 @@ After your `UITableView` `IBOutlet` declaration, declare a lazy var of `TableMan
 lazy var tableManager : TableManager = TableManager(tableView: self.table)
 ```
 
+## Usage - TO DO
 
-## Who's Using It? 
+### Basic Usage
+Declare a function called `setUp` and call this function in `viewDidLoad` 
+```swift
+class ViewController: UITableViewController {
 
-TO DO 
+    //1 - Declaring a var of TableManager passing the UITableView instance (Required Configuration)
+    lazy var tableManager : TableManager = TableManager(tableView: self.tableView)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //2 - Setting the default state cells (states: Loading / Empty / Error)
+        tableManager.stateRows = TableManager.getDefaultStateRows()
+        
+        //3 - Setting the Loading state
+        tableManager.state = .Loading
+        
+        //4 - Simulating a delay to be able to see the Loading State Cell
+        performSelector(Selector("loadFakeData"), withObject: nil, afterDelay: 3)
+    }
+
+    func loadFakeData(){
+        let identifier = "<#Put here a valid UITableViewCell identifier#>"
+        let fakeData = ["A", "B", "C", "D", "E"]
+        
+        //5 - Adding a empty section
+        tableManager.sections.append(Section())
+        
+        
+        for letter in fakeData {
+            
+            //6 - Declaring a instance of Row
+            let row = Row(identifier: identifier, object: letter) { (object, cell, indexPath) -> Void in
+                if let object = object as? String {
+                    cell.textLabel?.text = object
+                }
+            }
+            
+            //7 - Adding our Row to our Section
+            tableManager.sections[0].rows.append(row)
+        }
+        
+        //7 - Setting the None state
+        tableManager.state = .None 
+    }
+}
+```
+The `.None` state tells to TableManager to hide any kind of Loading/Empty/Error Cells and show the configured sections and rows that we added before.
+Other thing, every time you change the tableManager.state, the reloadData will be called automatically.
 
 ## Contribute
 
