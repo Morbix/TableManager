@@ -27,9 +27,15 @@ pod 'TableManager'
 
 You can also install it manually just draging [TableManager](https://github.com/Morbix/TableManager/blob/master/TableManager.swift) file to your project. 
 
-## Usage
+## Usage - TO DO
 
-TO DO
+### ***Required Configuration***
+
+After your `UITableView` `IBOutlet` declaration, declare a lazy var of `TableManager` passing your table as parameter.
+```swift
+@IBOutlet var table: UITableView!
+lazy var tableManager : TableManager = TableManager(tableView: self.table)
+```
 
 
 ## Who's Using It? 
