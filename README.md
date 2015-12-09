@@ -36,7 +36,7 @@ After your `UITableView` `IBOutlet` declaration, declare a lazy var of `TableMan
 lazy var tableManager : TableManager = TableManager(tableView: self.table)
 ```
 
-## Usage - TO DO
+## Usage - TODO
 
 ### Basic Usage
 Create a UITableViewController and follow this steps for a basic configuration
