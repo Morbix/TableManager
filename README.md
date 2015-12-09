@@ -30,7 +30,7 @@ You can also install it manually just draging [TableManager](https://github.com/
 
 ## Required Configuration
 
-After your `UITableView` `IBOutlet` declaration, declare a lazy var of `TableManager` passing your table as parameter.
+In your View Controller, after your  @IBOutlet UITableView reference, declare a lazy var of `TableManager` passing your table as parameter.
 ```swift
 @IBOutlet var table: UITableView!
 lazy var tableManager : TableManager = TableManager(tableView: self.table)
