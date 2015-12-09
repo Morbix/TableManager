@@ -39,9 +39,9 @@ lazy var tableManager : TableManager = TableManager(tableView: self.table)
 ## Usage - TO DO
 
 ### Basic Usage
-Declare a function called `setUp` and call this function in `viewDidLoad` 
+Create a UITableViewController and follow this steps for a basic configuration
 ```swift
-class ViewController: UITableViewController {
+class TableViewController: UITableViewController {
 
     //1 - Declaring a var of TableManager passing the UITableView instance (Required Configuration)
     lazy var tableManager : TableManager = TableManager(tableView: self.tableView)
