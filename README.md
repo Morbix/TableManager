@@ -124,7 +124,6 @@ TO DO
 - And more...
 
 ### Documentation to be written
-- Sections & Rows Visibility
 - Row Selection
 - Static Header for Section
 - Custom Header for Section
