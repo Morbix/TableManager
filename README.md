@@ -102,6 +102,11 @@ let rowB = Section()
 rowB.visible = true
 ```
 
+Don't forget to `reloadData` to update cells
+```swift
+tableManager.reloadData()
+```
+
 ### Configuring Row or Custom Row
 You can implement the `ConfigureCellBlock` directly in the Row constructor:
 ```swift
@@ -138,6 +143,11 @@ row.cellForRowAtIndexPath = { (row: Row, tableView: UITableView,  indexPath: NSI
 }
 ```
 
+Don't forget to `reloadData` to update cells
+```swift
+tableManager.reloadData()
+```
+
 ### Row Selection
 You can implement the `didSelectRowAtIndexPath` directly in the row:
 ```swift
@@ -164,6 +174,10 @@ rowB.didSelectRowAtIndexPath = block
 rowC.didSelectRowAtIndexPath = block
 ```
 
+Don't forget to `reloadData` to update cells
+```swift
+tableManager.reloadData()
+```
 
 ## Library Progress
 
@@ -186,6 +200,7 @@ rowC.didSelectRowAtIndexPath = block
 - Custom Header for Section
 - Static Footer for Section
 - Custom Footer for Section
+
 
 ## Contribute
 
