@@ -165,11 +165,6 @@ rowC.didSelectRowAtIndexPath = block
 ```
 
 
-### Other Configurations
-
-TO DO
-
-
 ## Library Progress
 
 ### Released
@@ -178,6 +173,7 @@ TO DO
 - Custom Header for Section
 - Custom Rows
 - Row Selection
+- Table States
 
 ### To be implemented 
 - Static Footer for Section
@@ -185,6 +181,7 @@ TO DO
 - And more...
 
 ### Documentation to be written
+- Table States
 - Static Header for Section
 - Custom Header for Section
 - Static Footer for Section
