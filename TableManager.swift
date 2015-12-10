@@ -226,7 +226,7 @@ enum ScreenState : String {
     case Empty   = "No Data"
     case Error   = "Error"
     
-    mutating func setByResulsAndErrors(results : [AnyObject], errors: [NSError]){
+    mutating func setByResultsAndErrors(results : [AnyObject], errors: [NSError]){
         if (results.count > 0) {
             self = .None
         }else if (errors.count > 0) {
@@ -236,7 +236,7 @@ enum ScreenState : String {
         }
     }
     
-    mutating func setByResulsAndError(results : [AnyObject], error: NSError?){
+    mutating func setByResultsAndError(results : [AnyObject], error: NSError?){
         if (results.count > 0) {
             self = .None
         }else if (error != nil) {
