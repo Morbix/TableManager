@@ -149,7 +149,7 @@ TO DO
 - And more...
 
 ### Documentation to be written
-- Row Selection
+- Custom Rows
 - Static Header for Section
 - Custom Header for Section
 - Static Footer for Section
