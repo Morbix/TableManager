@@ -88,6 +88,27 @@ class TableViewController: UITableViewController {
 The `.None` state tells to TableManager to hide any kind of Loading/Empty/Error Cells and show the configured sections and rows that we added before.
 Other thing, every time you change the tableManager.state, the reloadData will be called automatically.
 
+### Sections & Rows Visibility
+
+You can change the property `visible` from any Section and any Row. In the example below the only elements that will appear in the table will be the `sectionA` and `rowB`.
+```swift
+let sectionA = Section()
+sectionA.visible = true
+        
+let rowA = Section()
+rowA.visible = false
+
+let rowB = Section()
+rowB.visible = true
+
+sectionA.rows.append(rowA)
+sectionA.rows.append(rowB)
+    
+tableManager.reloadData()
+```
+
+
+
 ### Other Configurations
 
 TO DO
