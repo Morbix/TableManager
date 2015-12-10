@@ -94,17 +94,12 @@ You can change the property `visible` from any Section and any Row. In the examp
 ```swift
 let sectionA = Section()
 sectionA.visible = true
-        
+
 let rowA = Section()
 rowA.visible = false
 
 let rowB = Section()
 rowB.visible = true
-
-sectionA.rows.append(rowA)
-sectionA.rows.append(rowB)
-    
-tableManager.reloadData()
 ```
 
 
