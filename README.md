@@ -102,7 +102,7 @@ let rowB = Section()
 rowB.visible = true
 ```
 
-### Custom Row or Configuring Row
+### Configuring Row or Custom Row
 You can implement the `ConfigureCellBlock` directly in the Row constructor:
 ```swift
 let row = Row(identifier: "SomeIdentifier", object: someObject) { (object, cell, indexPath) -> Void in
