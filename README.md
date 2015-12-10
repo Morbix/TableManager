@@ -102,6 +102,31 @@ let rowB = Section()
 rowB.visible = true
 ```
 
+### Row Selection
+You can implement the `didSelectRowAtIndexPath` directly in the row:
+```swift
+let row = Row(identifier: "SomeIdentifier", object: someObject, configureCell: nil)
+row.didSelectRowAtIndexPath = { (row: Row, tableView: UITableView, indexPath: NSIndexPath) -> Void in
+    print("someObject selected")
+}
+```
+
+Or declare some `DidSelectRowAtIndexPath` and attribute to a group of Rows:
+```swift
+let block = { (row: Row, tableView: UITableView, indexPath: NSIndexPath) -> Void in
+	if let object = row.object {
+    	print(object + " selected")
+    }
+}
+
+let rowA = Row(identifier: "SomeIdentifier", object: someObjectA, configureCell: nil)
+let rowB = Row(identifier: "SomeIdentifier", object: someObjectB, configureCell: nil)
+let rowC = Row(identifier: "SomeIdentifier", object: someObjectC, configureCell: nil)
+
+rowA.didSelectRowAtIndexPath = block
+rowB.didSelectRowAtIndexPath = block
+rowC.didSelectRowAtIndexPath = block
+```
 
 
 ### Other Configurations
