@@ -102,6 +102,42 @@ let rowB = Section()
 rowB.visible = true
 ```
 
+### Custom Row or Configuring Row
+You can implement the `ConfigureCellBlock` directly in the Row constructor:
+```swift
+let row = Row(identifier: "SomeIdentifier", object: someObject) { (object, cell, indexPath) -> Void in
+    if let object = object as? String {
+        cell.textLabel?.text = object
+    }
+}
+```
+
+Or declare some `ConfigureCellBlock` and attribute it to a group of Rows:
+```swift
+let block:ConfigureCellBlock = { (object, cell, indexPath) -> Void in
+    if let object = object as? String {
+        cell.textLabel?.text = object
+    }
+}
+let rowA = Row(identifier: "SomeIdentifier", object: someObject, configureCell: block)
+let rowB = Row(identifier: "SomeIdentifier", object: otherObject, configureCell: block)
+```
+
+Or implement the full `CellForRowAtIndexPathBlock` as you already know:
+```swift
+let row = Row(identifier: "SomeIdentifier", object: someObject, configureCell: nil)
+row.cellForRowAtIndexPath = { (row: Row, tableView: UITableView,  indexPath: NSIndexPath) -> UITableViewCell in
+    
+    let cell = tableView.dequeueReusableCellWithIdentifier(row.identifier, forIndexPath: indexPath)
+    
+    if let object = row.object as? String {
+        cell.textLabel?.text = object
+    }
+    
+    return cell
+}
+```
+
 ### Row Selection
 You can implement the `didSelectRowAtIndexPath` directly in the row:
 ```swift
@@ -111,17 +147,17 @@ row.didSelectRowAtIndexPath = { (row: Row, tableView: UITableView, indexPath: NS
 }
 ```
 
-Or declare some `DidSelectRowAtIndexPath` and attribute to a group of Rows:
+Or declare some `DidSelectRowAtIndexPath` and attribute it to a group of Rows:
 ```swift
-let block = { (row: Row, tableView: UITableView, indexPath: NSIndexPath) -> Void in
+let block:DidSelectRowAtIndexPath = { (row: Row, tableView: UITableView, indexPath: NSIndexPath) -> Void in
 	if let object = row.object {
-    	print(object + " selected")
+    	print((object as! String) + " selected")
     }
 }
 
-let rowA = Row(identifier: "SomeIdentifier", object: someObjectA, configureCell: nil)
-let rowB = Row(identifier: "SomeIdentifier", object: someObjectB, configureCell: nil)
-let rowC = Row(identifier: "SomeIdentifier", object: someObjectC, configureCell: nil)
+let rowA = Row(identifier: "SomeIdentifier", object: someObject, configureCell: nil)
+let rowB = Row(identifier: "SomeIdentifier", object: otherObject, configureCell: nil)
+let rowC = Row(identifier: "SomeIdentifier", object: anotherObject, configureCell: nil)
 
 rowA.didSelectRowAtIndexPath = block
 rowB.didSelectRowAtIndexPath = block
