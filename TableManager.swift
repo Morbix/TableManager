@@ -8,24 +8,25 @@
 
 import UIKit
 
-class TableManager: NSObject {
+public class TableManager: NSObject {
     
-    let tableView : UITableView
-    var sections = [Section]()
-    var visibleSections :[Section] {
+    public let tableView : UITableView
+    public var sections = [Section]()
+    public var visibleSections :[Section] {
         return sections.filter({ (section) -> Bool in
             return section.visible
         })
     }
-    var stateRows : StateRowsTuple?
-    var state : ScreenState = .None {
+    public var stateRows : StateRowsTuple?
+    public var state : ScreenState = .None {
         didSet {
             self.tableView.reloadData()
         }
     }
+    
     static let kDefaultIdentifier = "TableManager_Default_Cell"
     
-    init(tableView : UITableView){
+    public init(tableView : UITableView){
         self.tableView = tableView
 
         super.init()
@@ -36,11 +37,13 @@ class TableManager: NSObject {
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: TableManager.kDefaultIdentifier)
     }
     
-    func reloadData(){
+    // MARK: Methods
+    
+    public func reloadData(){
         tableView.reloadData()
     }
     
-    func rowForIndexPath(indexPath: NSIndexPath) -> Row{
+    public func rowForIndexPath(indexPath: NSIndexPath) -> Row{
         if let stateRows =  stateRows{
             switch state {
             case .Loading:
@@ -57,7 +60,7 @@ class TableManager: NSObject {
         }
     }
     
-    func sectionForIndex(index: Int) -> Section {
+    public func sectionForIndex(index: Int) -> Section {
         if visibleSections.count > index{
             return visibleSections[index]
         }else{
@@ -65,7 +68,9 @@ class TableManager: NSObject {
         }
     }
     
-    static func getDefaultStateRows() -> StateRowsTuple{
+    // MARK: Default State Rows
+    
+    public static func getDefaultStateRows() -> StateRowsTuple{
         let handler :ConfigureCellBlock = { (object, cell, indexPath) -> Void in
             if let object = object as? String {
                 cell.textLabel?.text = object
@@ -81,10 +86,11 @@ class TableManager: NSObject {
     }
 }
 
-// MARK: UITableViewDelegate and UITableViewDataSource
-extension TableManager : UITableViewDataSource, UITableViewDelegate {
+// MARK: UITableViewDataSource
+
+extension TableManager : UITableViewDataSource {
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
         if stateRows != nil && state != .None {
             return 1
@@ -93,7 +99,7 @@ extension TableManager : UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if stateRows != nil && state != .None {
             return 1
         }else{
@@ -101,7 +107,7 @@ extension TableManager : UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         //let row = visibleSections[indexPath.section].visibleRows[indexPath.row]
         let row = rowForIndexPath(indexPath)
@@ -121,8 +127,7 @@ extension TableManager : UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    
-    func tableView(tableView: UITableView, heightForHeaderInSection index: Int) -> CGFloat {
+    public func tableView(tableView: UITableView, heightForHeaderInSection index: Int) -> CGFloat {
         
         let section = sectionForIndex(index)
         
@@ -133,7 +138,7 @@ extension TableManager : UITableViewDataSource, UITableViewDelegate {
         return CGFloat(section.heightForStaticHeader)
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection index: Int) -> String? {
+    public func tableView(tableView: UITableView, titleForHeaderInSection index: Int) -> String? {
         let section = sectionForIndex(index)
         
         if let titleForHeaderInSection = section.titleForHeaderInSection {
@@ -147,7 +152,7 @@ extension TableManager : UITableViewDataSource, UITableViewDelegate {
         return nil
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection index: Int) -> UIView? {
+    public func tableView(tableView: UITableView, viewForHeaderInSection index: Int) -> UIView? {
         let section = sectionForIndex(index)
         
         if let viewForHeaderInSection = section.viewForHeaderInSection {
@@ -160,8 +165,12 @@ extension TableManager : UITableViewDataSource, UITableViewDelegate {
         
         return nil
     }
+}
+
+// MARK: UITableViewDelegate
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+extension TableManager : UITableViewDelegate {
+    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let row = rowForIndexPath(indexPath)
         
         if let didSelectRowAtIndexPath = row.didSelectRowAtIndexPath {
@@ -172,36 +181,36 @@ extension TableManager : UITableViewDataSource, UITableViewDelegate {
 
 
 // MARK: Classes
-class Section: NSObject {
-    var visible = true
-    var rows = [Row]()
-    var visibleRows :[Row] {
+public class Section: NSObject {
+    public var visible = true
+    public var rows = [Row]()
+    public var visibleRows :[Row] {
         return rows.filter({ (row) -> Bool in
             return row.visible
         })
     }
-    var heightForStaticHeader = 0.0
-    var heightForHeaderInSection : HeightForHeaderInSectionBlock?
-    var titleForStaticHeader : String?
-    var titleForHeaderInSection : TitleForHeaderInSectionBlock?
-    var viewForStaticHeader : UIView?
-    var viewForHeaderInSection : ViewForHeaderInSectionBlock?
+    public var heightForStaticHeader = 0.0
+    public var heightForHeaderInSection : HeightForHeaderInSectionBlock?
+    public var titleForStaticHeader : String?
+    public var titleForHeaderInSection : TitleForHeaderInSectionBlock?
+    public var viewForStaticHeader : UIView?
+    public var viewForHeaderInSection : ViewForHeaderInSectionBlock?
 }
 
-class Row: NSObject {
-    let identifier : String
-    var visible = true
-    var object : AnyObject?
-    var configureCell : (ConfigureCellBlock)?
-    var cellForRowAtIndexPath : (CellForRowAtIndexPathBlock)?
-    var didSelectRowAtIndexPath : (DidSelectRowAtIndexPath)?
+public class Row: NSObject {
+    public let identifier : String
+    public var visible = true
+    public var object : AnyObject?
+    public var configureCell : (ConfigureCellBlock)?
+    public var cellForRowAtIndexPath : (CellForRowAtIndexPathBlock)?
+    public var didSelectRowAtIndexPath : (DidSelectRowAtIndexPath)?
     
-    init(identifier: String){
+    public init(identifier: String){
         self.identifier = identifier
     }
     
 
-    convenience init(identifier:String, object:AnyObject?, configureCell:ConfigureCellBlock?) {
+    public convenience init(identifier:String, object:AnyObject?, configureCell:ConfigureCellBlock?) {
         self.init(identifier: identifier)
         
         self.object = object
@@ -211,22 +220,22 @@ class Row: NSObject {
 }
 
 // MARK: Type Alias
-typealias StateRowsTuple = (loading: Row, empty: Row, error: Row)
-typealias ConfigureCellBlock = (object:Any?, cell:UITableViewCell, indexPath: NSIndexPath) -> Void
-typealias CellForRowAtIndexPathBlock = (row: Row, tableView: UITableView,  indexPath: NSIndexPath) -> UITableViewCell
-typealias HeightForHeaderInSectionBlock = (section: Section, tableView: UITableView, index: Int) -> CGFloat
-typealias ViewForHeaderInSectionBlock = (section: Section, tableView: UITableView, index: Int) -> UIView
-typealias TitleForHeaderInSectionBlock = (section: Section, tableView: UITableView, index: Int) -> String
-typealias DidSelectRowAtIndexPath = (row: Row, tableView: UITableView, indexPath: NSIndexPath) -> Void
+public typealias StateRowsTuple = (loading: Row, empty: Row, error: Row)
+public typealias ConfigureCellBlock = (object:Any?, cell:UITableViewCell, indexPath: NSIndexPath) -> Void
+public typealias CellForRowAtIndexPathBlock = (row: Row, tableView: UITableView,  indexPath: NSIndexPath) -> UITableViewCell
+public typealias HeightForHeaderInSectionBlock = (section: Section, tableView: UITableView, index: Int) -> CGFloat
+public typealias ViewForHeaderInSectionBlock = (section: Section, tableView: UITableView, index: Int) -> UIView
+public typealias TitleForHeaderInSectionBlock = (section: Section, tableView: UITableView, index: Int) -> String
+public typealias DidSelectRowAtIndexPath = (row: Row, tableView: UITableView, indexPath: NSIndexPath) -> Void
 
 // MARK: ScreenState
-enum ScreenState : String {
+public enum ScreenState : String {
     case None    = ""
     case Loading = "Loading..."
     case Empty   = "No Data"
     case Error   = "Error"
     
-    mutating func setByResultsAndErrors(results : [AnyObject], errors: [NSError]){
+    public mutating func setByResultsAndErrors(results : [AnyObject], errors: [NSError]){
         if (results.count > 0) {
             self = .None
         }else if (errors.count > 0) {
@@ -236,7 +245,7 @@ enum ScreenState : String {
         }
     }
     
-    mutating func setByResultsAndError(results : [AnyObject], error: NSError?){
+    public mutating func setByResultsAndError(results : [AnyObject], error: NSError?){
         if (results.count > 0) {
             self = .None
         }else if (error != nil) {
@@ -248,6 +257,6 @@ enum ScreenState : String {
 }
 
 // MARK: Protocols
-protocol ConfigureCell {
+public protocol ConfigureCell {
     func configureCell(object: Any?, target: AnyObject?, indexPath: NSIndexPath?)
 }
