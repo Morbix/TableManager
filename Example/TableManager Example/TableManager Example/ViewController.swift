@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import TableManager
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    lazy var tableManager : TableManager = TableManager(tableView: self.tableView)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +24,5 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
