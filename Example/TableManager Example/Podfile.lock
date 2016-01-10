@@ -1,0 +1,14 @@
+PODS:
+  - TableManager (0.0.2)
+
+DEPENDENCIES:
+  - TableManager (from `../../`)
+
+EXTERNAL SOURCES:
+  TableManager:
+    :path: ../../
+
+SPEC CHECKSUMS:
+  TableManager: cd6c969bca3d9a90fda2bfbc9fc6389a5f46529a
+
+COCOAPODS: 0.39.0
