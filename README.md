@@ -240,7 +240,7 @@ tableManager.reloadData()
 
 Feel free to submit your pull request, suggest any update, report a bug or create a feature request. 
 
-Just want to say `hello`? -> morbin_ at hotmail.com
+Just want to say hello? -> [morbin_@hotmail.com](mailto://morbin_@hotmail.com)
 
 ## Contributors
 
