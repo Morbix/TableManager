@@ -244,7 +244,7 @@ Just want to say hello? -> [morbin_@hotmail.com](mailto://morbin_@hotmail.com)
 
 ## Contributors
 
-Author: [@Morbin_](https://twitter.com/Morbin_) 
+Author: [@Morbin_](https://twitter.com/Morbin_) / [fb.com/hgmorbin](https://www.facebook.com/hgmorbin)
 
 See the people who helps to improve this project: [Contributors](https://github.com/Morbix/TableManager/graphs/contributors) ♥
 
