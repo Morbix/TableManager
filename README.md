@@ -38,12 +38,46 @@ lazy var tableManager : TableManager = TableManager(tableView: self.table)
 
 ## Usage
 
-### Basic Usage
-Create a UITableViewController and follow this steps for a basic configuration
+### Basic Usage - 5 Steps Only
 ```swift
 class TableViewController: UITableViewController {
 
-    //1 - (Required Configuration) Declaring a var of TableManager passing the UITableView instance
+    //1 - Declare a var of TableManager passing the UITableView instance 
+    lazy var tableManager : TableManager = TableManager(tableView: self.tableView)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let identifier = "MyCellIdentifier"
+        let data = ["A", "B", "C", "D", "E"]
+        let section = Section()
+        
+        //2 - Add the section
+        tableManager.sections.append(section)
+        
+        for letter in data {
+            //3 - Declare a instance of Row
+            let row = Row(identifier: identifier, object: letter) { (object, cell, indexPath) -> Void in
+                if let object = object as? String {
+                    cell.textLabel?.text = object
+                }
+            }
+            
+            //4 - Add the Row to the Section
+            section.rows.append(row)
+        }
+        
+        //5 - Reload data
+        tableManager.realoadData()
+    }
+}
+```
+
+### Basic Usage - Using user feedback like: Loading, Empty List and Error
+```swift
+class TableViewController: UITableViewController {
+
+    //1 - Declaring a var of TableManager passing the UITableView instance
     lazy var tableManager : TableManager = TableManager(tableView: self.tableView)
     
     override func viewDidLoad() {
