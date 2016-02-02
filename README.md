@@ -94,7 +94,7 @@ class TableViewController: UITableViewController {
     }
 
     func loadFakeData(){
-        let identifier = "<#Put here a valid UITableViewCell identifier#>"
+        let identifier = "MyCellIdentifier"
         let fakeData = ["A", "B", "C", "D", "E"]
         
         //5 - Adding a empty section
