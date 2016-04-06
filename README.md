@@ -68,7 +68,7 @@ class TableViewController: UITableViewController {
         }
         
         //5 - Reload data
-        tableManager.realoadData()
+        tableManager.reloadData()
     }
 }
 ```
