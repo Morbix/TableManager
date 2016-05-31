@@ -38,12 +38,46 @@ lazy var tableManager : TableManager = TableManager(tableView: self.table)
 
 ## Usage
 
-### Basic Usage
-Create a UITableViewController and follow this steps for a basic configuration
+### Basic Usage - 5 Steps Only
 ```swift
 class TableViewController: UITableViewController {
 
-    //1 - (Required Configuration) Declaring a var of TableManager passing the UITableView instance
+    //1 - Declare a var of TableManager passing the UITableView instance 
+    lazy var tableManager : TableManager = TableManager(tableView: self.tableView)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let identifier = "MyCellIdentifier"
+        let data = ["A", "B", "C", "D", "E"]
+        let section = Section()
+        
+        //2 - Add the section
+        tableManager.sections.append(section)
+        
+        for letter in data {
+            //3 - Declare a instance of Row
+            let row = Row(identifier: identifier, object: letter) { (object, cell, indexPath) -> Void in
+                if let object = object as? String {
+                    cell.textLabel?.text = object
+                }
+            }
+            
+            //4 - Add the Row to the Section
+            section.rows.append(row)
+        }
+        
+        //5 - Reload data
+        tableManager.reloadData()
+    }
+}
+```
+
+### Basic Usage - Using user feedback like: Loading, Empty List and Error
+```swift
+class TableViewController: UITableViewController {
+
+    //1 - Declaring a var of TableManager passing the UITableView instance
     lazy var tableManager : TableManager = TableManager(tableView: self.tableView)
     
     override func viewDidLoad() {
@@ -60,7 +94,7 @@ class TableViewController: UITableViewController {
     }
 
     func loadFakeData(){
-        let identifier = "<#Put here a valid UITableViewCell identifier#>"
+        let identifier = "MyCellIdentifier"
         let fakeData = ["A", "B", "C", "D", "E"]
         
         //5 - Adding a empty section
@@ -206,11 +240,11 @@ tableManager.reloadData()
 
 Feel free to submit your pull request, suggest any update, report a bug or create a feature request. 
 
-Just want to say `hello`? -> morbin_ at hotmail.com
+Just want to say hello? -> [morbin_@hotmail.com](mailto://morbin_@hotmail.com)
 
 ## Contributors
 
-Author: [@Morbin_](https://twitter.com/Morbin_) 
+Author: [@Morbin_](https://twitter.com/Morbin_) / [fb.com/hgmorbin](https://www.facebook.com/hgmorbin)
 
 See the people who helps to improve this project: [Contributors](https://github.com/Morbix/TableManager/graphs/contributors) ♥
 
