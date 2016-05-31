@@ -46,7 +46,7 @@ public class TableManager: NSObject {
     }
     
     public func rowForIndexPath(indexPath: NSIndexPath) -> Row {
-        if let stateRows =  stateRows{
+        if let stateRows =  stateRows {
             switch state {
             case .Loading:
                 return stateRows.loading
