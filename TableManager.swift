@@ -68,24 +68,16 @@ extension TableManager: UITableViewDataSource {
     }
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let row = rowForIndexPath(indexPath)
-
-        if let cellForRowAtIndexPath = row.cellForRowAtIndexPath {
-            return cellForRowAtIndexPath(row: row, tableView: tableView, indexPath: indexPath)
-        }
         
         let cell = tableView.dequeueReusableCellWithIdentifier(row.identifier, forIndexPath: indexPath)
         
-        if let configureCell = row.configureCell {
-            configureCell(object: row.object, cell: cell, indexPath: indexPath)
-        }
+        row.configuration?(row: row, cell: cell, indexPath: indexPath)
         
         return cell
     }
     
     public func tableView(tableView: UITableView, heightForHeaderInSection index: Int) -> CGFloat {
-        
         let section = sectionForIndex(index)
         
         if let heightForHeaderInSection = section.heightForHeaderInSection {
@@ -98,12 +90,8 @@ extension TableManager: UITableViewDataSource {
     public func tableView(tableView: UITableView, titleForHeaderInSection index: Int) -> String? {
         let section = sectionForIndex(index)
         
-        if let titleForHeaderInSection = section.titleForHeaderInSection {
-            return titleForHeaderInSection(section: section, tableView: tableView, index: index)
-        }
-        
-        if let titleForStaticHeader = section.titleForStaticHeader {
-            return titleForStaticHeader
+        if let titleForHeader = section.titleForHeader {
+            return titleForHeader(section: section, tableView: tableView, index: index)
         }
         
         return nil
@@ -112,12 +100,8 @@ extension TableManager: UITableViewDataSource {
     public func tableView(tableView: UITableView, viewForHeaderInSection index: Int) -> UIView? {
         let section = sectionForIndex(index)
         
-        if let viewForHeaderInSection = section.viewForHeaderInSection {
-            return viewForHeaderInSection(section: section, tableView: tableView, index: index)
-        }
-        
-        if let viewForStaticHeader = section.viewForStaticHeader {
-            return viewForStaticHeader
+        if let viewForHeader = section.viewForHeader {
+            return viewForHeader(section: section, tableView: tableView, index: index)
         }
         
         return nil
@@ -130,18 +114,15 @@ extension TableManager: UITableViewDelegate {
     
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let row = rowForIndexPath(indexPath)
-        
-        if let didSelectRowAtIndexPath = row.didSelectRowAtIndexPath {
-            didSelectRowAtIndexPath(row: row, tableView: tableView, indexPath: indexPath)
-        }
+        row.didSelect?(row: row, tableView: tableView, indexPath: indexPath)
     }
     
 }
 
 
-// MARK: Classes
+// MARK: Section Class
 
-public class Section: NSObject {
+public class Section {
     
     public var visible = true
     public var rows = [Row]()
@@ -150,53 +131,75 @@ public class Section: NSObject {
             $0.visible
         }
     }
+    
     public var heightForStaticHeader = 0.0
     public var heightForHeaderInSection: HeightForHeaderInSectionBlock?
-    public var titleForStaticHeader: String?
-    public var titleForHeaderInSection: TitleForHeaderInSectionBlock?
-    public var viewForStaticHeader: UIView?
-    public var viewForHeaderInSection: ViewForHeaderInSectionBlock?
+    public var titleForHeader: TitleForHeaderBlock?
+    public var viewForHeader: ViewForHeaderBlock?
     
     public func rowForIndex(index: Int) -> Row {
         if visibleRows.count > index {
             return visibleRows[index]
         } else {
-            let row = Row(identifier: defaultIdentifier, object: nil, configureCell: nil)
+            let row = Row(withIdentifier: defaultIdentifier)
             rows.append(row)
             return row
         }
     }
     
+    func setTitleForHeader(block: TitleForHeaderBlock) {
+        self.titleForHeader = block
+    }
+    
+    func setTitleForHeader(text: String) {
+        self.setTitleForHeader { (section, tableView, index) -> String in
+            return text
+        }
+    }
+    
+    func setViewForHeader(block: ViewForHeaderBlock) {
+        self.viewForHeader = block
+    }
+    
+    func setViewForHeader(view: UIView) {
+        self.setViewForHeader { (section, tableView, index) -> UIView in
+            return view
+        }
+    }
+    
+    public typealias HeightForHeaderInSectionBlock = (section: Section, tableView: UITableView, index: Int) -> CGFloat
+    public typealias ViewForHeaderBlock = (section: Section, tableView: UITableView, index: Int) -> UIView
+    public typealias TitleForHeaderBlock = (section: Section, tableView: UITableView, index: Int) -> String
+    
 }
 
-public class Row: NSObject {
+// MARK: Row Class
+
+public class Row {
     
     public let identifier: String
     public var visible = true
-    public var object: AnyObject?
-    public var configureCell: (ConfigureCellBlock)?
-    public var cellForRowAtIndexPath: (CellForRowAtIndexPathBlock)?
-    public var didSelectRowAtIndexPath: (DidSelectRowAtIndexPath)?
     
-    public init(identifier: String){
+    public var object: AnyObject?
+    public var configuration: ConfigurationBlock?
+    public var didSelect: DidSelectBlock?
+    
+    public init(withIdentifier identifier: String){
         self.identifier = identifier
     }
-
-    public convenience init(identifier:String, object:AnyObject?, configureCell:ConfigureCellBlock?) {
-        self.init(identifier: identifier)
-        
+    
+    func setObject(object: AnyObject) {
         self.object = object
-        self.configureCell = configureCell
     }
     
+    func setConfiguration(block: ConfigurationBlock) {
+        self.configuration = block
+    }
+    
+    func setDidSelect(block: DidSelectBlock) {
+        self.didSelect = block
+    }
+    
+    public typealias ConfigurationBlock = (row: Row, cell: UITableViewCell, indexPath: NSIndexPath) -> Void
+    public typealias DidSelectBlock = (row: Row, tableView: UITableView, indexPath: NSIndexPath) -> Void
 }
-
-// MARK: Type Alias
-
-public typealias StateRowsTuple = (loading: Row, empty: Row, error: Row)
-public typealias ConfigureCellBlock = (object:Any?, cell:UITableViewCell, indexPath: NSIndexPath) -> Void
-public typealias CellForRowAtIndexPathBlock = (row: Row, tableView: UITableView,  indexPath: NSIndexPath) -> UITableViewCell
-public typealias HeightForHeaderInSectionBlock = (section: Section, tableView: UITableView, index: Int) -> CGFloat
-public typealias ViewForHeaderInSectionBlock = (section: Section, tableView: UITableView, index: Int) -> UIView
-public typealias TitleForHeaderInSectionBlock = (section: Section, tableView: UITableView, index: Int) -> String
-public typealias DidSelectRowAtIndexPath = (row: Row, tableView: UITableView, indexPath: NSIndexPath) -> Void
