@@ -21,13 +21,6 @@ public class TableManager: NSObject {
         }
     }
     
-    public var stateRows: StateRowsTuple?
-    public var state: ScreenState = .None {
-        didSet {
-            self.tableView.reloadData()
-        }
-    }
-    
     public init(tableView: UITableView) {
         self.tableView = tableView
         
@@ -46,46 +39,18 @@ public class TableManager: NSObject {
     }
     
     public func rowForIndexPath(indexPath: NSIndexPath) -> Row {
-        if let stateRows =  stateRows {
-            switch state {
-            case .Loading:
-                return stateRows.loading
-            case .Empty:
-                return stateRows.empty
-            case .Error:
-                return stateRows.error
-            default:
-                return visibleSections[indexPath.section].visibleRows[indexPath.row]
-            }
-        } else {
-            return visibleSections[indexPath.section].visibleRows[indexPath.row]
-        }
+        let section = sectionForIndex(indexPath.section)
+        return section.rowForIndex(indexPath.row)
     }
     
     public func sectionForIndex(index: Int) -> Section {
         if visibleSections.count > index {
             return visibleSections[index]
         } else {
-            return Section()
+            let section = Section()
+            sections.append(section)
+            return section
         }
-    }
-    
-    // MARK: Default State Rows
-    
-    public static func getDefaultStateRows() -> StateRowsTuple {
-        let handler: ConfigureCellBlock = { (object, cell, indexPath) -> Void in
-            if let object = object as? String {
-                cell.textLabel?.text = object
-                cell.textLabel?.textAlignment = .Center
-                cell.selectionStyle = .None
-            }
-        }
-        
-        let loadingRow = Row(identifier: defaultIdentifier, object: "Loading...", configureCell: handler)
-        let emptyRow = Row(identifier: defaultIdentifier, object: "Empty", configureCell: handler)
-        let errorRow = Row(identifier: defaultIdentifier, object: "Error", configureCell: handler)
-        
-        return (loadingRow, emptyRow, errorRow)
     }
     
 }
@@ -95,24 +60,15 @@ public class TableManager: NSObject {
 extension TableManager: UITableViewDataSource {
     
     public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if stateRows != nil && state != .None {
-            return 1
-        } else {
-            return visibleSections.count
-        }
+        return visibleSections.count
     }
     
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if stateRows != nil && state != .None {
-            return 1
-        } else {
-            return visibleSections.count > section ? visibleSections[section].visibleRows.count : 0
-        }
+        return sectionForIndex(section).visibleRows.count
     }
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        //let row = visibleSections[indexPath.section].visibleRows[indexPath.row]
         let row = rowForIndexPath(indexPath)
 
         if let cellForRowAtIndexPath = row.cellForRowAtIndexPath {
@@ -123,8 +79,6 @@ extension TableManager: UITableViewDataSource {
         
         if let configureCell = row.configureCell {
             configureCell(object: row.object, cell: cell, indexPath: indexPath)
-        } else if let cell = cell as? ConfigureCell {
-            cell.configureCell(row.object, target: self, indexPath: indexPath)
         }
         
         return cell
@@ -203,6 +157,16 @@ public class Section: NSObject {
     public var viewForStaticHeader: UIView?
     public var viewForHeaderInSection: ViewForHeaderInSectionBlock?
     
+    public func rowForIndex(index: Int) -> Row {
+        if visibleRows.count > index {
+            return visibleRows[index]
+        } else {
+            let row = Row(identifier: defaultIdentifier, object: nil, configureCell: nil)
+            rows.append(row)
+            return row
+        }
+    }
+    
 }
 
 public class Row: NSObject {
@@ -217,7 +181,6 @@ public class Row: NSObject {
     public init(identifier: String){
         self.identifier = identifier
     }
-    
 
     public convenience init(identifier:String, object:AnyObject?, configureCell:ConfigureCellBlock?) {
         self.init(identifier: identifier)
@@ -237,39 +200,3 @@ public typealias HeightForHeaderInSectionBlock = (section: Section, tableView: U
 public typealias ViewForHeaderInSectionBlock = (section: Section, tableView: UITableView, index: Int) -> UIView
 public typealias TitleForHeaderInSectionBlock = (section: Section, tableView: UITableView, index: Int) -> String
 public typealias DidSelectRowAtIndexPath = (row: Row, tableView: UITableView, indexPath: NSIndexPath) -> Void
-
-// MARK: ScreenState
-
-public enum ScreenState: String {
-    case None    = ""
-    case Loading = "Loading..."
-    case Empty   = "No Data"
-    case Error   = "Error"
-    
-    public mutating func setByResultsAndErrors(results: [AnyObject], errors: [NSError]){
-        if (results.count > 0) {
-            self = .None
-        }else if (errors.count > 0) {
-            self = .Error
-        }else {
-            self = .Empty
-        }
-    }
-    
-    public mutating func setByResultsAndError(results: [AnyObject], error: NSError?){
-        if (results.count > 0) {
-            self = .None
-        }else if (error != nil) {
-            self = .Error
-        }else {
-            self = .Empty
-        }
-    }
-    
-}
-
-// MARK: Protocols
-
-public protocol ConfigureCell {
-    func configureCell(object: Any?, target: AnyObject?, indexPath: NSIndexPath?)
-}
