@@ -8,15 +8,19 @@
 
 import UIKit
 
+private let defaultIdentifier = "TableManager_Default_Cell"
+
 public class TableManager: NSObject {
     
-    public let tableView: UITableView
+    public weak var tableView: UITableView!
+    
     public var sections = [Section]()
     public var visibleSections: [Section] {
-        return sections.filter { (section) -> Bool in
-            return section.visible
+        return sections.filter {
+            $0.visible
         }
     }
+    
     public var stateRows: StateRowsTuple?
     public var state: ScreenState = .None {
         didSet {
@@ -24,17 +28,15 @@ public class TableManager: NSObject {
         }
     }
     
-    static let kDefaultIdentifier = "TableManager_Default_Cell"
-    
     public init(tableView: UITableView) {
         self.tableView = tableView
-
+        
         super.init()
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: TableManager.kDefaultIdentifier)
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: defaultIdentifier)
     }
     
     // MARK: Methods
@@ -79,9 +81,9 @@ public class TableManager: NSObject {
             }
         }
         
-        let loadingRow = Row(identifier: TableManager.kDefaultIdentifier, object: "Loading...", configureCell: handler)
-        let emptyRow = Row(identifier: TableManager.kDefaultIdentifier, object: "Empty", configureCell: handler)
-        let errorRow = Row(identifier: TableManager.kDefaultIdentifier, object: "Error", configureCell: handler)
+        let loadingRow = Row(identifier: defaultIdentifier, object: "Loading...", configureCell: handler)
+        let emptyRow = Row(identifier: defaultIdentifier, object: "Empty", configureCell: handler)
+        let errorRow = Row(identifier: defaultIdentifier, object: "Error", configureCell: handler)
         
         return (loadingRow, emptyRow, errorRow)
     }
@@ -190,8 +192,8 @@ public class Section: NSObject {
     public var visible = true
     public var rows = [Row]()
     public var visibleRows: [Row] {
-        return rows.filter { (row) -> Bool in
-            return row.visible
+        return rows.filter {
+            $0.visible
         }
     }
     public var heightForStaticHeader = 0.0
