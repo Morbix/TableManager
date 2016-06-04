@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods.xcscheme</key>
+		<key>Pods-TableManager Example.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2FAD35EC1C4BE1C7D364C08A25F814C9</key>
+		<key>75B237C64BEB33A52F467AF09EE82BFB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A28E819A88ABED46CA1DE58EC39F1AB1</key>
+		<key>A8AF06A4477F16A7939A2637834AF482</key>
 		<dict>
 			<key>primary</key>
 			<true/>
