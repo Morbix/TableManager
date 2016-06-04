@@ -137,6 +137,8 @@ public class Section {
     public var titleForHeader: TitleForHeader?
     public var viewForHeader: ViewForHeader?
     
+    // MARK: Methods
+    
     public func row(atIndex index: Int) -> Row {
         if visibleRows.count > index {
             return visibleRows[index]
@@ -147,7 +149,7 @@ public class Section {
         }
     }
     
-    // MARK: Header
+    // MARK: Header Configuration
     
     func setHeaderView(withDynamicText dynamicText: TitleForHeader) {
         titleForHeader = dynamicText
