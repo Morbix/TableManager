@@ -21,7 +21,7 @@ public class TableManager: NSObject {
         }
     }
     
-    public init(tableView: UITableView) {
+    public required init(tableView: UITableView) {
         self.tableView = tableView
         
         super.init()
@@ -149,33 +149,37 @@ public class Section {
         }
     }
     
+    public func setObject(object: AnyObject) {
+        self.object = object
+    }
+    
     // MARK: Header Configuration
     
-    func setHeaderView(withDynamicText dynamicText: TitleForHeader) {
+    public func setHeaderView(withDynamicText dynamicText: TitleForHeader) {
         titleForHeader = dynamicText
     }
     
-    func setHeaderView(withStaticText staticText: String) {
+    public func setHeaderView(withStaticText staticText: String) {
         setHeaderView { (section, tableView, index) -> String in
             return staticText
         }
     }
     
-    func setHeaderView(withDynamicView dynamicView: ViewForHeader) {
+    public func setHeaderView(withDynamicView dynamicView: ViewForHeader) {
         viewForHeader = dynamicView
     }
     
-    func setHeaderView(withStaticView staticView: UIView) {
+    public func setHeaderView(withStaticView staticView: UIView) {
         setHeaderView { (section, tableView, index) -> UIView in
             return staticView
         }
     }
     
-    func setHeaderHeight(withDynamicHeight dynamicHeight: HeightForHeader) {
+    public func setHeaderHeight(withDynamicHeight dynamicHeight: HeightForHeader) {
         heightForHeader = dynamicHeight
     }
     
-    func setHeaderHeight(withStaticHeight staticHeight: Double) {
+    public func setHeaderHeight(withStaticHeight staticHeight: Double) {
         setHeaderHeight { (section, tableView, index) -> Double in
             return staticHeight
         }
@@ -194,25 +198,28 @@ public class Row {
     public let identifier: String
     public var visible = true
     public var object: AnyObject?
-    public var configuration: ConfigurationBlock?
-    public var didSelect: DidSelectBlock?
+    
+    public var configuration: Configuration?
+    public var didSelect: DidSelect?
     
     public init(withIdentifier identifier: String){
         self.identifier = identifier
     }
     
-    func setObject(object: AnyObject) {
+    // MARK: Methods
+    
+    public func setObject(object: AnyObject) {
         self.object = object
     }
     
-    func setConfiguration(block: ConfigurationBlock) {
+    public func setConfiguration(block: Configuration) {
         self.configuration = block
     }
     
-    func setDidSelect(block: DidSelectBlock) {
+    public func setDidSelect(block: DidSelect) {
         self.didSelect = block
     }
     
-    public typealias ConfigurationBlock = (row: Row, cell: UITableViewCell, indexPath: NSIndexPath) -> Void
-    public typealias DidSelectBlock = (row: Row, tableView: UITableView, indexPath: NSIndexPath) -> Void
+    public typealias Configuration = (row: Row, cell: UITableViewCell, indexPath: NSIndexPath) -> Void
+    public typealias DidSelect = (row: Row, tableView: UITableView, indexPath: NSIndexPath) -> Void
 }
