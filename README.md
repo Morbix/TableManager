@@ -25,7 +25,7 @@ pod 'TableManager'
 
 ### Manually
 
-You can also install it manually just draging [TableManager](https://github.com/Morbix/TableManager/blob/master/TableManager.swift) file to your project. 
+You can also install it manually just dragging [TableManager](https://github.com/Morbix/TableManager/blob/master/TableManager.swift) file to your project.
 
 
 ## Required Configuration
@@ -42,19 +42,19 @@ lazy var tableManager : TableManager = TableManager(tableView: self.table)
 ```swift
 class TableViewController: UITableViewController {
 
-    //1 - Declare a var of TableManager passing the UITableView instance 
+    //1 - Declare a var of TableManager passing the UITableView instance
     lazy var tableManager : TableManager = TableManager(tableView: self.tableView)
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let identifier = "MyCellIdentifier"
         let data = ["A", "B", "C", "D", "E"]
         let section = Section()
-        
+
         //2 - Add the section
         tableManager.sections.append(section)
-        
+
         for letter in data {
             //3 - Declare a instance of Row
             let row = Row(identifier: identifier, object: letter) { (object, cell, indexPath) -> Void in
@@ -62,65 +62,17 @@ class TableViewController: UITableViewController {
                     cell.textLabel?.text = object
                 }
             }
-            
+
             //4 - Add the Row to the Section
             section.rows.append(row)
         }
-        
+
         //5 - Reload data
         tableManager.reloadData()
     }
 }
 ```
 
-### Basic Usage - Using user feedback like: Loading, Empty List and Error
-```swift
-class TableViewController: UITableViewController {
-
-    //1 - Declaring a var of TableManager passing the UITableView instance
-    lazy var tableManager : TableManager = TableManager(tableView: self.tableView)
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //2 - Setting the default state cells (states: Loading / Empty / Error)
-        tableManager.stateRows = TableManager.getDefaultStateRows()
-        
-        //3 - Setting the Loading state
-        tableManager.state = .Loading
-        
-        //4 - Simulating a delay to be able to see the Loading State Cell
-        performSelector(Selector("loadFakeData"), withObject: nil, afterDelay: 3)
-    }
-
-    func loadFakeData(){
-        let identifier = "MyCellIdentifier"
-        let fakeData = ["A", "B", "C", "D", "E"]
-        
-        //5 - Adding a empty section
-        tableManager.sections.append(Section())
-        
-        
-        for letter in fakeData {
-            
-            //6 - Declaring a instance of Row
-            let row = Row(identifier: identifier, object: letter) { (object, cell, indexPath) -> Void in
-                if let object = object as? String {
-                    cell.textLabel?.text = object
-                }
-            }
-            
-            //7 - Adding our Row to our Section
-            tableManager.sections[0].rows.append(row)
-        }
-        
-        //7 - Setting the None state
-        tableManager.state = .None 
-    }
-}
-```
-The `.None` state tells to TableManager to hide any kind of Loading/Empty/Error Cells and show the configured sections and rows that we added before.
-Other thing, every time you change the tableManager.state, the reloadData will be called automatically.
 
 ### Sections & Rows Visibility
 
@@ -166,13 +118,13 @@ Or implement the full `CellForRowAtIndexPathBlock` as you already know:
 ```swift
 let row = Row(identifier: "SomeIdentifier", object: someObject, configureCell: nil)
 row.cellForRowAtIndexPath = { (row: Row, tableView: UITableView,  indexPath: NSIndexPath) -> UITableViewCell in
-    
+
     let cell = tableView.dequeueReusableCellWithIdentifier(row.identifier, forIndexPath: indexPath)
-    
+
     if let object = row.object as? String {
         cell.textLabel?.text = object
     }
-    
+
     return cell
 }
 ```
@@ -216,29 +168,57 @@ tableManager.reloadData()
 ## Library Progress
 
 ### Released
-- Sections & Rows Visibility 
-- Static Header for Section
-- Custom Header for Section
-- Custom Rows
-- Row Selection
-- Table States
+- Section & Row's Visibility
+- Header For Section (with static and dynamic values)
+- Footer For Section (with static and dynamic values)
+- Row's Configuration
+- Row's Selection
 
-### To be implemented 
-- Static Footer for Section
-- Custom Footer for Section
-- And more...
 
-### Documentation to be written
-- Table States
-- Static Header for Section
-- Custom Header for Section
-- Static Footer for Section
-- Custom Footer for Section
+### To be implemented
+- canEditRowAtIndexPath (UITableViewDataSource)
+- canMoveRowAtIndexPath (UITableViewDataSource)
+- sectionIndexTitlesForTableView (UITableViewDataSource)
+- sectionForSectionIndexTitle (UITableViewDataSource)
+- commitEditingStyle (UITableViewDataSource)
+- moveRowAtIndexPath (UITableViewDataSource)
+- willDisplayCell (UITableViewDelegate)
+- willDisplayHeaderView (UITableViewDelegate)
+- willDisplayFooterView (UITableViewDelegate)
+- didEndDisplayingCell (UITableViewDelegate)
+- didEndDisplayingHeaderView (UITableViewDelegate)
+- didEndDisplayingFooterView (UITableViewDelegate)
+- **heightForRowAtIndexPath (UITableViewDelegate)**
+- estimatedHeightForRowAtIndexPath (UITableViewDelegate)
+- estimatedHeightForHeaderInSection (UITableViewDelegate)
+- estimatedHeightForFooterInSection (UITableViewDelegate)
+- accessoryButtonTappedForRowWithIndexPath (UITableViewDelegate)
+- shouldHighlightRowAtIndexPath (UITableViewDelegate)
+- didHighlightRowAtIndexPath (UITableViewDelegate)
+- didUnhighlightRowAtIndexPath (UITableViewDelegate)
+- willSelectRowAtIndexPath (UITableViewDelegate)
+- willDeselectRowAtIndexPath (UITableViewDelegate)
+- didDeselectRowAtIndexPath (UITableViewDelegate)
+- editingStyleForRowAtIndexPath (UITableViewDelegate)
+- titleForDeleteConfirmationButtonForRowAtIndexPath (UITableViewDelegate)
+- editActionsForRowAtIndexPath (UITableViewDelegate)
+- shouldIndentWhileEditingRowAtIndexPath (UITableViewDelegate)
+- willBeginEditingRowAtIndexPath (UITableViewDelegate)
+- didEndEditingRowAtIndexPath (UITableViewDelegate)
+- targetIndexPathForMoveFromRowAtIndexPath (UITableViewDelegate)
+- indentationLevelForRowAtIndexPath (UITableViewDelegate)
+- shouldShowMenuForRowAtIndexPath (UITableViewDelegate)
+- canPerformAction (UITableViewDelegate)
+- performAction (UITableViewDelegate)
+- canFocusRowAtIndexPath (UITableViewDelegate)
+- shouldUpdateFocusInContext (UITableViewDelegate)
+- didUpdateFocusInContext (UITableViewDelegate)
+- indexPathForPreferredFocusedViewInTableView (UITableViewDelegate)
 
 
 ## Contribute
 
-Feel free to submit your pull request, suggest any update, report a bug or create a feature request. 
+Feel free to submit your pull request, suggest any update, report a bug or create a feature request.
 
 Just want to say hello? -> [morbin_@hotmail.com](mailto://morbin_@hotmail.com)
 
