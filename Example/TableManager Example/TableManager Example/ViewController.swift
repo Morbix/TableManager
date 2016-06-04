@@ -41,7 +41,6 @@ class ViewController: UIViewController {
             section.rows.append(row)
         }
         
-        //6 - Reloading table
         tableManager.reloadData()
     }
 
