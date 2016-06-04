@@ -137,6 +137,11 @@ public class Section {
     public var titleForHeader: TitleForHeader?
     public var viewForHeader: ViewForHeader?
     
+    public required init(visible: Bool = true, object: AnyObject? = nil){
+        self.visible = visible
+        self.object = object
+    }
+    
     // MARK: Methods
     
     public func row(atIndex index: Int) -> Row {
@@ -202,8 +207,10 @@ public class Row {
     public var configuration: Configuration?
     public var didSelect: DidSelect?
     
-    public init(withIdentifier identifier: String){
+    public required init(withIdentifier identifier: String, visible: Bool = true, object: AnyObject? = nil){
         self.identifier = identifier
+        self.visible = visible
+        self.object = object
     }
     
     // MARK: Methods
