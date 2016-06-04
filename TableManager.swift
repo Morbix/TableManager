@@ -106,6 +106,36 @@ extension TableManager: UITableViewDataSource {
         
         return nil
     }
+    
+    public func tableView(tableView: UITableView, heightForFooterInSection index: Int) -> CGFloat {
+        let section = self.section(atIndex: index)
+        
+        if let heightForFooter = section.heightForFooter {
+            return CGFloat(heightForFooter(section: section, tableView: tableView, index: index))
+        }
+        
+        return CGFloat(0.0)
+    }
+    
+    public func tableView(tableView: UITableView, titleForFooterInSection index: Int) -> String? {
+        let section = self.section(atIndex: index)
+        
+        if let titleForFooter = section.titleForFooter {
+            return titleForFooter(section: section, tableView: tableView, index: index)
+        }
+        
+        return nil
+    }
+    
+    public func tableView(tableView: UITableView, viewForFooterInSection index: Int) -> UIView? {
+        let section = self.section(atIndex: index)
+        
+        if let viewForFooter = section.viewForFooter {
+            return viewForFooter(section: section, tableView: tableView, index: index)
+        }
+        
+        return nil
+    }
 }
 
 // MARK: UITableViewDelegate
@@ -136,6 +166,9 @@ public class Section {
     public var heightForHeader: HeightForHeader?
     public var titleForHeader: TitleForHeader?
     public var viewForHeader: ViewForHeader?
+    public var heightForFooter: HeightForFooter?
+    public var titleForFooter: TitleForFooter?
+    public var viewForFooter: ViewForFooter?
     
     public required init(visible: Bool = true, object: AnyObject? = nil){
         self.visible = visible
@@ -193,6 +226,42 @@ public class Section {
     public typealias HeightForHeader = (section: Section, tableView: UITableView, index: Int) -> Double
     public typealias ViewForHeader = (section: Section, tableView: UITableView, index: Int) -> UIView
     public typealias TitleForHeader = (section: Section, tableView: UITableView, index: Int) -> String
+    
+    // MARK: Footer Configuration
+    
+    public func setFooterView(withDynamicText dynamicText: TitleForFooter) {
+        titleForFooter = dynamicText
+    }
+    
+    public func setFooterView(withStaticText staticText: String) {
+        setFooterView { (section, tableView, index) -> String in
+            return staticText
+        }
+    }
+    
+    public func setFooterView(withDynamicView dynamicView: ViewForFooter) {
+        viewForFooter = dynamicView
+    }
+    
+    public func setFooterView(withStaticView staticView: UIView) {
+        setFooterView { (section, tableView, index) -> UIView in
+            return staticView
+        }
+    }
+    
+    public func setFooterHeight(withDynamicHeight dynamicHeight: HeightForFooter) {
+        heightForFooter = dynamicHeight
+    }
+    
+    public func setFooterHeight(withStaticHeight staticHeight: Double) {
+        setFooterHeight { (section, tableView, index) -> Double in
+            return staticHeight
+        }
+    }
+    
+    public typealias HeightForFooter = (section: Section, tableView: UITableView, index: Int) -> Double
+    public typealias ViewForFooter = (section: Section, tableView: UITableView, index: Int) -> UIView
+    public typealias TitleForFooter = (section: Section, tableView: UITableView, index: Int) -> String
     
 }
 
