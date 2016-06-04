@@ -77,16 +77,6 @@ extension TableManager: UITableViewDataSource {
         return cell
     }
     
-    public func tableView(tableView: UITableView, heightForHeaderInSection index: Int) -> CGFloat {
-        let section = self.section(atIndex: index)
-        
-        if let heightForHeader = section.heightForHeader {
-            return CGFloat(heightForHeader(section: section, tableView: tableView, index: index))
-        }
-        
-        return CGFloat(0.0)
-    }
-    
     public func tableView(tableView: UITableView, titleForHeaderInSection index: Int) -> String? {
         let section = self.section(atIndex: index)
         
@@ -95,6 +85,37 @@ extension TableManager: UITableViewDataSource {
         }
         
         return nil
+    }
+    
+    public func tableView(tableView: UITableView, titleForFooterInSection index: Int) -> String? {
+        let section = self.section(atIndex: index)
+        
+        if let titleForFooter = section.titleForFooter {
+            return titleForFooter(section: section, tableView: tableView, index: index)
+        }
+        
+        return nil
+    }
+
+}
+
+// MARK: UITableViewDelegate
+    
+extension TableManager: UITableViewDelegate {
+    
+    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let row = self.row(atIndexPath: indexPath)
+        row.didSelect?(row: row, tableView: tableView, indexPath: indexPath)
+    }
+    
+    public func tableView(tableView: UITableView, heightForHeaderInSection index: Int) -> CGFloat {
+        let section = self.section(atIndex: index)
+        
+        if let heightForHeader = section.heightForHeader {
+            return CGFloat(heightForHeader(section: section, tableView: tableView, index: index))
+        }
+        
+        return CGFloat(0.0)
     }
     
     public func tableView(tableView: UITableView, viewForHeaderInSection index: Int) -> UIView? {
@@ -117,16 +138,6 @@ extension TableManager: UITableViewDataSource {
         return CGFloat(0.0)
     }
     
-    public func tableView(tableView: UITableView, titleForFooterInSection index: Int) -> String? {
-        let section = self.section(atIndex: index)
-        
-        if let titleForFooter = section.titleForFooter {
-            return titleForFooter(section: section, tableView: tableView, index: index)
-        }
-        
-        return nil
-    }
-    
     public func tableView(tableView: UITableView, viewForFooterInSection index: Int) -> UIView? {
         let section = self.section(atIndex: index)
         
@@ -135,16 +146,6 @@ extension TableManager: UITableViewDataSource {
         }
         
         return nil
-    }
-}
-
-// MARK: UITableViewDelegate
-    
-extension TableManager: UITableViewDelegate {
-    
-    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let row = self.row(atIndexPath: indexPath)
-        row.didSelect?(row: row, tableView: tableView, indexPath: indexPath)
     }
     
 }
