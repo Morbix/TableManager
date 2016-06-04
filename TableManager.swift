@@ -38,12 +38,12 @@ public class TableManager: NSObject {
         tableView.reloadData()
     }
     
-    public func rowForIndexPath(indexPath: NSIndexPath) -> Row {
-        let section = sectionForIndex(indexPath.section)
-        return section.rowForIndex(indexPath.row)
+    public func row(atIndexPath indexPath: NSIndexPath) -> Row {
+        let section = self.section(atIndex: indexPath.section)
+        return section.row(atIndex: indexPath.row)
     }
     
-    public func sectionForIndex(index: Int) -> Section {
+    public func section(atIndex index: Int) -> Section {
         if visibleSections.count > index {
             return visibleSections[index]
         } else {
@@ -64,11 +64,11 @@ extension TableManager: UITableViewDataSource {
     }
     
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sectionForIndex(section).visibleRows.count
+        return self.section(atIndex: section).visibleRows.count
     }
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let row = rowForIndexPath(indexPath)
+        let row = self.row(atIndexPath: indexPath)
         
         let cell = tableView.dequeueReusableCellWithIdentifier(row.identifier, forIndexPath: indexPath)
         
@@ -78,17 +78,17 @@ extension TableManager: UITableViewDataSource {
     }
     
     public func tableView(tableView: UITableView, heightForHeaderInSection index: Int) -> CGFloat {
-        let section = sectionForIndex(index)
+        let section = self.section(atIndex: index)
         
-        if let heightForHeaderInSection = section.heightForHeaderInSection {
-            return heightForHeaderInSection(section: section, tableView: tableView, index: index)
+        if let heightForHeader = section.heightForHeader {
+            return CGFloat(heightForHeader(section: section, tableView: tableView, index: index))
         }
         
-        return CGFloat(section.heightForStaticHeader)
+        return CGFloat(0.0)
     }
     
     public func tableView(tableView: UITableView, titleForHeaderInSection index: Int) -> String? {
-        let section = sectionForIndex(index)
+        let section = self.section(atIndex: index)
         
         if let titleForHeader = section.titleForHeader {
             return titleForHeader(section: section, tableView: tableView, index: index)
@@ -98,7 +98,7 @@ extension TableManager: UITableViewDataSource {
     }
     
     public func tableView(tableView: UITableView, viewForHeaderInSection index: Int) -> UIView? {
-        let section = sectionForIndex(index)
+        let section = self.section(atIndex: index)
         
         if let viewForHeader = section.viewForHeader {
             return viewForHeader(section: section, tableView: tableView, index: index)
@@ -113,7 +113,7 @@ extension TableManager: UITableViewDataSource {
 extension TableManager: UITableViewDelegate {
     
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let row = rowForIndexPath(indexPath)
+        let row = self.row(atIndexPath: indexPath)
         row.didSelect?(row: row, tableView: tableView, indexPath: indexPath)
     }
     
@@ -125,19 +125,19 @@ extension TableManager: UITableViewDelegate {
 public class Section {
     
     public var visible = true
+    public var object: AnyObject?
     public var rows = [Row]()
     public var visibleRows: [Row] {
         return rows.filter {
             $0.visible
         }
     }
+
+    public var heightForHeader: HeightForHeader?
+    public var titleForHeader: TitleForHeader?
+    public var viewForHeader: ViewForHeader?
     
-    public var heightForStaticHeader = 0.0
-    public var heightForHeaderInSection: HeightForHeaderInSectionBlock?
-    public var titleForHeader: TitleForHeaderBlock?
-    public var viewForHeader: ViewForHeaderBlock?
-    
-    public func rowForIndex(index: Int) -> Row {
+    public func row(atIndex index: Int) -> Row {
         if visibleRows.count > index {
             return visibleRows[index]
         } else {
@@ -147,29 +147,41 @@ public class Section {
         }
     }
     
-    func setTitleForHeader(block: TitleForHeaderBlock) {
-        self.titleForHeader = block
+    // MARK: Header
+    
+    func setHeaderView(withDynamicText dynamicText: TitleForHeader) {
+        titleForHeader = dynamicText
     }
     
-    func setTitleForHeader(text: String) {
-        self.setTitleForHeader { (section, tableView, index) -> String in
-            return text
+    func setHeaderView(withStaticText staticText: String) {
+        setHeaderView { (section, tableView, index) -> String in
+            return staticText
         }
     }
     
-    func setViewForHeader(block: ViewForHeaderBlock) {
-        self.viewForHeader = block
+    func setHeaderView(withDynamicView dynamicView: ViewForHeader) {
+        viewForHeader = dynamicView
     }
     
-    func setViewForHeader(view: UIView) {
-        self.setViewForHeader { (section, tableView, index) -> UIView in
-            return view
+    func setHeaderView(withStaticView staticView: UIView) {
+        setHeaderView { (section, tableView, index) -> UIView in
+            return staticView
         }
     }
     
-    public typealias HeightForHeaderInSectionBlock = (section: Section, tableView: UITableView, index: Int) -> CGFloat
-    public typealias ViewForHeaderBlock = (section: Section, tableView: UITableView, index: Int) -> UIView
-    public typealias TitleForHeaderBlock = (section: Section, tableView: UITableView, index: Int) -> String
+    func setHeaderHeight(withDynamicHeight dynamicHeight: HeightForHeader) {
+        heightForHeader = dynamicHeight
+    }
+    
+    func setHeaderHeight(withStaticHeight staticHeight: Double) {
+        setHeaderHeight { (section, tableView, index) -> Double in
+            return staticHeight
+        }
+    }
+    
+    public typealias HeightForHeader = (section: Section, tableView: UITableView, index: Int) -> Double
+    public typealias ViewForHeader = (section: Section, tableView: UITableView, index: Int) -> UIView
+    public typealias TitleForHeader = (section: Section, tableView: UITableView, index: Int) -> String
     
 }
 
@@ -179,7 +191,6 @@ public class Row {
     
     public let identifier: String
     public var visible = true
-    
     public var object: AnyObject?
     public var configuration: ConfigurationBlock?
     public var didSelect: DidSelectBlock?
