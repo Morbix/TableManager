@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/cocoapods/l/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
 [![Platform](https://img.shields.io/cocoapods/p/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
 
-`TableManager` is a wrapper and it was created to use and manipulate the UITableView easier. You can add Row and Section's objects then the manager will handle all the protocol implementation for you. 
+`TableManager` is a wrapper and it was created to use and manipulate the UITableView easier. You can add Row and Section's objects then the manager will handle all the protocol implementation for you.
 
 ## Requirements
 
@@ -27,13 +27,6 @@ pod 'TableManager'
 
 You can also install it manually just dragging [TableManager](https://github.com/Morbix/TableManager/blob/master/TableManager.swift) file to your project.
 
-
-## Required Configuration
-
-In your View Controller declare a lazy var of `TableManager` passing your tableView as parameter.
-```swift
-lazy var tableManager: TableManager = TableManager(tableView: self.tableView)
-```
 
 ## Usage
 
