@@ -3,7 +3,9 @@ This application makes use of the following third party libraries:
 
 ## TableManager
 
-Copyright (c) 2014 Henrique Morbin <morbin_@hotmail.com>
+Licensed under the **MIT** license
+
+Copyright (c) 2016 Henrique Morbin <morbin_@hotmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

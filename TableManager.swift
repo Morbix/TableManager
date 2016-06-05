@@ -53,6 +53,24 @@ public class TableManager: NSObject {
         }
     }
     
+    public func selectedRow() -> Row? {
+        guard let indexPath = tableView.indexPathForSelectedRow else {
+            return nil
+        }
+        
+        return row(atIndexPath: indexPath)
+    }
+    
+    public func displayedRows() -> [Row]? {
+        guard let indexPaths = tableView.indexPathsForVisibleRows else {
+            return nil
+        }
+        
+        return indexPaths.map {
+            row(atIndexPath: $0)
+        }
+    }
+    
 }
 
 // MARK: UITableViewDataSource
