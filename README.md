@@ -211,6 +211,25 @@ tableManager.reloadData()
 - didUpdateFocusInContext (UITableViewDelegate)
 - indexPathForPreferredFocusedViewInTableView (UITableViewDelegate)
 
+## Release History
+
+* 1.0.0
+    * First official release; 
+    * FIX: Swift style code;
+    * ADD: Support to Footer configuration;
+    * ADD: Section constructor;
+    * CHANGE: All API;
+    * CHANGE: Remove `stateRows` property;
+    * CHANGE: Remove `StateRowsTuple` typealias;
+    * CHANGE: Remove `ScreenState` enum;
+    * CHANGE: Remove `ConfigureCell` protocol;
+* 0.0.3
+    * Some fixes;
+    * ADD: Example project;
+    * FIX: A bug was blocking the usage as pod;
+    * FIX: Rename `setByResulsAndErrors()` to `setByResultsAndErrors()`
+* 0.0.1
+    * Creating pod
 
 ## Contribute
 
