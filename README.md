@@ -169,6 +169,8 @@ tableManager.reloadData()
 - Footer For Section (with static and dynamic values)
 - Row's Configuration
 - Row's Selection
+- Selected Row
+- Displayed Rows
 
 
 ### To be implemented
