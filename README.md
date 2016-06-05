@@ -100,7 +100,7 @@ tableManager.reloadData()
 ```
 
 ### Configuring a Row
-You can set the configuration:
+You can set the `configuration` property:
 ```swift
 let row = Row(withIdentifier: "CellBasic", object: someString)
 
@@ -125,50 +125,36 @@ let rowB = Row(withIdentifier: "CellBasic", object: otherObject)
 rowB.setConfiguration(configuration)
 ```
 
-Or implement the full `CellForRowAtIndexPathBlock` as you already know:
-```swift
-let row = Row(identifier: "SomeIdentifier", object: someObject, configureCell: nil)
-row.cellForRowAtIndexPath = { (row: Row, tableView: UITableView,  indexPath: NSIndexPath) -> UITableViewCell in
-
-    let cell = tableView.dequeueReusableCellWithIdentifier(row.identifier, forIndexPath: indexPath)
-
-    if let object = row.object as? String {
-        cell.textLabel?.text = object
-    }
-
-    return cell
-}
-```
-
 Don't forget to `reloadData` to update cells
 ```swift
 tableManager.reloadData()
 ```
 
 ### Row Selection
-You can implement the `didSelectRowAtIndexPath` directly in the row:
+You can set the `didSelect` property:
 ```swift
-let row = Row(identifier: "SomeIdentifier", object: someObject, configureCell: nil)
-row.didSelectRowAtIndexPath = { (row: Row, tableView: UITableView, indexPath: NSIndexPath) -> Void in
-    print("someObject selected")
+let row = Row(withIdentifier: "CellBasic", object: someString)
+
+row.setDidSelect { (row, tableView, indexPath) in
+    if let text = row.object as? String {
+        print(text + " selected")
+    }
 }
 ```
 
-Or declare some `DidSelectRowAtIndexPath` and attribute it to a group of Rows:
+Or declare a `Row.DidSelect` and attribute it to any row:
 ```swift
-let block:DidSelectRowAtIndexPath = { (row: Row, tableView: UITableView, indexPath: NSIndexPath) -> Void in
-	if let object = row.object {
-    	print((object as! String) + " selected")
+let didSelect: Row.DidSelect = { (row: Row, tableView: UITableView, indexPath: NSIndexPath) -> Void in
+    if let text = row.object as? String {
+        print(text + " selected")
     }
 }
 
-let rowA = Row(identifier: "SomeIdentifier", object: someObject, configureCell: nil)
-let rowB = Row(identifier: "SomeIdentifier", object: otherObject, configureCell: nil)
-let rowC = Row(identifier: "SomeIdentifier", object: anotherObject, configureCell: nil)
+let rowA = Row(withIdentifier: "CellBasic", object: someString)
+rowA.setDidSelect(didSelect)
 
-rowA.didSelectRowAtIndexPath = block
-rowB.didSelectRowAtIndexPath = block
-rowC.didSelectRowAtIndexPath = block
+let rowB = Row(withIdentifier: "CellBasic", object: someString)
+rowB.setDidSelect(didSelect)
 ```
 
 Don't forget to `reloadData` to update cells
