@@ -1,6 +1,6 @@
 {
   "name": "TableManager",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "summary": "A wrap for the UITableView features.",
   "description": "This wrapper was created by Henrique Morbin (http://fb.com/hgmorbin). It was created to use an UITableView easier.",
   "homepage": "https://github.com/Morbix/TableManager",
@@ -14,7 +14,7 @@
   },
   "source": {
     "git": "https://github.com/Morbix/TableManager.git",
-    "tag": "0.0.2"
+    "tag": "0.0.3"
   },
   "source_files": "TableManager.swift"
 }

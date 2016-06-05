@@ -13,60 +13,44 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    lazy var tableManager : TableManager = TableManager(tableView: self.tableView)
+    lazy var tableManager: TableManager = TableManager(tableView: self.tableView)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configTableManager()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK: Methods
-    
-    func configTableManager(){
+        let section = Section()
+        tableManager.sections.append(section)
         
-        //1 - Adding a section
-        tableManager.sections.append(Section())
+        section.setHeaderHeight(withStaticHeight: 28.0)
+        section.setHeaderView(withStaticText: "Header Text")
         
-        //2 - Data to fill table
-        let data = ["Basic Usage", "Row Selection", "Sections & Rows Visibility", "Custom Cells"]
+        section.setFooterHeight(withStaticHeight: 28.0)
+        section.setFooterView(withStaticText: "Footer Text")
         
-        for value in data {
+        let data = ["Row A", "Row B", "Row C", "Row D", "Row E"]
+        
+        data.forEach {
+            let row = Row(withIdentifier: "CellBasic", object: $0)
             
-            //3 - Creating a row
-            let row = Row(identifier: "CellBasic", object: value) { (object, cell, indexPath) -> Void in
-                if let object = object as? String {
-                    cell.textLabel?.text = object
+            row.setConfiguration { (row, cell, indexPath) in
+                if let text = row.object as? String {
+                    cell.textLabel?.text = text
                 }
             }
             
-            //4 - Adding selection handler
-            row.didSelectRowAtIndexPath = { (row: Row, tableView: UITableView, indexPath: NSIndexPath) -> Void in
-                if let object = row.object as? String {
-                    self.showAlert(object)
+            row.setDidSelect { (row, tableView, indexPath) in
+                
+                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                
+                if let text = row.object as? String {
+                    print(text + " selected")
                 }
             }
             
-            //5 - Adding this row in table
-            tableManager.sections[0].rows.append(row)
+            section.rows.append(row)
         }
         
-        //6 - Refreshing table UI
         tableManager.reloadData()
     }
-    
-    func showAlert(message : String){
-        
-        let alert = UIAlertController(title: "Message", message: message, preferredStyle: .Alert)
-        
-        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
-        
-        presentViewController(alert, animated: true, completion: nil)
-    }
-}
 
+}
