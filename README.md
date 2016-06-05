@@ -213,6 +213,9 @@ tableManager.reloadData()
 
 ## Release History
 
+* 1.1.0
+    * ADD: `selectedRow()` method in TableManger class;
+    * ADD: `displayedRows()` method in TableManger class;  
 * 1.0.0
     * First official release; 
     * FIX: Swift style code;
