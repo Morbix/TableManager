@@ -37,7 +37,7 @@ lazy var tableManager: TableManager = TableManager(tableView: self.tableView)
 
 ## Usage
 
-### Basic Usage - 5 Steps Only
+### Basic Usage - Configure a table with only 5 tiny steps
 ```swift
 class TableViewController: UITableViewController {
 
@@ -99,25 +99,30 @@ Don't forget to `reloadData` to update cells
 tableManager.reloadData()
 ```
 
-### Configuring Row or Custom Row
-You can implement the `ConfigureCellBlock` directly in the Row constructor:
+### Configuring a Row
+You can set the configuration:
 ```swift
-let row = Row(identifier: "SomeIdentifier", object: someObject) { (object, cell, indexPath) -> Void in
-    if let object = object as? String {
-        cell.textLabel?.text = object
+let row = Row(withIdentifier: "CellBasic", object: someString)
+
+row.setConfiguration { (row, cell, indexPath) in
+    if let text = row.object as? String {
+        cell.textLabel?.text = text
     }
 }
 ```
 
-Or declare some `ConfigureCellBlock` and attribute it to a group of Rows:
+Or declare a `Row.Configuration` and attribute it to any row:
 ```swift
-let block:ConfigureCellBlock = { (object, cell, indexPath) -> Void in
-    if let object = object as? String {
-        cell.textLabel?.text = object
+let configuration: Row.Configuration = { (row, cell, indexPath) -> Void in
+    if let text = object as? String {
+        cell.textLabel?.text = text
     }
 }
-let rowA = Row(identifier: "SomeIdentifier", object: someObject, configureCell: block)
-let rowB = Row(identifier: "SomeIdentifier", object: otherObject, configureCell: block)
+let rowA = Row(withIdentifier: "CellBasic", object: someObject)
+rowA.setConfiguration(configuration)
+
+let rowB = Row(withIdentifier: "CellBasic", object: otherObject)
+rowB.setConfiguration(configuration)
 ```
 
 Or implement the full `CellForRowAtIndexPathBlock` as you already know:
