@@ -53,6 +53,14 @@ public class TableManager: NSObject {
         }
     }
     
+    public func selectedRow() -> Row? {
+        guard let indexPath = tableView.indexPathForSelectedRow else {
+            return nil
+        }
+        
+        return row(atIndexPath: indexPath)
+    }
+    
 }
 
 // MARK: UITableViewDataSource
