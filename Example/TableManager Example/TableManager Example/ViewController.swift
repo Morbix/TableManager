@@ -21,7 +21,13 @@ class ViewController: UIViewController {
         let section = Section()
         tableManager.sections.append(section)
         
-        let data = ["Basic Usage", "Row Selection", "Sections & Rows Visibility", "Custom Cells"]
+        section.setHeaderHeight(withStaticHeight: 28.0)
+        section.setHeaderView(withStaticText: "Header Text")
+        
+        section.setFooterHeight(withStaticHeight: 28.0)
+        section.setFooterView(withStaticText: "Footer Text")
+        
+        let data = ["Row A", "Row B", "Row C", "Row D", "Row E"]
         
         data.forEach {
             let row = Row(withIdentifier: "CellBasic", object: $0)
@@ -33,6 +39,9 @@ class ViewController: UIViewController {
             }
             
             row.setDidSelect { (row, tableView, indexPath) in
+                
+                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                
                 if let text = row.object as? String {
                     print(text + " selected")
                 }

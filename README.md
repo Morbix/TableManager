@@ -51,7 +51,7 @@ class TableViewController: UITableViewController {
         let section = Section()
         tableManager.sections.append(section)
 
-        let data = ["Basic Usage", "Row Selection", "Sections & Rows Visibility", "Custom Cells"]
+        let data = ["Row A", "Row B", "Row C", "Row D", "Row E"]
 
         data.forEach {
             // 3 - Declare a Row and configure it
@@ -136,6 +136,9 @@ You can set the `didSelect` property:
 let row = Row(withIdentifier: "CellBasic", object: someString)
 
 row.setDidSelect { (row, tableView, indexPath) in
+
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+
     if let text = row.object as? String {
         print(text + " selected")
     }
@@ -145,6 +148,9 @@ row.setDidSelect { (row, tableView, indexPath) in
 Or declare a `Row.DidSelect` and attribute it to any row:
 ```swift
 let didSelect: Row.DidSelect = { (row: Row, tableView: UITableView, indexPath: NSIndexPath) -> Void in
+
+    tableView.deselectRowAtIndexPath(indexPath, animated: true)
+
     if let text = row.object as? String {
         print(text + " selected")
     }
