@@ -30,10 +30,9 @@ You can also install it manually just dragging [TableManager](https://github.com
 
 ## Required Configuration
 
-In your View Controller, after your  @IBOutlet UITableView reference, declare a lazy var of `TableManager` passing your table as parameter.
+In your View Controller declare a lazy var of `TableManager` passing your tableView as parameter.
 ```swift
-@IBOutlet var table: UITableView!
-lazy var tableManager : TableManager = TableManager(tableView: self.table)
+lazy var tableManager: TableManager = TableManager(tableView: self.tableView)
 ```
 
 ## Usage
@@ -42,32 +41,39 @@ lazy var tableManager : TableManager = TableManager(tableView: self.table)
 ```swift
 class TableViewController: UITableViewController {
 
-    //1 - Declare a var of TableManager passing the UITableView instance
-    lazy var tableManager : TableManager = TableManager(tableView: self.tableView)
+    // 1 - Declare a var of TableManager passing the UITableView instance
+    lazy var tableManager: TableManager = TableManager(tableView: self.tableView)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let identifier = "MyCellIdentifier"
-        let data = ["A", "B", "C", "D", "E"]
+        // 2 - Declare a section and add it in the tableManager
         let section = Section()
-
-        //2 - Add the section
         tableManager.sections.append(section)
 
-        for letter in data {
-            //3 - Declare a instance of Row
-            let row = Row(identifier: identifier, object: letter) { (object, cell, indexPath) -> Void in
-                if let object = object as? String {
-                    cell.textLabel?.text = object
+        let data = ["Basic Usage", "Row Selection", "Sections & Rows Visibility", "Custom Cells"]
+
+        data.forEach {
+            // 3 - Declare a Row and configure it
+            let row = Row(withIdentifier: "CellBasic", object: $0)
+
+            row.setConfiguration { (row, cell, indexPath) in
+                if let text = row.object as? String {
+                    cell.textLabel?.text = text
                 }
             }
 
-            //4 - Add the Row to the Section
+            row.setDidSelect { (row, tableView, indexPath) in
+                if let text = row.object as? String {
+                    print(text + " selected")
+                }
+            }
+
+            // 4 - Add the Row in the section
             section.rows.append(row)
         }
 
-        //5 - Reload data
+        // 5 - Reload data
         tableManager.reloadData()
     }
 }
