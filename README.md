@@ -77,10 +77,10 @@ You can change the property `visible` from any Section and any Row. In the examp
 let sectionA = Section()
 sectionA.visible = true
 
-let rowA = Section()
+let rowA = Row()
 rowA.visible = false
 
-let rowB = Section()
+let rowB = Row()
 rowB.visible = true
 ```
 
