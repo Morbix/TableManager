@@ -212,6 +212,11 @@ tableManager.reloadData()
 
 ## Release History
 
+* 1.2.0
+    * CHANGE: Refactor the `visibleSections`/`visibleRows` to `sectionsToRender`/`rowsToRender`;
+    * CHANGE: Refactor the `displayedRows` to `visibleRows` to be consistent with Apple's framework;
+    * ADD: A UITableView extension to use all TableManager features directly in the tableView instance;
+    * ADD: A `UIScrollViewDelegate` property to redirect all the scroll events.
 * 1.1.0
     * ADD: `selectedRow()` method in TableManger class;
     * ADD: `displayedRows()` method in TableManger class;  
