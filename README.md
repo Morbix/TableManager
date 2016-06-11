@@ -126,9 +126,6 @@ You can set the `didSelect` property:
 let row = Row(withIdentifier: "CellBasic", object: someString)
 
 row.setDidSelect { (row, tableView, indexPath) in
-
-    tableView.deselectRowAtIndexPath(indexPath, animated: true)
-
     if let text = row.object as? String {
         print(text + " selected")
     }
@@ -138,9 +135,6 @@ row.setDidSelect { (row, tableView, indexPath) in
 Or declare a `Row.DidSelect` and attribute it to any row:
 ```swift
 let didSelect: Row.DidSelect = { (row: Row, tableView: UITableView, indexPath: NSIndexPath) -> Void in
-
-    tableView.deselectRowAtIndexPath(indexPath, animated: true)
-
     if let text = row.object as? String {
         print(text + " selected")
     }
@@ -158,63 +152,12 @@ Don't forget to `reloadData` to update cells
 tableManager.reloadData()
 ```
 
-## Library Progress
 
-### Released
-- Section & Row's Visibility
-- Header For Section (with static and dynamic values)
-- Footer For Section (with static and dynamic values)
-- Row's Configuration
-- Row's Selection
-- Selected Row
-- Displayed Rows
-
-
-### To be implemented
-- canEditRowAtIndexPath (UITableViewDataSource)
-- canMoveRowAtIndexPath (UITableViewDataSource)
-- sectionIndexTitlesForTableView (UITableViewDataSource)
-- sectionForSectionIndexTitle (UITableViewDataSource)
-- commitEditingStyle (UITableViewDataSource)
-- moveRowAtIndexPath (UITableViewDataSource)
-- willDisplayCell (UITableViewDelegate)
-- willDisplayHeaderView (UITableViewDelegate)
-- willDisplayFooterView (UITableViewDelegate)
-- didEndDisplayingCell (UITableViewDelegate)
-- didEndDisplayingHeaderView (UITableViewDelegate)
-- didEndDisplayingFooterView (UITableViewDelegate)
-- **heightForRowAtIndexPath (UITableViewDelegate)**
-- estimatedHeightForRowAtIndexPath (UITableViewDelegate)
-- estimatedHeightForHeaderInSection (UITableViewDelegate)
-- estimatedHeightForFooterInSection (UITableViewDelegate)
-- accessoryButtonTappedForRowWithIndexPath (UITableViewDelegate)
-- shouldHighlightRowAtIndexPath (UITableViewDelegate)
-- didHighlightRowAtIndexPath (UITableViewDelegate)
-- didUnhighlightRowAtIndexPath (UITableViewDelegate)
-- willSelectRowAtIndexPath (UITableViewDelegate)
-- willDeselectRowAtIndexPath (UITableViewDelegate)
-- didDeselectRowAtIndexPath (UITableViewDelegate)
-- editingStyleForRowAtIndexPath (UITableViewDelegate)
-- titleForDeleteConfirmationButtonForRowAtIndexPath (UITableViewDelegate)
-- editActionsForRowAtIndexPath (UITableViewDelegate)
-- shouldIndentWhileEditingRowAtIndexPath (UITableViewDelegate)
-- willBeginEditingRowAtIndexPath (UITableViewDelegate)
-- didEndEditingRowAtIndexPath (UITableViewDelegate)
-- targetIndexPathForMoveFromRowAtIndexPath (UITableViewDelegate)
-- indentationLevelForRowAtIndexPath (UITableViewDelegate)
-- shouldShowMenuForRowAtIndexPath (UITableViewDelegate)
-- canPerformAction (UITableViewDelegate)
-- performAction (UITableViewDelegate)
-- canFocusRowAtIndexPath (UITableViewDelegate)
-- shouldUpdateFocusInContext (UITableViewDelegate)
-- didUpdateFocusInContext (UITableViewDelegate)
-- indexPathForPreferredFocusedViewInTableView (UITableViewDelegate)
-
-## Release History
+## Release Notes
 
 * 1.2.0
     * CHANGE: Refactor the `visibleSections`/`visibleRows` to `sectionsToRender`/`rowsToRender`;
-    * CHANGE: Refactor the `displayedRows` to `visibleRows` to be consistent with Apple's framework;
+    * CHANGE: Refactor the `displayedRows` to `visibleRows` to be consistent with Apple's framework (visible rows now means the rows that are appearing to the user in the table);
     * ADD: A UITableView extension to use all TableManager features directly in the tableView instance;
     * ADD: A `UIScrollViewDelegate` property to redirect all the scroll events.
 * 1.1.0
