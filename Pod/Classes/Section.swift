@@ -10,22 +10,41 @@ import Foundation
 
 public class Section {
     
+    /// Defines if it need be rendered or not when reload the table
     public var visible = true
+    
+    /// The object that can be used in the closure's impementation.
     public var object: AnyObject?
+    
+    /// The rows added to this section
     public var rows = [Row]()
+    
+    /// The rows added to this section and with `visible=true`
     public var rowsToRender: [Row] {
         return rows.filter {
             $0.visible
         }
     }
     
+    /// The closure that will be called when the table request the header's height
     public var heightForHeader: HeightForHeader?
+    
+    /// The closure that will be called when the table request the header's title
     public var titleForHeader: TitleForHeader?
+    
+    /// The closure that will be called when the table request the header's view
     public var viewForHeader: ViewForHeader?
+    
+    /// The closure that will be called when the table request the footer's height
     public var heightForFooter: HeightForFooter?
+    
+    /// The closure that will be called when the table request the footer's title
     public var titleForFooter: TitleForFooter?
+    
+    /// The closure that will be called when the table request the footer's view
     public var viewForFooter: ViewForFooter?
     
+    /// Initializes a new Section
     public required init(visible: Bool = true, object: AnyObject? = nil) {
         self.visible = visible
         self.object = object
@@ -33,6 +52,7 @@ public class Section {
     
     // MARK: Methods
     
+    /// Returns the Row by indexPath (only Rows with `visible=true`)
     public func row(atIndex index: Int) -> Row {
         if rowsToRender.count > index {
             return rowsToRender[index]
@@ -43,36 +63,44 @@ public class Section {
         }
     }
     
+    /// Set object that can be used in the closure's impementation.
     public func setObject(object: AnyObject) {
         self.object = object
     }
     
     // MARK: Header Configuration
     
+    /// Set the header using a closure that will be called when the table request a title
     public func setHeaderView(withDynamicText dynamicText: TitleForHeader) {
         titleForHeader = dynamicText
     }
     
+    /// Set the header using a static title
     public func setHeaderView(withStaticText staticText: String) {
         setHeaderView { (section, tableView, index) -> String in
             return staticText
         }
     }
     
+    /// Set the header using a closure that will be called when the table request a view
     public func setHeaderView(withDynamicView dynamicView: ViewForHeader) {
         viewForHeader = dynamicView
     }
     
+    
+    /// Set the header using a static view
     public func setHeaderView(withStaticView staticView: UIView) {
         setHeaderView { (section, tableView, index) -> UIView in
             return staticView
         }
     }
     
+    /// Set the header's height using a closure that will be called when the table request the a height
     public func setHeaderHeight(withDynamicHeight dynamicHeight: HeightForHeader) {
         heightForHeader = dynamicHeight
     }
     
+    /// Set the header's height using a static height
     public func setHeaderHeight(withStaticHeight staticHeight: Double) {
         setHeaderHeight { (section, tableView, index) -> Double in
             return staticHeight
@@ -85,30 +113,36 @@ public class Section {
     
     // MARK: Footer Configuration
     
+    /// Set the footer using a closure that will be called when the table request a title
     public func setFooterView(withDynamicText dynamicText: TitleForFooter) {
         titleForFooter = dynamicText
     }
     
+    /// Set the footer using a static title
     public func setFooterView(withStaticText staticText: String) {
         setFooterView { (section, tableView, index) -> String in
             return staticText
         }
     }
     
+    /// Set the footer using a closure that will be called when the table request a view
     public func setFooterView(withDynamicView dynamicView: ViewForFooter) {
         viewForFooter = dynamicView
     }
     
+    /// Set the footer using a static view
     public func setFooterView(withStaticView staticView: UIView) {
         setFooterView { (section, tableView, index) -> UIView in
             return staticView
         }
     }
     
+    /// Set the footer's height using a closure that will be called when the table request the a height
     public func setFooterHeight(withDynamicHeight dynamicHeight: HeightForFooter) {
         heightForFooter = dynamicHeight
     }
     
+    /// Set the footer's height using a static height
     public func setFooterHeight(withStaticHeight staticHeight: Double) {
         setFooterHeight { (section, tableView, index) -> Double in
             return staticHeight

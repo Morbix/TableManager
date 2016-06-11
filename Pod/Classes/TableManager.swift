@@ -15,10 +15,10 @@ public class TableManager: NSObject {
     /// Reference to the UITableView
     public weak var tableView: UITableView!
     
-    /// All sections added to the table
+    /// The sections added to this table
     public var sections = [Section]()
     
-    /// Sections with `visible=true`
+    /// The sections added to this table and with `visible=true`
     public var sectionsToRender: [Section] {
         return sections.filter {
             $0.visible
@@ -44,13 +44,13 @@ public class TableManager: NSObject {
         tableView.reloadData()
     }
     
-    /// Get the Row by indexPath (only Rows with `visible=true`)
+    /// Returns the Row by indexPath (only Rows with `visible=true`)
     public func row(atIndexPath indexPath: NSIndexPath) -> Row {
         let section = self.section(atIndex: indexPath.section)
         return section.row(atIndex: indexPath.row)
     }
     
-    /// Get the Section by indexPath (only Section with `visible=true`)
+    /// Returns the Section by indexPath (only Section with `visible=true`)
     public func section(atIndex index: Int) -> Section {
         if sectionsToRender.count > index {
             return sectionsToRender[index]
