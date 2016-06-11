@@ -10,7 +10,7 @@ import UIKit
 
 internal let instanceKey = "tableManagerInstance"
 
-extension UITableView {
+public extension UITableView {
     
     public func tableManagerInstance() -> TableManager {
         guard let tableManager = self.layer.valueForKey(instanceKey) as? TableManager else {
