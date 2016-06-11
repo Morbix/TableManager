@@ -30,24 +30,21 @@ You can also install it manually just dragging [TableManager](https://github.com
 
 ## Usage
 
-### Basic Usage - Configure a table with only 5 tiny steps
+### Basic Usage - Configure a table with only 3 tiny steps
 ```swift
 class TableViewController: UITableViewController {
-
-    // 1 - Declare a var of TableManager passing the UITableView instance
-    lazy var tableManager: TableManager = TableManager(tableView: self.tableView)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // 2 - Declare a section and add it in the tableManager
+        // 1 - Declare a section and add it in the table
         let section = Section()
-        tableManager.sections.append(section)
+        tableView.sections.append(section)
 
         let data = ["Row A", "Row B", "Row C", "Row D", "Row E"]
 
         data.forEach {
-            // 3 - Declare a Row and configure it
+            // 2 - Declare a Row and configure it
             let row = Row(withIdentifier: "CellBasic", object: $0)
 
             row.setConfiguration { (row, cell, indexPath) in
@@ -62,15 +59,15 @@ class TableViewController: UITableViewController {
                 }
             }
 
-            // 4 - Add the Row in the section
+            // 3 - Add the Row in the section
             section.rows.append(row)
         }
 
-        // 5 - Reload data
-        tableManager.reloadData()
+        tableView.reloadData()
     }
 }
 ```
+You can use this in a UIViewController with an outlet of UITableView too.
 
 
 ### Sections & Rows Visibility
