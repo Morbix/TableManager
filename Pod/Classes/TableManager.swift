@@ -12,15 +12,20 @@ internal let defaultCellIdentifier = "DefaultCellIdentifier"
 
 public class TableManager: NSObject {
     
+    /// Reference to the UITableView
     public weak var tableView: UITableView!
     
+    /// All sections added to the table
     public var sections = [Section]()
+    
+    /// Sections with `visible=true`
     public var sectionsToRender: [Section] {
         return sections.filter {
             $0.visible
         }
     }
     
+    /// Initializes a new manager with the referenced table
     public required init(tableView: UITableView) {
         self.tableView = tableView
         
@@ -34,15 +39,18 @@ public class TableManager: NSObject {
     
     // MARK: Methods
     
+    /// Reload the cells
     public func reloadData(){
         tableView.reloadData()
     }
     
+    /// Get the Row by indexPath (only Rows with `visible=true`)
     public func row(atIndexPath indexPath: NSIndexPath) -> Row {
         let section = self.section(atIndex: indexPath.section)
         return section.row(atIndex: indexPath.row)
     }
     
+    /// Get the Section by indexPath (only Section with `visible=true`)
     public func section(atIndex index: Int) -> Section {
         if sectionsToRender.count > index {
             return sectionsToRender[index]
@@ -53,6 +61,7 @@ public class TableManager: NSObject {
         }
     }
     
+    /// If exist, return the Row that correspond the selected cell
     public func selectedRow() -> Row? {
         guard let indexPath = tableView.indexPathForSelectedRow else {
             return nil
@@ -61,6 +70,7 @@ public class TableManager: NSObject {
         return row(atIndexPath: indexPath)
     }
     
+    /// If exist, return the Rows that are appearing to the user in the table
     public func visibleRows() -> [Row]? {
         guard let indexPaths = tableView.indexPathsForVisibleRows else {
             return nil
