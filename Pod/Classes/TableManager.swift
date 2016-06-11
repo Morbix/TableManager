@@ -15,7 +15,7 @@ public class TableManager: NSObject {
     public weak var tableView: UITableView!
     
     public var sections = [Section]()
-    public var visibleSections: [Section] {
+    public var sectionsToRender: [Section] {
         return sections.filter {
             $0.visible
         }
@@ -44,8 +44,8 @@ public class TableManager: NSObject {
     }
     
     public func section(atIndex index: Int) -> Section {
-        if visibleSections.count > index {
-            return visibleSections[index]
+        if sectionsToRender.count > index {
+            return sectionsToRender[index]
         } else {
             let section = Section()
             sections.append(section)
@@ -61,7 +61,7 @@ public class TableManager: NSObject {
         return row(atIndexPath: indexPath)
     }
     
-    public func displayedRows() -> [Row]? {
+    public func visibleRows() -> [Row]? {
         guard let indexPaths = tableView.indexPathsForVisibleRows else {
             return nil
         }
@@ -78,11 +78,11 @@ public class TableManager: NSObject {
 extension TableManager: UITableViewDataSource {
     
     public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return visibleSections.count
+        return sectionsToRender.count
     }
     
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.section(atIndex: section).visibleRows.count
+        return self.section(atIndex: section).rowsToRender.count
     }
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

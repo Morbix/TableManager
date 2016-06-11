@@ -13,7 +13,7 @@ public class Section {
     public var visible = true
     public var object: AnyObject?
     public var rows = [Row]()
-    public var visibleRows: [Row] {
+    public var rowsToRender: [Row] {
         return rows.filter {
             $0.visible
         }
@@ -34,8 +34,8 @@ public class Section {
     // MARK: Methods
     
     public func row(atIndex index: Int) -> Row {
-        if visibleRows.count > index {
-            return visibleRows[index]
+        if rowsToRender.count > index {
+            return rowsToRender[index]
         } else {
             let row = Row(withIdentifier: defaultCellIdentifier)
             rows.append(row)

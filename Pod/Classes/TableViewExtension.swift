@@ -31,8 +31,8 @@ public extension UITableView {
         }
     }
     
-    public var visibleSections: [Section] {
-        return self.tableManagerInstance().visibleSections
+    public var sectionsToRender: [Section] {
+        return self.tableManagerInstance().sectionsToRender
     }
     
     public func row(atIndexPath indexPath: NSIndexPath) -> Row {
@@ -47,8 +47,8 @@ public extension UITableView {
         return self.tableManagerInstance().selectedRow()
     }
     
-    public func displayedRows() -> [Row]? {
-        return self.tableManagerInstance().displayedRows()
+    public func visibleRows() -> [Row]? {
+        return self.tableManagerInstance().visibleRows()
     }
     
 }
