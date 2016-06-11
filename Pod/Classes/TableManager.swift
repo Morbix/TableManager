@@ -25,6 +25,9 @@ public class TableManager: NSObject {
         }
     }
     
+    // A redirection for all the scroll events
+    public var scrollViewDelegate: UIScrollViewDelegate?
+    
     /// Initializes a new manager with the referenced table
     public required init(tableView: UITableView) {
         self.tableView = tableView
@@ -175,5 +178,62 @@ extension TableManager: UITableViewDelegate {
         
         return nil
     }
+    
+}
+
+extension TableManager: UIScrollViewDelegate {
+    
+    public func scrollViewDidScroll(scrollView: UIScrollView) {
+        scrollViewDelegate?.scrollViewDidScroll?(scrollView)
+    }
+    
+    public func scrollViewDidZoom(scrollView: UIScrollView) {
+        scrollViewDelegate?.scrollViewDidZoom?(scrollView)
+    }
+    
+    public func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        scrollViewDelegate?.scrollViewWillBeginDragging?(scrollView)
+    }
+
+    public func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        scrollViewDelegate?.scrollViewWillEndDragging?(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
+    }
+
+    public func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        scrollViewDelegate?.scrollViewDidEndDragging?(scrollView, willDecelerate: decelerate)
+    }
+    
+    public func scrollViewWillBeginDecelerating(scrollView: UIScrollView) {
+        scrollViewDelegate?.scrollViewWillBeginDecelerating?(scrollView)
+    }
+    
+    public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        scrollViewDelegate?.scrollViewDidEndDecelerating?(scrollView)
+    }
+    
+    public func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+        scrollViewDelegate?.scrollViewDidEndScrollingAnimation?(scrollView)
+    }
+    
+    public func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return scrollViewDelegate?.viewForZoomingInScrollView?(scrollView)
+    }
+    
+    public func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView?) {
+        scrollViewDelegate?.scrollViewWillBeginZooming?(scrollView, withView: view)
+    }
+    
+    public func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
+        scrollViewDelegate?.scrollViewDidEndZooming?(scrollView, withView: view, atScale: scale)
+    }
+    
+    public func scrollViewShouldScrollToTop(scrollView: UIScrollView) -> Bool {
+        return scrollViewDelegate?.scrollViewShouldScrollToTop?(scrollView) ?? true
+    }
+    
+    public func scrollViewDidScrollToTop(scrollView: UIScrollView) {
+        scrollViewDelegate?.scrollViewDidScrollToTop?(scrollView)
+    }
+    
     
 }
