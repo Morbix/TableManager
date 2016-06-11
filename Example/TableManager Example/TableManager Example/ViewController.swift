@@ -13,13 +13,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    lazy var tableManager: TableManager = TableManager(tableView: self.tableView)
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         let section = Section()
-        tableManager.sections.append(section)
+        tableView.sections.append(section)
         
         section.setHeaderHeight(withStaticHeight: 28.0)
         section.setHeaderView(withStaticText: "Header Text")
@@ -50,7 +48,7 @@ class ViewController: UIViewController {
             section.rows.append(row)
         }
         
-        tableManager.reloadData()
+        tableView.reloadData()
     }
 
 }

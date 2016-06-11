@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "TableManager"
-  s.version      = "1.1.0"
+  s.version      = "1.2.0"
   s.summary      = "A wrap to use and manipulate the UITableView."
 
   # This description is used to generate tags and improve search results.
@@ -91,7 +91,7 @@ This wrapper was created to use and manipulate the UITableView easier. You can a
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "TableManager.swift"
+  s.source_files  = 'Pod/Classes/**/*'
   #s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"

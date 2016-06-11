@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		51036629D4212D71AD63705EBA14A526 /* TableManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A7DF6B8C431E90DB7FC3324B54F5D9F5 /* TableManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A2A1BE3B4723E51C215165F4BD32862 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543DAC96F52D78CD5073D18B6B172C7E /* Section.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3C2CCC6CD894923A1808DD961EA764D2 /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294BC29ECC40DB715CF6FAE3BCF96FB4 /* TableViewExtension.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		51036629D4212D71AD63705EBA14A526 /* TableManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 68C8C700CBAD88F9178D15A40AB9366F /* TableManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6DB5956DF3891DFA390B71A0F9106A4A /* Pods-TableManager Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EA7455C073527460D1591D0A50D06C6 /* Pods-TableManager Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		87AD60EA53C305122C5506487E650DB8 /* TableManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C50DB8B819B6877967BC0677570DD0 /* TableManager-dummy.m */; };
 		B28A09360313F5C72362702F0AA00DF5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		D12E8EB394B8FCDD7DFB935BD2BED14C /* TableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB7FADEE9189CCB995F820BBCF73B28 /* TableManager.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		BBB3B1CCCD73AA738E478D9F2095E832 /* TableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B04AE7AD6CCE682CD08513E9A7C90FC /* TableManager.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		E0C82C5D76F9D0E330AA91FFBA40F626 /* TableManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C0889237B43826A738381B379FC73FD /* TableManager-dummy.m */; };
+		E19C1F9C50FD745939D3E5B29E56BFC0 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659383686074E0ED0574E7347D37C39D /* Row.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		EC7CD2928CE8DDD76C101DC1565BB8DA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		F4EAFCB5A283E4B1B1BE9E3F81C714DE /* Pods-TableManager Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F248BF5C2291F3A783961A69EE248777 /* Pods-TableManager Example-dummy.m */; };
 /* End PBXBuildFile section */
@@ -28,24 +31,27 @@
 
 /* Begin PBXFileReference section */
 		0B83B0E417AA4E1ABDD886B91E432579 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		100CD2C510E09FA1AB0A2703809114F6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1514756646691370F9F6AE177D5EAA0D /* Pods-TableManager Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TableManager Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		1EB7FADEE9189CCB995F820BBCF73B28 /* TableManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TableManager.swift; sourceTree = "<group>"; };
-		3400BE14A7810DEB35AD065607EF185C /* TableManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TableManager.modulemap; sourceTree = "<group>"; };
+		294BC29ECC40DB715CF6FAE3BCF96FB4 /* TableViewExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
+		2C0889237B43826A738381B379FC73FD /* TableManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TableManager-dummy.m"; sourceTree = "<group>"; };
 		3EA42843A1A7A010D3332E011AEC96F0 /* Pods-TableManager Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TableManager Example-resources.sh"; sourceTree = "<group>"; };
-		55C50DB8B819B6877967BC0677570DD0 /* TableManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TableManager-dummy.m"; sourceTree = "<group>"; };
+		42AB0978A0D232168DCB254B005DAD57 /* TableManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TableManager.modulemap; sourceTree = "<group>"; };
+		4B04AE7AD6CCE682CD08513E9A7C90FC /* TableManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TableManager.swift; sourceTree = "<group>"; };
+		543DAC96F52D78CD5073D18B6B172C7E /* Section.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		659383686074E0ED0574E7347D37C39D /* Row.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
+		68C8C700CBAD88F9178D15A40AB9366F /* TableManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TableManager-umbrella.h"; sourceTree = "<group>"; };
+		6E3F74D38B4BAECB41961DB8380AF9A2 /* TableManager.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TableManager.xcconfig; sourceTree = "<group>"; };
 		8D21FA915BB68AACD1A07A593F0828BD /* Pods-TableManager Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TableManager Example.debug.xcconfig"; sourceTree = "<group>"; };
 		8EA7455C073527460D1591D0A50D06C6 /* Pods-TableManager Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TableManager Example-umbrella.h"; sourceTree = "<group>"; };
 		9300C7A6A2341E5031830F6EB5564C83 /* TableManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TableManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94F6E1A3386A789989B70F5A9552E733 /* Pods-TableManager Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TableManager Example-frameworks.sh"; sourceTree = "<group>"; };
-		A32CB6D89407258955D7B1B00BFE8CB1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4C5B8D8666ED7C48D1357205B8F7510 /* TableManager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TableManager-prefix.pch"; sourceTree = "<group>"; };
 		A7D93B442113D1098D980C81E1B62A78 /* Pods-TableManager Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-TableManager Example.modulemap"; sourceTree = "<group>"; };
-		A7DF6B8C431E90DB7FC3324B54F5D9F5 /* TableManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TableManager-umbrella.h"; sourceTree = "<group>"; };
 		B7C873CA5AB79EE9DBBB165CB5E87328 /* Pods-TableManager Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TableManager Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		C674EE70B5003B539BF8A04F86E2DDA2 /* Pods_TableManager_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TableManager_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D2771BBB7D545F810AB9E211ED5FB913 /* TableManager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TableManager-prefix.pch"; sourceTree = "<group>"; };
-		E376C46D02069C77F70AEDA6E09B13A0 /* TableManager.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TableManager.xcconfig; sourceTree = "<group>"; };
 		F248BF5C2291F3A783961A69EE248777 /* Pods-TableManager Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TableManager Example-dummy.m"; sourceTree = "<group>"; };
 		FA4DF51745ACACDECCE1909D8741A00C /* Pods-TableManager Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TableManager Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,16 +76,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		39A9551E844FE7CCD6A4E5148E4BB8AF /* TableManager */ = {
-			isa = PBXGroup;
-			children = (
-				1EB7FADEE9189CCB995F820BBCF73B28 /* TableManager.swift */,
-				5B335C7EA823906D6EE0E3C99F5E3671 /* Support Files */,
-			);
-			name = TableManager;
-			path = ../../..;
-			sourceTree = "<group>";
-		};
 		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,20 +92,6 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		5B335C7EA823906D6EE0E3C99F5E3671 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				A32CB6D89407258955D7B1B00BFE8CB1 /* Info.plist */,
-				3400BE14A7810DEB35AD065607EF185C /* TableManager.modulemap */,
-				E376C46D02069C77F70AEDA6E09B13A0 /* TableManager.xcconfig */,
-				55C50DB8B819B6877967BC0677570DD0 /* TableManager-dummy.m */,
-				D2771BBB7D545F810AB9E211ED5FB913 /* TableManager-prefix.pch */,
-				A7DF6B8C431E90DB7FC3324B54F5D9F5 /* TableManager-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "Example/TableManager Example/Pods/Target Support Files/TableManager";
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +106,7 @@
 		81AE93B272B7F869391A03BDAF18C359 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				39A9551E844FE7CCD6A4E5148E4BB8AF /* TableManager */,
+				DC1E9B2C677CE498F68309F0D9821F85 /* TableManager */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
@@ -136,6 +118,28 @@
 				9300C7A6A2341E5031830F6EB5564C83 /* TableManager.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		94735F12E1BA256AD3E31B578EBC930B /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				FE7EC615D1BA973724FC4C47EF871B82 /* Classes */,
+			);
+			path = Pod;
+			sourceTree = "<group>";
+		};
+		96998633A55B4AD463CB5A3BED6A2835 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				100CD2C510E09FA1AB0A2703809114F6 /* Info.plist */,
+				42AB0978A0D232168DCB254B005DAD57 /* TableManager.modulemap */,
+				6E3F74D38B4BAECB41961DB8380AF9A2 /* TableManager.xcconfig */,
+				2C0889237B43826A738381B379FC73FD /* TableManager-dummy.m */,
+				A4C5B8D8666ED7C48D1357205B8F7510 /* TableManager-prefix.pch */,
+				68C8C700CBAD88F9178D15A40AB9366F /* TableManager-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/TableManager Example/Pods/Target Support Files/TableManager";
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -162,6 +166,27 @@
 			);
 			name = "Pods-TableManager Example";
 			path = "Target Support Files/Pods-TableManager Example";
+			sourceTree = "<group>";
+		};
+		DC1E9B2C677CE498F68309F0D9821F85 /* TableManager */ = {
+			isa = PBXGroup;
+			children = (
+				94735F12E1BA256AD3E31B578EBC930B /* Pod */,
+				96998633A55B4AD463CB5A3BED6A2835 /* Support Files */,
+			);
+			name = TableManager;
+			path = ../../..;
+			sourceTree = "<group>";
+		};
+		FE7EC615D1BA973724FC4C47EF871B82 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				659383686074E0ED0574E7347D37C39D /* Row.swift */,
+				543DAC96F52D78CD5073D18B6B172C7E /* Section.swift */,
+				4B04AE7AD6CCE682CD08513E9A7C90FC /* TableManager.swift */,
+				294BC29ECC40DB715CF6FAE3BCF96FB4 /* TableViewExtension.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,7 +233,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 817E65F4780C17EAEEF77C6F030D877B /* Build configuration list for PBXNativeTarget "TableManager" */;
 			buildPhases = (
-				0225DD0054491FCA04DB6A84509C8183 /* Sources */,
+				0DC22477106662C85E81A6859F85F70D /* Sources */,
 				28495EABB1D5146CB44AAEA41BF77650 /* Frameworks */,
 				D4773FE7E816A261C81BF22CA5C46612 /* Headers */,
 			);
@@ -249,20 +274,23 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0225DD0054491FCA04DB6A84509C8183 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				87AD60EA53C305122C5506487E650DB8 /* TableManager-dummy.m in Sources */,
-				D12E8EB394B8FCDD7DFB935BD2BED14C /* TableManager.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		02708E2C6B0F8B00A3B43C182B8025E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F4EAFCB5A283E4B1B1BE9E3F81C714DE /* Pods-TableManager Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0DC22477106662C85E81A6859F85F70D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E19C1F9C50FD745939D3E5B29E56BFC0 /* Row.swift in Sources */,
+				3A2A1BE3B4723E51C215165F4BD32862 /* Section.swift in Sources */,
+				E0C82C5D76F9D0E330AA91FFBA40F626 /* TableManager-dummy.m in Sources */,
+				BBB3B1CCCD73AA738E478D9F2095E832 /* TableManager.swift in Sources */,
+				3C2CCC6CD894923A1808DD961EA764D2 /* TableViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +308,7 @@
 /* Begin XCBuildConfiguration section */
 		050AED587FA571969F5984539409569E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E376C46D02069C77F70AEDA6E09B13A0 /* TableManager.xcconfig */;
+			baseConfigurationReference = 6E3F74D38B4BAECB41961DB8380AF9A2 /* TableManager.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -384,7 +412,7 @@
 		};
 		6A82DA4DAFD361DB45D89B9B71FE1203 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E376C46D02069C77F70AEDA6E09B13A0 /* TableManager.xcconfig */;
+			baseConfigurationReference = 6E3F74D38B4BAECB41961DB8380AF9A2 /* TableManager.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
