@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2DA53AE41D0C91E40001E6DC /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA53AE31D0C91E40001E6DC /* Section.swift */; };
 		2DA53AE61D0C92530001E6DC /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA53AE51D0C92530001E6DC /* Row.swift */; };
+		2DA53AE81D0C9AC40001E6DC /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA53AE71D0C9AC40001E6DC /* TableViewExtension.swift */; };
 		51036629D4212D71AD63705EBA14A526 /* TableManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A7DF6B8C431E90DB7FC3324B54F5D9F5 /* TableManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6DB5956DF3891DFA390B71A0F9106A4A /* Pods-TableManager Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EA7455C073527460D1591D0A50D06C6 /* Pods-TableManager Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		87AD60EA53C305122C5506487E650DB8 /* TableManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C50DB8B819B6877967BC0677570DD0 /* TableManager-dummy.m */; };
@@ -34,6 +35,7 @@
 		1EB7FADEE9189CCB995F820BBCF73B28 /* TableManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TableManager.swift; sourceTree = "<group>"; };
 		2DA53AE31D0C91E40001E6DC /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		2DA53AE51D0C92530001E6DC /* Row.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
+		2DA53AE71D0C9AC40001E6DC /* TableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		3400BE14A7810DEB35AD065607EF185C /* TableManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TableManager.modulemap; sourceTree = "<group>"; };
 		3EA42843A1A7A010D3332E011AEC96F0 /* Pods-TableManager Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TableManager Example-resources.sh"; sourceTree = "<group>"; };
 		55C50DB8B819B6877967BC0677570DD0 /* TableManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TableManager-dummy.m"; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				1EB7FADEE9189CCB995F820BBCF73B28 /* TableManager.swift */,
+				2DA53AE71D0C9AC40001E6DC /* TableViewExtension.swift */,
 				2DA53AE31D0C91E40001E6DC /* Section.swift */,
 				2DA53AE51D0C92530001E6DC /* Row.swift */,
 				5B335C7EA823906D6EE0E3C99F5E3671 /* Support Files */,
@@ -263,6 +266,7 @@
 				2DA53AE41D0C91E40001E6DC /* Section.swift in Sources */,
 				87AD60EA53C305122C5506487E650DB8 /* TableManager-dummy.m in Sources */,
 				D12E8EB394B8FCDD7DFB935BD2BED14C /* TableManager.swift in Sources */,
+				2DA53AE81D0C9AC40001E6DC /* TableViewExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

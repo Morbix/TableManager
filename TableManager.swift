@@ -8,7 +8,7 @@
 
 import UIKit
 
-internal let defaultIdentifier = "TableManager_Default_Cell"
+internal let defaultCellIdentifier = "DefaultCellIdentifier"
 
 public class TableManager: NSObject {
     
@@ -29,7 +29,7 @@ public class TableManager: NSObject {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: defaultIdentifier)
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: defaultCellIdentifier)
     }
     
     // MARK: Methods

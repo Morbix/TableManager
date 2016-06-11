@@ -37,7 +37,7 @@ public class Section {
         if visibleRows.count > index {
             return visibleRows[index]
         } else {
-            let row = Row(withIdentifier: defaultIdentifier)
+            let row = Row(withIdentifier: defaultCellIdentifier)
             rows.append(row)
             return row
         }
