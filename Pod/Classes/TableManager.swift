@@ -107,7 +107,7 @@ extension TableManager: UITableViewDataSource {
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let row = self.row(atIndexPath: indexPath)
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(row.identifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(row.identifier ?? defaultCellIdentifier, forIndexPath: indexPath)
         
         row.configuration?(row: row, cell: cell, indexPath: indexPath)
         

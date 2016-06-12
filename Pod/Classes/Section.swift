@@ -44,7 +44,7 @@ public class Section {
     /// The closure that will be called when the table request the footer's view
     public var viewForFooter: ViewForFooter?
     
-    /// Initializes a new Section
+    /// Initializes a new Section. All parameters are optionals.
     public required init(visible: Bool = true, object: AnyObject? = nil) {
         self.visible = visible
         self.object = object
@@ -57,7 +57,7 @@ public class Section {
         if rowsToRender.count > index {
             return rowsToRender[index]
         } else {
-            let row = Row(withIdentifier: defaultCellIdentifier)
+            let row = Row()
             rows.append(row)
             return row
         }

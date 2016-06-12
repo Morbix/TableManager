@@ -11,7 +11,7 @@ import Foundation
 public class Row {
     
     /// The cell identifier
-    public let identifier: String
+    public var identifier: String?
     
     /// Defines if it need be rendered or not when reload the table
     public var visible = true
@@ -28,14 +28,19 @@ public class Row {
     /// The closure that will be called when the table request the row's height
     public var heightForRow: HeightForRow?
     
-    /// Initializes a new Row
-    public required init(withIdentifier identifier: String, visible: Bool = true, object: AnyObject? = nil) {
+    /// Initializes a new Row. All parameters are optionals.
+    public required init(identifier: String? = nil, visible: Bool = true, object: AnyObject? = nil) {
         self.identifier = identifier
         self.visible = visible
         self.object = object
     }
     
     // MARK: Methods
+    
+    /// Set a identifier to use a custom cell
+    public func setIdentifier(identifier: String) {
+        self.identifier = identifier
+    }
     
     /// Set object that can be used in the closure's impementation.
     public func setObject(object: AnyObject) {
