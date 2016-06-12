@@ -86,7 +86,7 @@ rowB.visible = true
 
 Don't forget to `reloadData` to update cells
 ```swift
-tableManager.reloadData()
+tableView.reloadData()
 ```
 
 ### Configuring a Row
@@ -117,7 +117,7 @@ rowB.setConfiguration(configuration)
 
 Don't forget to `reloadData` to update cells
 ```swift
-tableManager.reloadData()
+tableView.reloadData()
 ```
 
 ### Row Selection
@@ -149,7 +149,7 @@ rowB.setDidSelect(didSelect)
 
 Don't forget to `reloadData` to update cells
 ```swift
-tableManager.reloadData()
+tableView.reloadData()
 ```
 
 
