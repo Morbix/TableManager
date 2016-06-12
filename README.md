@@ -48,7 +48,7 @@ class ViewController: UITableViewController {
                 cell.textLabel?.text = element
             }
 
-            row.setDidSelect { (row, tableView, indexPath) in // 4 - Implement the selection
+            row.setDidSelect { _ in // 4 - Implement the selection
                 print(element + " selected")
             }
         }
