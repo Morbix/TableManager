@@ -75,10 +75,6 @@ let rowB = tableView.addRow()
 rowB.visible = true
 ```
 
-Don't forget to `reloadData` to update cells
-```swift
-tableView.reloadData()
-```
 
 ### Configuring a custom Row
 You can set a identifier and the `configuration` property:
@@ -108,10 +104,6 @@ let rowB = tableView.addRow(Row(identifier: "CellBasic", object: otherObject))
 rowB.setConfiguration(configuration)
 ```
 
-Don't forget to `reloadData` to update cells
-```swift
-tableView.reloadData()
-```
 
 ### Row Selection
 You can set the `didSelect` property:
@@ -140,11 +132,6 @@ rowA.setDidSelect(didSelect)
 
 let rowB = tableView.addRow(Row(object: someString))
 rowB.setDidSelect(didSelect)
-```
-
-Don't forget to `reloadData` to update cells
-```swift
-tableView.reloadData()
 ```
 
 
