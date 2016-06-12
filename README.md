@@ -46,7 +46,7 @@ class ViewController: UITableViewController {
 
             let row = tableView.addRow() // 2 - Add a row
 
-            row.setConfiguration { (row, cell, indexPath) in // 3 - Configure 
+            row.setConfiguration { (row, cell, indexPath) in // 3 - Configure it 
                 cell.textLabel?.text = element
             }
 
@@ -84,7 +84,7 @@ tableView.reloadData()
 ```
 
 ### Configuring a custom Row
-You can set the `configuration` property:
+You can set a identifier and the `configuration` property:
 ```swift
 let row = Row(identifier: "CellBasic", object: someString)
 
@@ -140,13 +140,11 @@ let didSelect: Row.DidSelect = { (row: Row, tableView: UITableView, indexPath: N
     }
 }
 
-let rowA = Row(identifier: "CellBasic", object: someString)
+let rowA = tableView.addRow(Row(object: someString))
 rowA.setDidSelect(didSelect)
-tableView.addRow(rowA)
 
-let rowB = Row(identifier: "CellBasic", object: someString)
+let rowB = tableView.addRow(Row(object: someString))
 rowB.setDidSelect(didSelect)
-tableView.addRow(rowB)
 ```
 
 Don't forget to `reloadData` to update cells
