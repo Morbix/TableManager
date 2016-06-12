@@ -179,6 +179,16 @@ extension TableManager: UITableViewDelegate {
         return nil
     }
     
+    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let row = self.row(atIndexPath: indexPath)
+        
+        if let heightForRow = row.heightForRow {
+            return CGFloat(heightForRow(row: row, tableView: tableView, index: indexPath.row))
+        }
+        
+        return -1
+    }
+    
 }
 
 extension TableManager: UIScrollViewDelegate {
