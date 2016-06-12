@@ -30,42 +30,36 @@ You can also install it manually just dragging [TableManager](https://github.com
 
 ## Usage
 
-### Basic Usage - Configure a table with only 3 tiny steps
+### Basic Usage - Configure a table with only 5 tiny steps
 ```swift
-class TableViewController: UITableViewController {
+import UIKit
+import TableManager // 1 - import TableManager
+
+class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // 1 - Declare a section and add it in the table
-        let section = Section()
-        tableView.sections.append(section)
+        let data = (1...1_000).map { "Row \($0)" }
 
-        let data = ["Row A", "Row B", "Row C", "Row D", "Row E"]
+        data.forEach { element in
 
-        data.forEach {
-            // 2 - Declare a Row and configure it
-            let row = Row(withIdentifier: "CellBasic", object: $0)
+            let row = tableView.addRow() // 2 - Add a row
 
-            row.setConfiguration { (row, cell, indexPath) in
-                if let text = row.object as? String {
-                    cell.textLabel?.text = text
-                }
+            row.setConfiguration { (row, cell, indexPath) in // 3 - Configure 
+                cell.textLabel?.text = element
             }
 
-            row.setDidSelect { (row, tableView, indexPath) in
-                if let text = row.object as? String {
-                    print(text + " selected")
-                }
+            row.setDidSelect { (row, tableView, indexPath) in // 4 - Implement the selection
+                print(element + " selected")
             }
-
-            // 3 - Add the Row in the section
-            section.rows.append(row)
         }
 
-        tableView.reloadData()
+        tableView.reloadData() // 3 - Reload the table
     }
+
 }
+
 ```
 You can use this in a UIViewController with an outlet of UITableView too.
 
@@ -74,13 +68,13 @@ You can use this in a UIViewController with an outlet of UITableView too.
 
 You can change the property `visible` from any Section and any Row. In the example below the only elements that will appear in the table will be the `sectionA` and `rowB`.
 ```swift
-let sectionA = Section()
+let sectionA = tableView.addSection()
 sectionA.visible = true
 
-let rowA = Row()
+let rowA = tableView.addRow()
 rowA.visible = false
 
-let rowB = Row()
+let rowB = tableView.addRow()
 rowB.visible = true
 ```
 
@@ -89,16 +83,18 @@ Don't forget to `reloadData` to update cells
 tableView.reloadData()
 ```
 
-### Configuring a Row
+### Configuring a custom Row
 You can set the `configuration` property:
 ```swift
-let row = Row(withIdentifier: "CellBasic", object: someString)
+let row = Row(identifier: "CellBasic", object: someString)
 
 row.setConfiguration { (row, cell, indexPath) in
     if let text = row.object as? String {
         cell.textLabel?.text = text
     }
 }
+
+tableView.addRow(row)
 ```
 
 Or declare a `Row.Configuration` and attribute it to any row:
@@ -108,11 +104,13 @@ let configuration: Row.Configuration = { (row, cell, indexPath) -> Void in
         cell.textLabel?.text = text
     }
 }
-let rowA = Row(withIdentifier: "CellBasic", object: someObject)
+let rowA = Row(identifier: "CellBasic", object: someObject)
 rowA.setConfiguration(configuration)
+tableView.addRow(rowA)
 
-let rowB = Row(withIdentifier: "CellBasic", object: otherObject)
+let rowB = Row(identifier: "CellBasic", object: otherObject)
 rowB.setConfiguration(configuration)
+tableView.addRow(rowB)
 ```
 
 Don't forget to `reloadData` to update cells
@@ -123,13 +121,15 @@ tableView.reloadData()
 ### Row Selection
 You can set the `didSelect` property:
 ```swift
-let row = Row(withIdentifier: "CellBasic", object: someString)
+let row = Row(identifier: "CellBasic", object: someString)
 
 row.setDidSelect { (row, tableView, indexPath) in
     if let text = row.object as? String {
         print(text + " selected")
     }
 }
+
+tableView.addRow(row)
 ```
 
 Or declare a `Row.DidSelect` and attribute it to any row:
@@ -140,11 +140,13 @@ let didSelect: Row.DidSelect = { (row: Row, tableView: UITableView, indexPath: N
     }
 }
 
-let rowA = Row(withIdentifier: "CellBasic", object: someString)
+let rowA = Row(identifier: "CellBasic", object: someString)
 rowA.setDidSelect(didSelect)
+tableView.addRow(rowA)
 
-let rowB = Row(withIdentifier: "CellBasic", object: someString)
+let rowB = Row(identifier: "CellBasic", object: someString)
 rowB.setDidSelect(didSelect)
+tableView.addRow(rowB)
 ```
 
 Don't forget to `reloadData` to update cells
