@@ -32,7 +32,6 @@ You can also install it manually just dragging [TableManager](https://github.com
 
 ### Basic Usage - Configure a table with only 5 tiny steps
 ```swift
-import UIKit
 import TableManager // 1 - import TableManager
 
 class ViewController: UITableViewController {
@@ -43,7 +42,6 @@ class ViewController: UITableViewController {
         let data = (1...1_000).map { "Row \($0)" }
 
         data.forEach { element in
-
             let row = tableView.addRow() // 2 - Add a row
 
             row.setConfiguration { (row, cell, indexPath) in // 3 - Configure it 
@@ -59,7 +57,6 @@ class ViewController: UITableViewController {
     }
 
 }
-
 ```
 You can use this in a UIViewController with an outlet of UITableView too.
 
