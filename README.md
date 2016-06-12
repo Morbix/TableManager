@@ -28,9 +28,9 @@ pod 'TableManager'
 You can also install it manually just dragging [TableManager](https://github.com/Morbix/TableManager/blob/master/TableManager.swift) file to your project.
 
 
-## Usage
+## Basic Usage
 
-### Basic Usage - Configure a table with only 3 tiny steps
+### Configure a table with only 3 tiny steps
 ```swift
 import TableManager // 1 - import TableManager
 
@@ -56,6 +56,7 @@ class ViewController: UITableViewController {
 ```
 You can use this in a UIViewController with an outlet of UITableView too.
 
+## Documentation
 
 ### Sections & Rows Visibility
 
