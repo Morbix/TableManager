@@ -145,8 +145,8 @@ rowB.setDidSelect(didSelect)
     * ADD: A UITableView extension to use all TableManager features directly in the tableView instance;
     * ADD: A `UIScrollViewDelegate` property to redirect all the scroll events.
 * 1.1.0
-    * ADD: `selectedRow()` method in TableManger class;
-    * ADD: `displayedRows()` method in TableManger class;  
+    * ADD: `selectedRow()` method in TableManger class; 
+    * ADD: `displayedRows()` method in TableManger class; (suggestion by @lfarah) 
 * 1.0.0
     * First official release; 
     * FIX: Swift style code;
