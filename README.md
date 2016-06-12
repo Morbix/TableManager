@@ -104,13 +104,11 @@ let configuration: Row.Configuration = { (row, cell, indexPath) -> Void in
         cell.textLabel?.text = text
     }
 }
-let rowA = Row(identifier: "CellBasic", object: someObject)
+let rowA = tableView.addRow(Row(identifier: "CellBasic", object: someObject))
 rowA.setConfiguration(configuration)
-tableView.addRow(rowA)
 
-let rowB = Row(identifier: "CellBasic", object: otherObject)
+let rowB = tableView.addRow(Row(identifier: "CellBasic", object: otherObject))
 rowB.setConfiguration(configuration)
-tableView.addRow(rowB)
 ```
 
 Don't forget to `reloadData` to update cells
@@ -121,7 +119,7 @@ tableView.reloadData()
 ### Row Selection
 You can set the `didSelect` property:
 ```swift
-let row = Row(identifier: "CellBasic", object: someString)
+let row = Row(object: someString)
 
 row.setDidSelect { (row, tableView, indexPath) in
     if let text = row.object as? String {
