@@ -68,4 +68,8 @@ public extension UITableView {
         return self.tableManagerInstance().visibleRows()
     }
     
+    /// Add a new section in the table. If no section is passed as parameter, a new empty section will be allocated and added in the table.
+    public func addSection(section: Section? = nil) -> Section {
+        return self.tableManagerInstance().addSection(section)
+    }
 }

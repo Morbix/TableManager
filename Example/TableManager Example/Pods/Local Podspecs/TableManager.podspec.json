@@ -1,6 +1,6 @@
 {
   "name": "TableManager",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "summary": "A wrap to use and manipulate the UITableView.",
   "description": "This wrapper was created to use and manipulate the UITableView easier. You can add Row and Section's objects then the manager will handle all the protocol implemetation for you. It was created by Henrique Morbin (http://fb.com/hgmorbin).",
   "homepage": "https://github.com/Morbix/TableManager",
@@ -14,7 +14,7 @@
   },
   "source": {
     "git": "https://github.com/Morbix/TableManager.git",
-    "tag": "1.1.0"
+    "tag": "1.2.0"
   },
   "source_files": "Pod/Classes/**/*"
 }

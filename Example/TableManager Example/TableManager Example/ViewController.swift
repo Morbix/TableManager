@@ -15,11 +15,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        let section = Section()
+        
+        let section = tableView.addSection()
         section.setHeaderHeight(withStaticHeight: 28.0)
         section.setHeaderView(withStaticText: "Header Text")
-        tableView.sections.append(section)
         
         let data = ["Row A", "Row B", "Row C", "Row D", "Row E", "Row F", "Row G", "Row H", "Row I", "Row J", "Row K", "Row L", "Row M", "Row N", "Row O", "Row P", "Row Q", "Row R", "Row S", "Row T", "Row U", "Row V", "Row W", "Row X", "Row Y", "Row Z"]
         
