@@ -30,7 +30,7 @@ You can also install it manually just dragging [TableManager](https://github.com
 
 ## Usage
 
-### Basic Usage - Configure a table with only 5 tiny steps
+### Basic Usage - Configure a table with only 3 tiny steps
 ```swift
 import TableManager // 1 - import TableManager
 
@@ -44,16 +44,12 @@ class ViewController: UITableViewController {
         data.forEach { element in
             let row = tableView.addRow() // 2 - Add a row
 
-            row.setConfiguration { (row, cell, indexPath) in // 3 - Configure it 
+            row.setConfiguration { (row, cell, indexPath) in // 3 - And configure it 
                 cell.textLabel?.text = element
-            }
-
-            row.setDidSelect { _ in // 4 - Implement the selection
-                print(element + " selected")
             }
         }
 
-        tableView.reloadData() // 3 - Reload the table
+        tableView.reloadData()
     }
 
 }
