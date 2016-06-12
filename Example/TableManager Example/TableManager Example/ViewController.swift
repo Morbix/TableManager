@@ -17,30 +17,19 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let section = tableView.addSection()
-        section.setHeaderHeight(withStaticHeight: 28.0)
-        section.setHeaderView(withStaticText: "Header Text")
+    
+        let data = (1...1_000).map { "Row \($0)" }
         
-        let data = ["Row A", "Row B", "Row C", "Row D", "Row E", "Row F", "Row G", "Row H", "Row I", "Row J", "Row K", "Row L", "Row M", "Row N", "Row O", "Row P", "Row Q", "Row R", "Row S", "Row T", "Row U", "Row V", "Row W", "Row X", "Row Y", "Row Z"]
-        
-        data.forEach {
-            let row = Row(object: $0)
+        data.forEach { element in
+            let row = section.addRow()
             
             row.setConfiguration { (row, cell, indexPath) in
-                if let text = row.object as? String {
-                    cell.textLabel?.text = text
-                }
+                cell.textLabel?.text = element
             }
             
             row.setDidSelect { (row, tableView, indexPath) in
-                
-                tableView.deselectRowAtIndexPath(indexPath, animated: true)
-                
-                if let text = row.object as? String {
-                    print(text + " selected")
-                }
+                print(element + " selected")
             }
-            
-            section.rows.append(row)
         }
         
         tableView.reloadData()

@@ -84,7 +84,7 @@ public class TableManager: NSObject {
         }
     }
     
-    /// Add a new section in the table. If no section is passed as parameter, a new empty section will be allocated, added in the table and returned.
+    /// Add a new section in the table. If any section is passed as parameter, a new empty section will be allocated, added in the table and returned.
     public func addSection(section: Section? = nil) -> Section {
         let newSection = section ?? Section()
         sections.append(newSection)
