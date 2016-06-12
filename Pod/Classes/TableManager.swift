@@ -58,9 +58,7 @@ public class TableManager: NSObject {
         if sectionsToRender.count > index {
             return sectionsToRender[index]
         } else {
-            let section = Section()
-            sections.append(section)
-            return section
+            return addSection()
         }
     }
     
@@ -90,6 +88,19 @@ public class TableManager: NSObject {
         sections.append(newSection)
         return newSection
     }
+    
+    /// Add a new row in the table. A new section will be added if don't exist yet. If any row is passed as parameter, a new empty row will be allocated, added in the first section and returned.
+    public func addRow(row: Row? = nil) -> Row {
+        let firstSection = section(atIndex: 0)
+        return firstSection.addRow(row)
+    }
+    
+    /// Initializes a new row with identifier, add it in the table and returns it. A new section will be added if don't exist yet.
+    public func addRow(identifier: String) -> Row {
+        let firstSection = section(atIndex: 0)
+        return firstSection.addRow(identifier)
+    }
+    
 }
 
 // MARK: UITableViewDataSource

@@ -57,9 +57,7 @@ public class Section {
         if rowsToRender.count > index {
             return rowsToRender[index]
         } else {
-            let row = Row()
-            rows.append(row)
-            return row
+            return addRow()
         }
     }
     

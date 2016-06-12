@@ -16,12 +16,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let section = tableView.addSection()
-    
         let data = (1...1_000).map { "Row \($0)" }
         
         data.forEach { element in
-            let row = section.addRow()
+            
+            let row = tableView.addRow()
             
             row.setConfiguration { (row, cell, indexPath) in
                 cell.textLabel?.text = element
