@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "TableManager"
-  s.version      = "1.2.0"
+  s.version      = "1.3.0"
   s.summary      = "A wrap to use and manipulate the UITableView."
 
   # This description is used to generate tags and improve search results.
