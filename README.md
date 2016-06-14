@@ -132,6 +132,9 @@ let rowB = tableView.addRow(Row(object: someString))
 rowB.setDidSelect(didSelect)
 ```
 
+## CHANGELOG
+[Go to CHANGELOG](CHANGELOG.md)
+
 ## Contribute
 
 Feel free to submit your pull request, suggest any update, report a bug or create a feature request.
