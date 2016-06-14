@@ -55,8 +55,7 @@ class ViewController: UITableViewController {
 }
 ```
 #### Result
-<p align="center"><img height="300px" src ="basic-usage.png" /></p>
-
+![Basic Usage](basic-usage.png)
 
 ## Documentation
 
