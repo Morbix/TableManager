@@ -6,6 +6,20 @@
 
 **TableManager** is an extension of `UITableView`. Manipulate your table in an easier way. Add sections and rows. Configure headers and footers. Hide and show rows individually. And this library will handle all the protocols for you. The table the way it should be.
 
+- [Requirements](#requirements)
+- [Installation](#installation)
+- Basic Usage
+    - [Configure a table with only 3 tiny steps](#configure-a-table-with-only-3-tiny-steps)
+- Documentation
+    - [Sections & Rows Visibility](#sections--rows-visibility)
+    - [Configuring a custom row](#configuring-a-custom-row)
+    - [Row Selection](#row-selection)
+    - And more...
+- [CHANGELOG](CHANGELOG.md)
+- [Contribute](#contribute)
+- [Contributors](#contributors)
+- [License](#license)
+
 ## Requirements
 
 It requires Xcode 7.0+ and Swift 2.0.
