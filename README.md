@@ -132,44 +132,6 @@ let rowB = tableView.addRow(Row(object: someString))
 rowB.setDidSelect(didSelect)
 ```
 
-
-## Release Notes
-
-* 1.3.1
-    * ADD: Method `clearSections` in class `TableManager` to remove all section from the table;
-    * ADD: Method `clearRows` in class `Section` to remove all rows from the section;
-    * ADD: Method `clearRows` in class `TableManager` to remove all rows from the first section;
-* 1.3.0
-    * ADD: Support to manipulate row's height;
-    * ADD: Method `addSection` in class `TableManager` to add a section without having to use `sections.append`;
-    * ADD: Method `addRow` in class `Section` to add a row without having to use `rows.append`;
-    * ADD: Method `addRow` in class `TableManager` to add a row directly from the table without having to set a section;
-* 1.2.0
-    * CHANGE: Refactor the `visibleSections`/`visibleRows` to `sectionsToRender`/`rowsToRender`;
-    * CHANGE: Refactor the `displayedRows` to `visibleRows` to be consistent with Apple's framework (visible rows now means the rows that are appearing to the user in the table);
-    * ADD: A UITableView extension to use all TableManager features directly in the tableView instance;
-    * ADD: A `UIScrollViewDelegate` property to redirect all the scroll events.
-* 1.1.0
-    * ADD: `selectedRow()` method in TableManger class; 
-    * ADD: `displayedRows()` method in TableManger class; - suggestion by [@lfarah](https://github.com/lfarah)
-* 1.0.0
-    * First official release; 
-    * FIX: Swift style code;
-    * ADD: Support to Footer configuration;
-    * ADD: Section constructor;
-    * CHANGE: All API;
-    * CHANGE: Remove `stateRows` property;
-    * CHANGE: Remove `StateRowsTuple` typealias;
-    * CHANGE: Remove `ScreenState` enum;
-    * CHANGE: Remove `ConfigureCell` protocol;
-* 0.0.3
-    * Some fixes;
-    * ADD: Example project;
-    * FIX: A bug was blocking the usage as pod;
-    * FIX: Rename `setByResulsAndErrors()` to `setByResultsAndErrors()`
-* 0.0.1
-    * Creating pod
-
 ## Contribute
 
 Feel free to submit your pull request, suggest any update, report a bug or create a feature request.
