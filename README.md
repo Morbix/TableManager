@@ -54,7 +54,9 @@ class ViewController: UITableViewController {
 
 }
 ```
-You can use this in a UIViewController with an outlet of UITableView too.
+#### Result
+<p align="center"><img height="300px" src ="basic-usage.png" /></p>
+
 
 ## Documentation
 
