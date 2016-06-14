@@ -52,6 +52,12 @@ class ViewController: UIViewController {
         ]
     }
 
+    final private func presentNotAvailableMessage() {
+        let alert = UIAlertController(title: nil, message: "Not available yet.", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     // MARK: Actions
     
     final private func navigateToBasicUsage() -> Row.DidSelect {
@@ -65,6 +71,7 @@ class ViewController: UIViewController {
         return { row, tableView, indexPath in
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
             
+            self.presentNotAvailableMessage()
         }
     }
 }
