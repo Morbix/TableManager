@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/cocoapods/l/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
 [![Platform](https://img.shields.io/cocoapods/p/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
 
-`TableManager` is a UITableView extension to use and manipulate the table easier. You can add Row and Section's objects then the library will handle all the protocol implementation for you. The table the way it should be.
+**TableManager** is an extension of `UITableView`. Manipulate your table in an easier way. Add sections and rows. Configure headers and footers. Hide and show rows individually. And this library will handle all the protocols for you. The table the way it should be.
 
 ## Requirements
 
