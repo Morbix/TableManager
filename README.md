@@ -151,7 +151,7 @@ rowB.setDidSelect(didSelect)
     * ADD: A `UIScrollViewDelegate` property to redirect all the scroll events.
 * 1.1.0
     * ADD: `selectedRow()` method in TableManger class; 
-    * ADD: `displayedRows()` method in TableManger class; (suggestion by @lfarah) 
+    * ADD: `displayedRows()` method in TableManger class; - suggestion by [@lfarah](https://github.com/lfarah)
 * 1.0.0
     * First official release; 
     * FIX: Swift style code;
