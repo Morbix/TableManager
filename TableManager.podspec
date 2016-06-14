@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
   s.name         = "TableManager"
   s.version      = "1.3.1"
-  s.summary      = "A wrap to use and manipulate the UITableView."
+  s.summary      = "An extension of UITableView. The table the way it should be."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-This wrapper was created to use and manipulate the UITableView easier. You can add Row and Section's objects then the manager will handle all the protocol implemetation for you. It was created by Henrique Morbin (http://fb.com/hgmorbin).
+TableManager is an extension of UITableView. Manipulate your table in an easier way. Add sections and rows. Configure headers and footers. Hide and show rows individually. And this library will handle all the protocols for you. The table the way it should be.
                    DESC
 
   s.homepage     = "https://github.com/Morbix/TableManager"
