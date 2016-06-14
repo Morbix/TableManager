@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/cocoapods/l/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
 [![Platform](https://img.shields.io/cocoapods/p/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
 
-`TableManager` is a wrapper and it was created to use and manipulate the UITableView easier. You can add Row and Section's objects then the manager will handle all the protocol implementation for you.
+`TableManager` is a UITableView extension to use and manipulate the table easier. You can add Row and Section's objects then the library will handle all the protocol implementation for you. The table the way it should be.
 
 ## Requirements
 
