@@ -135,11 +135,15 @@ rowB.setDidSelect(didSelect)
 
 ## Release Notes
 
+* 1.3.1
+    * ADD: Method `clearSections` in class `TableManager` to remove all section from the table;
+    * ADD: Method `clearRows` in class `Section` to remove all rows from the section;
+    * ADD: Method `clearRows` in class `TableManager` to remove all rows from the first section;
 * 1.3.0
     * ADD: Support to manipulate row's height;
-    * ADD: Method `addSection` to add a section without having to use `sections.append`;
-    * ADD: Method `addRow` to add a row without having to use `rows.append`;
-    * ADD: Method `addRow` to add a row directly from the table without having to set a section;
+    * ADD: Method `addSection` in class `TableManager` to add a section without having to use `sections.append`;
+    * ADD: Method `addRow` in class `Section` to add a row without having to use `rows.append`;
+    * ADD: Method `addRow` in class `TableManager` to add a row directly from the table without having to set a section;
 * 1.2.0
     * CHANGE: Refactor the `visibleSections`/`visibleRows` to `sectionsToRender`/`rowsToRender`;
     * CHANGE: Refactor the `displayedRows` to `visibleRows` to be consistent with Apple's framework (visible rows now means the rows that are appearing to the user in the table);
