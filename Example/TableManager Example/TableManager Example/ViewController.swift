@@ -16,22 +16,55 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let data = (1...1_000).map { "Row \($0)" }
-        
-        data.forEach { element in
+        getExamples().forEach { (title, didSelect) in
             
-            let row = tableView.addRow()
+            let row = tableView.addRow("CellBasic")
             
             row.setConfiguration { (row, cell, indexPath) in
-                cell.textLabel?.text = element
+                cell.textLabel?.text = title
+                
+                if let _ = row.didSelect {
+                    cell.textLabel?.font = UIFont.systemFontOfSize(16)
+                    cell.textLabel?.textAlignment = .Left
+                    cell.accessoryType = .DisclosureIndicator
+                    cell.selectionStyle = .Default
+                } else {
+                    cell.textLabel?.font = UIFont.boldSystemFontOfSize(16)
+                    cell.textLabel?.textAlignment = .Center
+                    cell.accessoryType = .None
+                    cell.selectionStyle = .None
+                }
             }
             
-            row.setDidSelect { (row, tableView, indexPath) in
-                print(element + " selected")
-            }
+            row.didSelect = didSelect
         }
         
         tableView.reloadData()
     }
+    
+    // MARK: Methodos
+    
+    final private func getExamples() -> [(String, Row.DidSelect?)] {
+        return [
+            ("Basic Usage", navigateToBasicUsage()),
+            ("Complex Usage", navigateToComplexUsage()),
+            ("Documentation", nil)
+        ]
+    }
 
+    // MARK: Actions
+    
+    final private func navigateToBasicUsage() -> Row.DidSelect {
+        return { row, tableView, indexPath in
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            self.navigationController?.pushViewController(BasicUsageViewController(), animated: true)
+        }
+    }
+    
+    final private func navigateToComplexUsage() -> Row.DidSelect {
+        return { row, tableView, indexPath in
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            
+        }
+    }
 }
