@@ -101,6 +101,17 @@ public class TableManager: NSObject {
         return firstSection.addRow(identifier)
     }
     
+    /// Remove all sections
+    public func clearSections() {
+        sections.removeAll()
+    }
+    
+    /// Remove all rows from the first section
+    public func clearRows() {
+        if sections.count > 0 {
+            sections[0].clearRows()
+        }
+    }
 }
 
 // MARK: UITableViewDataSource

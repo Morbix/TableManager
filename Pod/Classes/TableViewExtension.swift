@@ -83,4 +83,14 @@ public extension UITableView {
         return self.tableManagerInstance().addRow(identifier)
     }
     
+    /// Remove all sections
+    public func clearSections() {
+        self.tableManagerInstance().clearSections()
+    }
+    
+    /// Remove all rows from the first section
+    public func clearRows() {
+        self.tableManagerInstance().clearRows()
+    }
+    
 }

@@ -80,6 +80,11 @@ public class Section {
         return newRow
     }
     
+    /// Remove all rows
+    public func clearRows() {
+        rows.removeAll()
+    }
+    
     // MARK: Header Configuration
     
     /// Set the header using a closure that will be called when the table request a title
