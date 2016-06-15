@@ -48,7 +48,8 @@ class ViewController: UIViewController {
         return [
             ("Basic Usage", navigateToBasicUsage()),
             ("Complex Usage", navigateToComplexUsage()),
-            ("Documentation", nil)
+            ("Documentation", nil),
+            ("Visibility", navigateToVisibility())
         ]
     }
 
@@ -74,4 +75,12 @@ class ViewController: UIViewController {
             self.presentNotAvailableMessage()
         }
     }
+    
+    final private func navigateToVisibility() -> Row.DidSelect {
+        return { row, tableView, indexPath in
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            self.navigationController?.pushViewController(VisibilityViewController(), animated: true)
+        }
+    }
+    
 }

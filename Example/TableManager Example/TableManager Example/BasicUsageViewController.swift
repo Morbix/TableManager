@@ -14,9 +14,7 @@ class BasicUsageViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let data = (1...100).map { "Row \($0)" }
-        
-        data.forEach { element in
+        Fake.basicData().forEach { element in
             tableView.addRow().setConfiguration { (row, cell, indexPath) in
                 cell.textLabel?.text = element
             }
