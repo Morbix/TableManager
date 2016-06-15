@@ -12,7 +12,7 @@
     - [Configure a table with only 3 tiny steps](#configure-a-table-with-only-3-tiny-steps)
 - Documentation
     - [Sections & Rows Visibility](#sections--rows-visibility)
-    - [Configuring a custom row](#configuring-a-custom-row)
+    - [Configuring a custom cell](#configuring-a-custom-cell)
     - [Row Selection](#row-selection)
     - And more...
 - [CHANGELOG](CHANGELOG.md)
@@ -88,7 +88,7 @@ rowB.visible = true
 ```
 
 
-### Configuring a custom Row
+### Configuring a custom cell
 You can set a identifier and the `configuration` property:
 ```swift
 let row = Row(identifier: "CellBasic", object: someString)

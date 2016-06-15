@@ -49,7 +49,8 @@ class ViewController: UIViewController {
             ("Basic Usage", navigateToBasicUsage()),
             ("Complex Usage", navigateToComplexUsage()),
             ("Documentation", nil),
-            ("Visibility", navigateToVisibility())
+            ("Visibility", navigateToVisibility()),
+            ("Custom Cell", navigateToCustomCell())
         ]
     }
 
@@ -80,6 +81,13 @@ class ViewController: UIViewController {
         return { row, tableView, indexPath in
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
             self.navigationController?.pushViewController(VisibilityViewController(), animated: true)
+        }
+    }
+    
+    final private func navigateToCustomCell() -> Row.DidSelect {
+        return { row, tableView, indexPath in
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            self.navigationController?.pushViewController(CustomCellViewController(), animated: true)
         }
     }
     
