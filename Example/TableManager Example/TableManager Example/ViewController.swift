@@ -50,7 +50,8 @@ class ViewController: UIViewController {
             ("Complex Usage", navigateToComplexUsage()),
             ("Documentation", nil),
             ("Visibility", navigateToVisibility()),
-            ("Custom Cell", navigateToCustomCell())
+            ("Custom Cell", navigateToCustomCell()),
+            ("Selection", navigateToSelection())
         ]
     }
 
@@ -88,6 +89,13 @@ class ViewController: UIViewController {
         return { row, tableView, indexPath in
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
             self.navigationController?.pushViewController(CustomCellViewController(), animated: true)
+        }
+    }
+    
+    final private func navigateToSelection() -> Row.DidSelect {
+        return { row, tableView, indexPath in
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            self.navigationController?.pushViewController(SelectionViewController(), animated: true)
         }
     }
     
