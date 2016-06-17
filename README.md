@@ -3,6 +3,8 @@
 [![Version](https://img.shields.io/cocoapods/v/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
 [![License](https://img.shields.io/cocoapods/l/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
 [![Platform](https://img.shields.io/cocoapods/p/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 
 `TableManager` is a wrapper and it was created to use and manipulate the UITableView easier. You can add Row and Section's objects then the manager will handle all the protocol implementation for you.
 
@@ -44,7 +46,7 @@ class ViewController: UITableViewController {
         data.forEach { element in
             let row = tableView.addRow() // 2 - Add a row
 
-            row.setConfiguration { (row, cell, indexPath) in // 3 - And configure it 
+            row.setConfiguration { (row, cell, indexPath) in // 3 - And configure it
                 cell.textLabel?.text = element
             }
         }
@@ -146,10 +148,10 @@ rowB.setDidSelect(didSelect)
     * ADD: A UITableView extension to use all TableManager features directly in the tableView instance;
     * ADD: A `UIScrollViewDelegate` property to redirect all the scroll events.
 * 1.1.0
-    * ADD: `selectedRow()` method in TableManger class; 
-    * ADD: `displayedRows()` method in TableManger class; (suggestion by @lfarah) 
+    * ADD: `selectedRow()` method in TableManger class;
+    * ADD: `displayedRows()` method in TableManger class; (suggestion by @lfarah)
 * 1.0.0
-    * First official release; 
+    * First official release;
     * FIX: Swift style code;
     * ADD: Support to Footer configuration;
     * ADD: Section constructor;
