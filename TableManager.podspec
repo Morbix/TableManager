@@ -91,7 +91,7 @@ This wrapper was created to use and manipulate the UITableView easier. You can a
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = 'Pod/Classes/**/*'
+  s.source_files  = 'Sources/Classes/**/*'
   #s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
