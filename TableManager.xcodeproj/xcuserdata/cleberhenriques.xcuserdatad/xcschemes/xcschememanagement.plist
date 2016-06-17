@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>TableManager.xcscheme</key>
+		<key>TableManager-Framework.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>BAD52EF21D13937800EB6F89</key>
+		<key>BA75C7D81D1396DF00236927</key>
 		<dict>
 			<key>primary</key>
 			<true/>

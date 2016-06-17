@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BAD52EF21D13937800EB6F89"
+               BlueprintIdentifier = "BA75C7D81D1396DF00236927"
                BuildableName = "TableManager.framework"
-               BlueprintName = "TableManager"
+               BlueprintName = "TableManager-Framework"
                ReferencedContainer = "container:TableManager.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BAD52EF21D13937800EB6F89"
+            BlueprintIdentifier = "BA75C7D81D1396DF00236927"
             BuildableName = "TableManager.framework"
-            BlueprintName = "TableManager"
+            BlueprintName = "TableManager-Framework"
             ReferencedContainer = "container:TableManager.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BAD52EF21D13937800EB6F89"
+            BlueprintIdentifier = "BA75C7D81D1396DF00236927"
             BuildableName = "TableManager.framework"
-            BlueprintName = "TableManager"
+            BlueprintName = "TableManager-Framework"
             ReferencedContainer = "container:TableManager.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
