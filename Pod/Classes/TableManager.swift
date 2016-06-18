@@ -10,10 +10,18 @@ import UIKit
 
 internal let defaultCellIdentifier = "DefaultCellIdentifier"
 
+public protocol TableManagerDelegate: NSObjectProtocol {
+    func tableManagerDidMove(fromRow: Row, fromIndexPath: NSIndexPath, toRow: Row, toIndexPath: NSIndexPath)
+    func tableManagerDidDelete(row: Row, atIndexPath: NSIndexPath)
+}
+
 public class TableManager: NSObject {
     
     /// Reference to the UITableView
     public weak var tableView: UITableView!
+    
+    /// Reference to the TableManagerDelegate
+    public weak var delegate: TableManagerDelegate?
     
     /// The sections added to this table
     public var sections = [Section]()
@@ -175,7 +183,10 @@ extension TableManager: UITableViewDataSource {
     }
     
     public func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-        print("move action: " + fromIndexPath.debugDescription + " to " + fromIndexPath.debugDescription)
+        let fromRow = self.row(atIndexPath: fromIndexPath)
+        let toRow = self.row(atIndexPath: toIndexPath)
+        
+        delegate?.tableManagerDidMove(fromRow, fromIndexPath: fromIndexPath, toRow: toRow, toIndexPath: toIndexPath)
     }
 
     public func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
@@ -187,9 +198,12 @@ extension TableManager: UITableViewDataSource {
     public func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let section = self.section(atIndex: indexPath.section)
+            let row = self.row(atIndexPath: indexPath)
+            
             section.rows.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-            print("delete action: " + indexPath.debugDescription)
+            
+            delegate?.tableManagerDidDelete(row, atIndexPath: indexPath)
         }
     }
     
@@ -310,5 +324,16 @@ extension TableManager: UIScrollViewDelegate {
         scrollViewDelegate?.scrollViewDidScrollToTop?(scrollView)
     }
     
+}
+
+public extension TableManagerDelegate {
+    
+    public func tableManagerDidMove(fromRow: Row, fromIndexPath: NSIndexPath, toRow: Row, toIndexPath: NSIndexPath) {
+        // empty implementation to transform the delegate optional
+    }
+    
+    public func tableManagerDidDelete(row: Row, atIndexPath: NSIndexPath) {
+        // empty implementation to transform the delegate optional
+    }
     
 }

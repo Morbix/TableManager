@@ -22,6 +22,21 @@ public extension UITableView {
         return tableManager
     }
     
+    /// Set the reference to the TableManager's delegate
+    public var tableManagerDelegate: TableManagerDelegate? {
+        set {
+            self.tableManagerInstance().delegate = newValue
+        }
+        get {
+            return self.tableManagerInstance().delegate
+        }
+    }
+    
+    /// Set the reference to the TableManager's delegate
+    public func setTableManagerDelegate(delegate: TableManagerDelegate) {
+        self.tableManagerInstance().delegate = delegate
+    }
+    
     /// All sections added to the table
     public var sections: [Section] {
         set {
