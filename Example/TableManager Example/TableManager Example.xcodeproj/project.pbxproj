@@ -20,6 +20,7 @@
 		2DA53AF41D10DE3B0001E6DC /* CellCustomA.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA53AF21D10DE3B0001E6DC /* CellCustomA.xib */; };
 		2DA53AF71D10E1310001E6DC /* CustomCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA53AF61D10E1310001E6DC /* CustomCellViewController.swift */; };
 		2DA53AF91D10E6620001E6DC /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA53AF81D10E6620001E6DC /* SelectionViewController.swift */; };
+		2DA53AFB1D15E7C30001E6DC /* DragAndDropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA53AFA1D15E7C30001E6DC /* DragAndDropViewController.swift */; };
 		8CC7604FB6EAF26CA9994C74 /* Pods_TableManager_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A66A9FABE3B404B0E6BCA6 /* Pods_TableManager_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		2DA53AF21D10DE3B0001E6DC /* CellCustomA.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellCustomA.xib; sourceTree = "<group>"; };
 		2DA53AF61D10E1310001E6DC /* CustomCellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCellViewController.swift; sourceTree = "<group>"; };
 		2DA53AF81D10E6620001E6DC /* SelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
+		2DA53AFA1D15E7C30001E6DC /* DragAndDropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragAndDropViewController.swift; sourceTree = "<group>"; };
 		A08A9B9C8070F4A086E8AD6F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7C3108F3A8089697C950A8 /* Pods-TableManager Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableManager Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-TableManager Example/Pods-TableManager Example.release.xcconfig"; sourceTree = "<group>"; };
 		F9A2324CB62ACDFE987C4BF5 /* Pods-TableManager Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableManager Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TableManager Example/Pods-TableManager Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				2DA53AEC1D10A0880001E6DC /* VisibilityViewController.swift */,
 				2DA53AF61D10E1310001E6DC /* CustomCellViewController.swift */,
 				2DA53AF81D10E6620001E6DC /* SelectionViewController.swift */,
+				2DA53AFA1D15E7C30001E6DC /* DragAndDropViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DA53AFB1D15E7C30001E6DC /* DragAndDropViewController.swift in Sources */,
 				2DA53AED1D10A0880001E6DC /* VisibilityViewController.swift in Sources */,
 				2DA53AF71D10E1310001E6DC /* CustomCellViewController.swift in Sources */,
 				2DA53AEF1D10D5310001E6DC /* Fake.swift in Sources */,

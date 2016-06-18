@@ -13,8 +13,32 @@ public class Row {
     /// The cell identifier
     public var identifier: String?
     
-    /// Defines if it need be rendered or not when reload the table
+    /// Defines if it need be rendered or not when reload the table.
     public var visible = true
+    
+    var editingStyle = UITableViewCellEditingStyle.None
+    var movable = false
+    var deleteConfirmation: String?
+    
+    /// Read only property that indicate if the row is movable.
+    public var canMove: Bool {
+        return movable
+    }
+    
+    /// Read only property that indicate if the row is deletable.
+    public var canDelete: Bool {
+        return editingStyle == .Delete
+    }
+    
+    /// Read only property that indicate if the row is insertable. (not implemented yet)
+    private var canInsert: Bool {
+        return editingStyle == .Insert
+    }
+    
+    /// Read only property that indicate if the row is editable. Will be true if the row can perform any of this actions: move, delete or insert.
+    public var canEdit: Bool {
+        return canMove || canDelete || canInsert
+    }
     
     /// The object that can be used in the closure's impementation.
     public var object: AnyObject?
@@ -25,7 +49,7 @@ public class Row {
     /// The closure that will be called when the cell was selected.
     public var didSelect: DidSelect?
     
-    /// The closure that will be called when the table request the row's height
+    /// The closure that will be called when the table request the row's height.
     public var heightForRow: HeightForRow?
     
     /// Initializes a new Row. All parameters are optionals.
@@ -45,6 +69,22 @@ public class Row {
     /// Set object that can be used in the closure's impementation.
     public func setObject(object: AnyObject) {
         self.object = object
+    }
+    
+    /// Define if the row can be moved
+    public func setCanMove(movable: Bool) {
+        self.movable = movable
+    }
+    
+    /// Define if the row can be deleted
+    public func setCanDelete(deletable: Bool, titleForDeleteConfirmation: String? = nil) {
+        self.editingStyle = deletable ? .Delete : .None
+        self.deleteConfirmation = titleForDeleteConfirmation
+    }
+    
+    /// Define if the row can be inserted (not implemented yet)
+    private func setCanInsert(insertable: Bool) {
+        self.editingStyle = insertable ? .Insert : .None
     }
     
     /// Set closure that will be called when the table request the cell.

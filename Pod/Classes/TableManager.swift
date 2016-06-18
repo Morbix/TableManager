@@ -155,7 +155,43 @@ extension TableManager: UITableViewDataSource {
         
         return nil
     }
+    
+    public func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        let row = self.row(atIndexPath: indexPath)
+        
+        return row.canMove
+    }
+    
+    public func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        let row = self.row(atIndexPath: indexPath)
+        
+        return row.canEdit
+    }
+    
+    public func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        let row = self.row(atIndexPath: indexPath)
+        
+        return row.editingStyle
+    }
+    
+    public func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+        print(fromIndexPath.debugDescription + " to " + fromIndexPath.debugDescription)
+    }
 
+    public func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
+        let row = self.row(atIndexPath: indexPath)
+        
+        return row.deleteConfirmation
+    }
+    
+    public func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let section = self.section(atIndex: indexPath.section)
+            section.rows.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+    }
+    
 }
 
 // MARK: UITableViewDelegate

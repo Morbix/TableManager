@@ -51,7 +51,8 @@ class ViewController: UIViewController {
             ("Documentation", nil),
             ("Visibility", navigateToVisibility()),
             ("Custom Cell", navigateToCustomCell()),
-            ("Selection", navigateToSelection())
+            ("Selection", navigateToSelection()),
+            ("Drag & Drop", navigateToDragAndDrop())
         ]
     }
 
@@ -96,6 +97,13 @@ class ViewController: UIViewController {
         return { row, tableView, indexPath in
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
             self.navigationController?.pushViewController(SelectionViewController(), animated: true)
+        }
+    }
+    
+    final private func navigateToDragAndDrop() -> Row.DidSelect {
+        return { row, tableView, indexPath in
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            self.navigationController?.pushViewController(DragAndDropViewController(), animated: true)
         }
     }
     
