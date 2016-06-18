@@ -13,6 +13,8 @@ class DragAndDropViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: #selector(barButtonTouched))
+        
         Fake.basicData().forEach { element in
             let row = tableView.addRow()
             
@@ -24,8 +26,11 @@ class DragAndDropViewController: UITableViewController {
         }
         
         tableView.reloadData()
-        
-        tableView.editing = true
     }
 
+    // MARk: Actions
+    
+    final func barButtonTouched() {
+        tableView.editing = !tableView.editing
+    }
 }
