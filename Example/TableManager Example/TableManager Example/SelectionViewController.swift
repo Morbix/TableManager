@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TableManager
 
 class SelectionViewController: UITableViewController {
 

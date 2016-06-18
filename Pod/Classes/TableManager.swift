@@ -175,13 +175,13 @@ extension TableManager: UITableViewDataSource {
     }
     
     public func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-        print(fromIndexPath.debugDescription + " to " + fromIndexPath.debugDescription)
+        print("move action: " + fromIndexPath.debugDescription + " to " + fromIndexPath.debugDescription)
     }
 
     public func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
         let row = self.row(atIndexPath: indexPath)
         
-        return row.deleteConfirmation
+        return row.deleteConfirmation ?? "Delete"
     }
     
     public func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -189,6 +189,7 @@ extension TableManager: UITableViewDataSource {
             let section = self.section(atIndex: indexPath.section)
             section.rows.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            print("delete action: " + indexPath.debugDescription)
         }
     }
     

@@ -52,7 +52,8 @@ class ViewController: UIViewController {
             ("Visibility", navigateToVisibility()),
             ("Custom Cell", navigateToCustomCell()),
             ("Selection", navigateToSelection()),
-            ("Drag & Drop", navigateToDragAndDrop())
+            ("Drag & Drop", navigateToDragAndDrop()),
+            ("Deletion", navigateToDeletion())
         ]
     }
 
@@ -104,6 +105,13 @@ class ViewController: UIViewController {
         return { row, tableView, indexPath in
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
             self.navigationController?.pushViewController(DragAndDropViewController(), animated: true)
+        }
+    }
+    
+    final private func navigateToDeletion() -> Row.DidSelect {
+        return { row, tableView, indexPath in
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            self.navigationController?.pushViewController(DeletionViewController(), animated: true)
         }
     }
     
