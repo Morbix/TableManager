@@ -72,7 +72,7 @@ class ViewController: UITableViewController {
 }
 ```
 #### Result
-![Basic Usage](basic-usage.png)
+![Basic Usage](Example/Images/basic-usage.png)
 
 ## Documentation
 
@@ -185,6 +185,19 @@ class TableViewController: UITableViewController {
     
 } 
 ```
+
+### Drag & Drop feature
+You can make a row draggable when table is editing just passing `true` in method `setCanMove`:
+```swift
+let row = tableView.addRow()
+            
+row.setCanMove(true)
+
+// [...]
+
+tableView.editing = true
+```
+![Drag and Drop](Example/Images/moving.png)
 
 ## CHANGELOG
 [Go to CHANGELOG](CHANGELOG.md)
