@@ -73,7 +73,7 @@ class ViewController: UITableViewController {
 }
 ```
 #### Result
-![Basic Usage](Example/Images/basic-usage.png)
+![Basic Usage](Example/Images/basic-usage2.png)
 
 ## Documentation
 
