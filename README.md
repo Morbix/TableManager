@@ -17,7 +17,7 @@
     - [Selected row](#selected-row)
     - [Visible rows](#visible-rows)
     - [UIScrollViewDelegate events](#uiscrollviewdelegate-events)
-    - [Drag & Drop feature or Reordering)](#drag--drop-feature-or-reordering)
+    - [Drag & Drop feature or Reordering](#drag--drop-feature-or-reordering)
     - And more...
 - [CHANGELOG](CHANGELOG.md)
 - [Contribute](#contribute)
