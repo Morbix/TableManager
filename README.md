@@ -15,6 +15,7 @@
     - [Configuring a custom cell](#configuring-a-custom-cell)
     - [Row selection event](#row-selection-event)
     - [Selected row](#selected-row)
+    - [Visible rows](#visible-rows)
     - And more...
 - [CHANGELOG](CHANGELOG.md)
 - [Contribute](#contribute)
@@ -149,8 +150,18 @@ rowB.setDidSelect(didSelect)
 ### Selected row
 You can get the row that corresponds the selected cell
 ```swift
-if let selectedRow = tableView.selectedRow(), value = selectedRow.object as? String {
-    print('the value of selected row is: ' + value)
+if let selectedRow = tableView.selectedRow() {
+    print('the selected row is: ' + selectedRow.object)
+}
+```
+
+### Visible rows
+You can get the visible rows that corresponds the cells appearing in the UI for the user
+```swift
+if let visibleRows = tableView.visibleRows() {
+    visibleRows.forEach { row in
+        print(row)
+    }
 }
 ```
 
