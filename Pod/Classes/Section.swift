@@ -52,10 +52,12 @@ public class Section {
     
     // MARK: Methods
     
-    /// Returns the Row by indexPath (only Rows with `visible=true`)
-    public func row(atIndex index: Int) -> Row {
-        if rowsToRender.count > index {
-            return rowsToRender[index]
+    /// Returns the Row by indexPath, includeAll parameter means it will include rows with visible=false too
+    public func row(atIndex index: Int, includeAll: Bool = false) -> Row {
+        let objects = includeAll ? rows : rowsToRender
+        
+        if objects.count > index {
+            return objects[index]
         } else {
             return addRow()
         }

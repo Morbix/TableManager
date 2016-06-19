@@ -55,16 +55,18 @@ public class TableManager: NSObject {
         tableView.reloadData()
     }
     
-    /// Returns the Row by indexPath (only Rows with `visible=true`)
-    public func row(atIndexPath indexPath: NSIndexPath) -> Row {
-        let section = self.section(atIndex: indexPath.section)
-        return section.row(atIndex: indexPath.row)
+    /// Returns the Row by indexPath, includeAll parameter means it will include rows with visible=false too
+    public func row(atIndexPath indexPath: NSIndexPath, includeAll: Bool = false) -> Row {
+        let section = self.section(atIndex: indexPath.section, includeAll: includeAll)
+        return section.row(atIndex: indexPath.row, includeAll: includeAll)
     }
     
-    /// Returns the Section by indexPath (only Section with `visible=true`)
-    public func section(atIndex index: Int) -> Section {
-        if sectionsToRender.count > index {
-            return sectionsToRender[index]
+    /// Returns the Section by indexPath, includeAll parameter means it will include sections with visible=false too
+    public func section(atIndex index: Int, includeAll: Bool = false) -> Section {
+        let objects = includeAll ? sections : sectionsToRender
+        
+        if objects.count > index {
+            return objects[index]
         } else {
             return addSection()
         }
@@ -221,7 +223,7 @@ extension TableManager: UITableViewDataSource {
         // 0 1 2 3 4 5
         // a b d c e f
         
-        self.sections[]
+        //self.sections[]
         
         delegate?.tableManagerDidMove(fromRow, fromIndexPath: fromIndexPath, toRow: toRow, toIndexPath: toIndexPath)
     }

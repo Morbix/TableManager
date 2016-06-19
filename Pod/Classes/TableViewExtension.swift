@@ -63,13 +63,13 @@ public extension UITableView {
     
     // MARK: Methods
     
-    /// Get the Row by indexPath (only Rows with `visible=true`)
-    public func row(atIndexPath indexPath: NSIndexPath) -> Row {
+    /// Get the Row by indexPath, includeAll parameter means it will include rows with visible=false too
+    public func row(atIndexPath indexPath: NSIndexPath, includeAll: Bool = false) -> Row {
         return self.tableManagerInstance().row(atIndexPath: indexPath)
     }
     
-    /// Get the Section by indexPath (only Section with `visible=true`)
-    public func section(atIndex index: Int) -> Section {
+    /// Get the Section by indexPath, includeAll parameter means it will include sections with visible=false too
+    public func section(atIndex index: Int, includeAll: Bool = false) -> Section {
         return self.tableManagerInstance().section(atIndex: index)
     }
     
