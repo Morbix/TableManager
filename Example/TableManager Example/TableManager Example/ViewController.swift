@@ -24,7 +24,8 @@ class ViewController: UIViewController {
             Screen.DragAndDrop,
             Screen.Deletion,
             Screen.SelectedRow,
-            Screen.VisibleRows
+            Screen.VisibleRows,
+            Screen.ScrollViewDelegate
         ]
         
         examples.forEach { screen in
@@ -61,6 +62,7 @@ private enum Screen: String {
     case Deletion = "Deletion"
     case SelectedRow = "Selected Row"
     case VisibleRows = "Visible Rows"
+    case ScrollViewDelegate = "ScrollView Delegate "
     
     func getViewController() -> UIViewController {
         switch self {
@@ -82,6 +84,8 @@ private enum Screen: String {
             return SelectedRowViewController()
         case .VisibleRows:
             return VisibleRowsViewController()
+        case .ScrollViewDelegate:
+            return ScrollViewDelegateViewController()
         }
     }
 }
