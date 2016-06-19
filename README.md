@@ -17,6 +17,7 @@
     - [Selected row](#selected-row)
     - [Visible rows](#visible-rows)
     - [UIScrollViewDelegate events](#uiscrollviewdelegate-events)
+    - [Drag & Drop feature or Reordering)](#drag--drop-feature-or-reordering)
     - And more...
 - [CHANGELOG](CHANGELOG.md)
 - [Contribute](#contribute)
@@ -186,7 +187,7 @@ class TableViewController: UITableViewController {
 } 
 ```
 
-### Drag & Drop feature
+### Drag & Drop feature or Reordering
 You can make a row draggable when table is editing just passing `true` in method `setCanMove`:
 ```swift
 let row = tableView.addRow()
