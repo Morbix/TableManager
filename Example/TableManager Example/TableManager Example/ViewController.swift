@@ -22,7 +22,8 @@ class ViewController: UIViewController {
             Screen.CustomCell,
             Screen.Selection,
             Screen.DragAndDrop,
-            Screen.Deletion
+            Screen.Deletion,
+            Screen.SelectedRow
         ]
         
         examples.forEach { screen in
@@ -57,6 +58,7 @@ private enum Screen: String {
     case Selection = "Selection"
     case DragAndDrop = "Drag & Drop"
     case Deletion = "Deletion"
+    case SelectedRow = "Selected Row"
     
     func getViewController() -> UIViewController {
         switch self {
@@ -74,6 +76,8 @@ private enum Screen: String {
             return DragAndDropViewController()
         case .Deletion:
             return DeletionViewController()
+        case .SelectedRow:
+            return SelectedRowViewController()
         }
     }
 }
