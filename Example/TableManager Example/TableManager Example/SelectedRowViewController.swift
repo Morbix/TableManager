@@ -28,12 +28,6 @@ class SelectedRowViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    final private func showAlert(message: String) {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
-        presentViewController(alert, animated: true, completion: nil)
-    }
-    
     final func barButtonTouched() {
         if let selectedRow = tableView.selectedRow(), value = selectedRow.object as? String {
             showAlert(value)

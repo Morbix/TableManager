@@ -23,7 +23,8 @@ class ViewController: UIViewController {
             Screen.Selection,
             Screen.DragAndDrop,
             Screen.Deletion,
-            Screen.SelectedRow
+            Screen.SelectedRow,
+            Screen.VisibleRows
         ]
         
         examples.forEach { screen in
@@ -59,6 +60,7 @@ private enum Screen: String {
     case DragAndDrop = "Drag & Drop"
     case Deletion = "Deletion"
     case SelectedRow = "Selected Row"
+    case VisibleRows = "Visible Rows"
     
     func getViewController() -> UIViewController {
         switch self {
@@ -78,6 +80,18 @@ private enum Screen: String {
             return DeletionViewController()
         case .SelectedRow:
             return SelectedRowViewController()
+        case .VisibleRows:
+            return VisibleRowsViewController()
         }
     }
+}
+
+extension UIViewController {
+    
+    final func showAlert(message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
 }

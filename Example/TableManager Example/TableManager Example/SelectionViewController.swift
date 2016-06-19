@@ -28,11 +28,5 @@ class SelectionViewController: UITableViewController {
         }
         
     }
-
-    final private func showAlert(message: String) {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
-        presentViewController(alert, animated: true, completion: nil)
-    }
     
 }
