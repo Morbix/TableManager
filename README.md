@@ -11,9 +11,10 @@
 - Basic Usage
     - [Configure a table with only 3 tiny steps](#configure-a-table-with-only-3-tiny-steps)
 - Documentation
-    - [Sections & Rows Visibility](#sections--rows-visibility)
+    - [Sections & Rows visibility](#sections--rows-visibility)
     - [Configuring a custom cell](#configuring-a-custom-cell)
-    - [Row Selection](#row-selection)
+    - [Row selection event](#row-selection-event)
+    - [Selected row](#selected-row)
     - And more...
 - [CHANGELOG](CHANGELOG.md)
 - [Contribute](#contribute)
@@ -116,7 +117,7 @@ rowB.setConfiguration(configuration)
 ```
 
 
-### Row Selection
+### Row selection event 
 You can set the `didSelect` property:
 ```swift
 let row = Row(object: someString)
@@ -145,7 +146,7 @@ let rowB = tableView.addRow(Row(object: someString))
 rowB.setDidSelect(didSelect)
 ```
 
-### Selected Row
+### Selected row
 You can get the row that corresponds the selected cell
 ```
 if let selectedRow = tableView.selectedRow(), value = selectedRow.object as? String {
