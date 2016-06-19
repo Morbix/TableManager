@@ -1,5 +1,25 @@
 # TableManager CHANGELOG
 
+## 1.4.0
+### New Features
+* Support to Drag & Drop feature
+* Support to Deletion feature
+* **TableManager**
+  * Added `index(forSection section: Section, includeAll: Bool = false) -> Int?` to get the index of a Section
+  * Added `indexPath(forRow row: Row, includeAll: Bool = false) -> NSIndexPath?` to get the indexPath of a Row
+* **Section**
+  * Added `index(forRow row: Row, includeAll: Bool = false) -> Int?` to get the index of a Row
+* **Row**
+  * Added `setCanMove(movable: Bool)` to make the row draggable
+  * Added `setCanDelete(deletable: Bool, titleForDeleteConfirmation: String? = nil)` to make the row deletable
+
+### Changes
+* **TableManager**
+  * Added a optional parameter in `section(atIndex index: Int, includeAll: Bool = false) -> Section` to include even sections with visible:false
+  * Added a optional parameter in `row(atIndexPath indexPath: NSIndexPath, includeAll: Bool = false) -> Row` to include even rows with visible:false
+* **Section**
+  * Added a optional parameter in `ow(atIndex index: Int, includeAll: Bool = false) -> Row` to include even rows with visible:false 
+
 ## 1.3.1
 ### New Features
 * **TableManager**
