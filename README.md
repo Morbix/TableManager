@@ -148,7 +148,7 @@ rowB.setDidSelect(didSelect)
 
 ### Selected row
 You can get the row that corresponds the selected cell
-```
+```swift
 if let selectedRow = tableView.selectedRow(), value = selectedRow.object as? String {
     print('the value of selected row is: ' + value)
 }
