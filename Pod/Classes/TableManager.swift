@@ -146,6 +146,12 @@ public class TableManager: NSObject {
             sections[0].clearRows()
         }
     }
+    
+    /// Convert an indexPath for row with visible: true to an indexPath including all rows
+    func convertToIncludeAllIndexPath(withToRenderIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        let row = self.row(atIndexPath: indexPath)
+        return self.indexPath(forRow: row, includeAll: true)
+    }
 }
 
 // MARK: UITableViewDataSource
@@ -260,20 +266,17 @@ extension TableManager: UITableViewDataSource {
     
     public func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            let section = self.section(atIndex: indexPath.section)
+            
             let row = self.row(atIndexPath: indexPath)
             
-            section.rows.removeAtIndex(indexPath.row) // erro aqui, pois aqui considera nao visibles tbm
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-            
-            delegate?.tableManagerDidDelete(row, atIndexPath: indexPath)
+            if let includeAllIndexPath = convertToIncludeAllIndexPath(withToRenderIndexPath: indexPath) {
+                sections[includeAllIndexPath.section].rows.removeAtIndex(includeAllIndexPath.row)
+                
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                delegate?.tableManagerDidDelete(row, atIndexPath: indexPath)
+            }
         }
     }
-    
-    // done - criar o row at index considerando visible:false
-    // criar o indexPath for row
-    // criar o indexPath for row considerando visible:false
-    // crair converter de indexPath para indexPath considerando visible:false
     
 }
 
