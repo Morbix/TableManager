@@ -8,8 +8,10 @@
 
 import Foundation
 
-public class Row {
+public class Row: Equatable {
     
+    var id = NSObject()
+
     /// The cell identifier
     public var identifier: String?
     
@@ -112,4 +114,8 @@ public class Row {
     public typealias HeightForRow = (row: Row, tableView: UITableView, index: Int) -> Double
     public typealias Configuration = (row: Row, cell: UITableViewCell, indexPath: NSIndexPath) -> Void
     public typealias DidSelect = (row: Row, tableView: UITableView, indexPath: NSIndexPath) -> Void
+}
+
+public func ==(lhs: Row, rhs: Row) -> Bool {
+    return lhs.id == rhs.id
 }

@@ -8,7 +8,9 @@
 
 import Foundation
 
-public class Section {
+public class Section: Equatable {
+    
+    var id = NSObject()
     
     /// Defines if it need be rendered or not when reload the table
     public var visible = true
@@ -52,6 +54,11 @@ public class Section {
     
     // MARK: Methods
     
+    /// Set object that can be used in the closure's impementation.
+    public func setObject(object: AnyObject) {
+        self.object = object
+    }
+    
     /// Returns the Row by indexPath, includeAll parameter means it will include rows with visible=false too
     public func row(atIndex index: Int, includeAll: Bool = false) -> Row {
         let objects = includeAll ? rows : rowsToRender
@@ -63,9 +70,13 @@ public class Section {
         }
     }
     
-    /// Set object that can be used in the closure's impementation.
-    public func setObject(object: AnyObject) {
-        self.object = object
+    /// Returns the index of the Row if exist
+    public func index(forRow row: Row, includeAll: Bool = false) -> Int? {
+        let objects = includeAll ? rows : rowsToRender
+        
+        return objects.indexOf {
+            $0 == row
+        }
     }
     
     /// Add a new row in the section. If any row is passed as parameter, a new empty row will be allocated, added in the section and returned.
@@ -172,4 +183,8 @@ public class Section {
     public typealias ViewForFooter = (section: Section, tableView: UITableView, index: Int) -> UIView
     public typealias TitleForFooter = (section: Section, tableView: UITableView, index: Int) -> String
     
+}
+
+public func ==(lhs: Section, rhs: Section) -> Bool {
+    return lhs.id == rhs.id
 }

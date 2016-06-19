@@ -10,10 +10,10 @@ import UIKit
 import TableManager
 
 class BasicUsageViewController: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         Fake.basicData().forEach { element in
             tableView.addRow().setConfiguration { (row, cell, indexPath) in
                 cell.textLabel?.text = element
@@ -21,6 +21,7 @@ class BasicUsageViewController: UITableViewController {
         }
         
         tableView.reloadData()
+        
     }
 
 }

@@ -72,6 +72,30 @@ public class TableManager: NSObject {
         }
     }
     
+    /// Returns the indexPath for the row if exist
+    public func indexPath(forRow row: Row, includeAll: Bool = false) -> NSIndexPath? {
+        let sectionObjects = includeAll ? sections : sectionsToRender
+        
+        var indexPath: NSIndexPath?
+        
+        sectionObjects.enumerate().forEach { indexSection, section in
+            if let indexRow = section.index(forRow: row, includeAll: includeAll) {
+                indexPath = NSIndexPath(forRow: indexRow, inSection: indexSection)
+            }
+        }
+        
+        return indexPath
+    }
+    
+    /// Returns the index of the Section if exist
+    public func index(forSection section: Section, includeAll: Bool = false) -> Int? {
+        let objects = includeAll ? sections : sectionsToRender
+        
+        return objects.indexOf {
+            $0 == section
+        }
+    }
+    
     /// If exist, return the Row that correspond the selected cell
     public func selectedRow() -> Row? {
         guard let indexPath = tableView.indexPathForSelectedRow else {
@@ -246,7 +270,7 @@ extension TableManager: UITableViewDataSource {
         }
     }
     
-    // criar o row at index considerando visible:false
+    // done - criar o row at index considerando visible:false
     // criar o indexPath for row
     // criar o indexPath for row considerando visible:false
     // crair converter de indexPath para indexPath considerando visible:false

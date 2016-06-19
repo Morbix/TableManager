@@ -73,6 +73,16 @@ public extension UITableView {
         return self.tableManagerInstance().section(atIndex: index)
     }
     
+    /// Returns the indexPath for the row if exist
+    public func indexPath(forRow row: Row, includeAll: Bool = false) -> NSIndexPath? {
+        return self.tableManagerInstance().indexPath(forRow: row, includeAll: includeAll)
+    }
+    
+    /// Returns the index of the Section if exist
+    public func index(forSection section: Section, includeAll: Bool = false) -> Int? {
+        return self.tableManagerInstance().index(forSection: section, includeAll: includeAll)
+    }
+    
     /// If exist, return the Row that correspond the selected cell
     public func selectedRow() -> Row? {
         return self.tableManagerInstance().selectedRow()
