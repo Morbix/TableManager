@@ -74,7 +74,6 @@ class ViewController: UITableViewController {
 ## Documentation
 
 ### Sections & Rows Visibility
-
 You can change the property `visible` from any Section and any Row. In the example below the only elements that will appear in the table will be the `sectionA` and `rowB`.
 ```swift
 let sectionA = tableView.addSection()
@@ -144,6 +143,14 @@ rowA.setDidSelect(didSelect)
 
 let rowB = tableView.addRow(Row(object: someString))
 rowB.setDidSelect(didSelect)
+```
+
+### Selected Row
+You can get the row that corresponds the selected cell
+```
+if let selectedRow = tableView.selectedRow(), value = selectedRow.object as? String {
+    print('the value of selected row is: ' + value)
+}
 ```
 
 ## CHANGELOG
