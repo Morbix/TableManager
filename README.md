@@ -18,7 +18,7 @@
     - [Visible rows](#visible-rows)
     - [UIScrollViewDelegate events](#uiscrollviewdelegate-events)
     - [Drag & Drop feature or Reordering](#drag--drop-feature-or-reordering)
-    - And more...
+    - [Deletion](#deletion)
 - [CHANGELOG](CHANGELOG.md)
 - [Contribute](#contribute)
 - [Contributors](#contributors)
@@ -199,6 +199,25 @@ row.setCanMove(true)
 tableView.editing = true
 ```
 ![Drag and Drop](Example/Images/moving.png)
+
+### Deletion
+You can make a row deletable when table is editing just passing `true` in method `setCanDelete`:
+```swift
+let row = tableView.addRow()
+            
+row.setCanDelete(true)
+
+// [...]
+
+tableView.editing = true
+```
+![Deletion](Example/Images/deletion.png)
+
+And you can easily edit the title confirmation too:
+```swift
+row.setCanDelete(true, titleForDeleteConfirmation: "Go away")
+```
+![Go Away](Example/Images/go-away.png)
 
 ## CHANGELOG
 [Go to CHANGELOG](CHANGELOG.md)
