@@ -16,6 +16,7 @@
     - [Row selection event](#row-selection-event)
     - [Selected row](#selected-row)
     - [Visible rows](#visible-rows)
+    - [UIScrollViewDelegate events](#uiscrollviewdelegate-events)
     - And more...
 - [CHANGELOG](CHANGELOG.md)
 - [Contribute](#contribute)
@@ -163,6 +164,26 @@ if let visibleRows = tableView.visibleRows() {
         print(row)
     }
 }
+```
+
+### UIScrollViewDelegate events
+You can handle all the scrollview delegates by your own
+```swift
+class TableViewController: UITableViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+            
+        tableView.scrollViewDelegate = self
+        
+        // [...]
+    }
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        print(scrollView.contentOffset.y)
+    }
+    
+} 
 ```
 
 ## CHANGELOG
