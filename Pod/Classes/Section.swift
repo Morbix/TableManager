@@ -82,15 +82,15 @@ public class Section: Equatable {
     /// Add a new row in the section. If any row is passed as parameter, a new empty row will be allocated, added in the section and returned.
     public func addRow(row: Row? = nil) -> Row {
         let newRow = row ?? Row()
-        rows.append(newRow)
+        if index(forRow: newRow, includeAll: true) == nil {
+            rows.append(newRow)
+        }
         return newRow
     }
     
     /// Initializes a new row with identifier, add it in the section and returns it.
     public func addRow(identifier: String) -> Row {
-        let newRow = Row(identifier: identifier)
-        rows.append(newRow)
-        return newRow
+        return addRow(Row(identifier: identifier))
     }
     
     /// Remove all rows

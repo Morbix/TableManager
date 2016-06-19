@@ -26,7 +26,6 @@ class ViewController: UIViewController {
         ]
         
         examples.forEach { screen in
-            
             let row = tableView.addRow("CellBasic")
             
             row.setConfiguration { (row, cell, indexPath) in
