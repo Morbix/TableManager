@@ -218,44 +218,13 @@ extension TableManager: UITableViewDataSource {
         let fromRow = self.row(atIndexPath: fromIndexPath)
         let toRow = self.row(atIndexPath: toIndexPath)
         
-        // update the order in tableManager too
-        
-        // 0 1 2 3 4 5
-        // a b c d e f
-        // from 4
-        // to 2
-        //remove 4
-        // 0 1 2 3 4
-        // a b c d f
-        // add in 2
-        // 0 1 2 3 4 5
-        // a b e c d f
-        
-        // 0 1 2 3 4 5
-        // a b c d e f
-        // from 2
-        // to 4
-        // remove 2
-        // 0 1 2 3 4
-        // a b d e f
-        // add in 4
-        // 0 1 2 3 4 5
-        // a b d e c f
-        
-        // 0 1 2 3 4 5
-        // a b c d e f
-        // from 2
-        // to 4
-        // add in 4
-        // 0 1 2 3 4 5 6
-        // a b c d c e f
-        // remove 2
-        // 0 1 2 3 4 5
-        // a b d c e f
-        
-        //self.sections[]
-        
-        delegate?.tableManagerDidMove(fromRow, fromIndexPath: fromIndexPath, toRow: toRow, toIndexPath: toIndexPath)
+        if let fromIndexPathIncludeAll = convertToIncludeAllIndexPath(withToRenderIndexPath: fromIndexPath) {
+            sections[fromIndexPathIncludeAll.section].rows.removeAtIndex(fromIndexPathIncludeAll.row)
+            if let toIndexPathIncludeAll = convertToIncludeAllIndexPath(withToRenderIndexPath: toIndexPath) {
+                sections[toIndexPathIncludeAll.section].rows.insert(fromRow, atIndex: toIndexPathIncludeAll.row)
+                delegate?.tableManagerDidMove(fromRow, fromIndexPath: fromIndexPath, toRow: toRow, toIndexPath: toIndexPath)
+            }
+        }
     }
 
     public func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
