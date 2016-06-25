@@ -1,5 +1,7 @@
 # TableManager
 
+[![Build Status](https://travis-ci.org/Morbix/TableManager.svg?branch=master)](https://travis-ci.org/Morbix/TableManager)
+[![Swift 2.2 compatible](https://img.shields.io/badge/Swift_2.2-compatible-4BC51D.svg?style=flat)](https://developer.apple.com/swift)
 [![Version](https://img.shields.io/cocoapods/v/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
 [![License](https://img.shields.io/cocoapods/l/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
 [![Platform](https://img.shields.io/cocoapods/p/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
