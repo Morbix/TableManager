@@ -1,6 +1,6 @@
 osx_image: xcode7.3
 language: objective-c
 
-xcode_project: "Example/TableManager Example/TableManager Example.xcodeproj"
+xcode_workspace:: "Example/TableManager Example/TableManager Example.xcworkspace"
 xcode_scheme: "TableManager Example"
 xcode_sdk: "iphonesimulator"
