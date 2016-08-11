@@ -5,6 +5,8 @@
 [![Version](https://img.shields.io/cocoapods/v/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
 [![License](https://img.shields.io/cocoapods/l/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
 [![Platform](https://img.shields.io/cocoapods/p/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 
 **TableManager** is an extension of `UITableView`. Manipulate your table in an easier way. Add sections and rows. Configure headers and footers. Hide and show rows individually. And this library will handle all the protocols for you. The table the way it should be.
 
@@ -59,17 +61,13 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let data = (1...1_000).map { "Row \($0)" }
-
-        data.forEach { element in
-            let row = tableView.addRow() // 2 - Add a row
-
-            row.setConfiguration { (row, cell, indexPath) in // 3 - And configure it 
-                cell.textLabel?.text = element
+        (1...1_000).forEach { number in
+            tableView.addRow().setConfiguration { (row, cell, indexPath) in // 2 - Add row 
+                cell.textLabel?.text = "Row \(number)"
             }
         }
 
-        tableView.reloadData()
+        tableView.reloadData() // 3 - Reload table
     }
 
 }
