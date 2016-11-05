@@ -11,30 +11,30 @@ import UIKit
 internal let defaultCellIdentifier = "DefaultCellIdentifier"
 
 public protocol TableManagerDelegate: NSObjectProtocol {
-    func tableManagerDidMove(fromRow: Row, fromIndexPath: NSIndexPath, toRow: Row, toIndexPath: NSIndexPath)
-    func tableManagerDidDelete(row: Row, atIndexPath: NSIndexPath)
+    func tableManagerDidMove(_ fromRow: Row, fromIndexPath: IndexPath, toRow: Row, toIndexPath: IndexPath)
+    func tableManagerDidDelete(_ row: Row, atIndexPath: IndexPath)
 }
 
-public class TableManager: NSObject {
+open class TableManager: NSObject {
     
     /// Reference to the UITableView
-    public weak var tableView: UITableView!
+    open weak var tableView: UITableView!
     
     /// Reference to the TableManagerDelegate
-    public weak var delegate: TableManagerDelegate?
+    open weak var delegate: TableManagerDelegate?
     
     /// The sections added to this table
-    public var sections = [Section]()
+    open var sections = [Section]()
     
     /// The sections added to this table and with `visible=true`
-    public var sectionsToRender: [Section] {
+    open var sectionsToRender: [Section] {
         return sections.filter {
             $0.visible
         }
     }
     
     // A redirection for all the scroll events
-    public var scrollViewDelegate: UIScrollViewDelegate?
+    open var scrollViewDelegate: UIScrollViewDelegate?
     
     /// Initializes a new manager with the referenced table
     public required init(tableView: UITableView) {
@@ -45,24 +45,24 @@ public class TableManager: NSObject {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: defaultCellIdentifier)
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: defaultCellIdentifier)
     }
     
     // MARK: Methods
     
     /// Reload the cells
-    public func reloadData(){
+    open func reloadData(){
         tableView.reloadData()
     }
     
     /// Returns the Row by indexPath, includeAll parameter means it will include rows with visible=false too
-    public func row(atIndexPath indexPath: NSIndexPath, includeAll: Bool = false) -> Row {
+    open func row(atIndexPath indexPath: IndexPath, includeAll: Bool = false) -> Row {
         let section = self.section(atIndex: indexPath.section, includeAll: includeAll)
         return section.row(atIndex: indexPath.row, includeAll: includeAll)
     }
     
     /// Returns the Section by indexPath, includeAll parameter means it will include sections with visible=false too
-    public func section(atIndex index: Int, includeAll: Bool = false) -> Section {
+    open func section(atIndex index: Int, includeAll: Bool = false) -> Section {
         let objects = includeAll ? sections : sectionsToRender
         
         if objects.count > index {
@@ -73,14 +73,14 @@ public class TableManager: NSObject {
     }
     
     /// Returns the indexPath for the row if exist
-    public func indexPath(forRow row: Row, includeAll: Bool = false) -> NSIndexPath? {
+    open func indexPath(forRow row: Row, includeAll: Bool = false) -> IndexPath? {
         let sectionObjects = includeAll ? sections : sectionsToRender
         
-        var indexPath: NSIndexPath?
+        var indexPath: IndexPath?
         
-        sectionObjects.enumerate().forEach { indexSection, section in
+        sectionObjects.enumerated().forEach { indexSection, section in
             if let indexRow = section.index(forRow: row, includeAll: includeAll) {
-                indexPath = NSIndexPath(forRow: indexRow, inSection: indexSection)
+                indexPath = IndexPath(row: indexRow, section: indexSection)
             }
         }
         
@@ -88,16 +88,16 @@ public class TableManager: NSObject {
     }
     
     /// Returns the index of the Section if exist
-    public func index(forSection section: Section, includeAll: Bool = false) -> Int? {
+    open func index(forSection section: Section, includeAll: Bool = false) -> Int? {
         let objects = includeAll ? sections : sectionsToRender
         
-        return objects.indexOf {
+        return objects.index {
             $0 == section
         }
     }
     
     /// If exist, return the Row that correspond the selected cell
-    public func selectedRow() -> Row? {
+    open func selectedRow() -> Row? {
         guard let indexPath = tableView.indexPathForSelectedRow else {
             return nil
         }
@@ -106,7 +106,7 @@ public class TableManager: NSObject {
     }
     
     /// If exist, return the Rows that are appearing to the user in the table
-    public func visibleRows() -> [Row]? {
+    open func visibleRows() -> [Row]? {
         guard let indexPaths = tableView.indexPathsForVisibleRows else {
             return nil
         }
@@ -117,7 +117,7 @@ public class TableManager: NSObject {
     }
     
     /// Add a new section in the table. If any section is passed as parameter, a new empty section will be allocated, added in the table and returned.
-    public func addSection(section: Section? = nil) -> Section {
+    open func addSection(_ section: Section? = nil) -> Section {
         let newSection = section ?? Section()
         if index(forSection: newSection, includeAll: true) == nil {
             sections.append(newSection)
@@ -126,31 +126,31 @@ public class TableManager: NSObject {
     }
     
     /// Add a new row in the table. A new section will be added if don't exist yet. If any row is passed as parameter, a new empty row will be allocated, added in the first section and returned.
-    public func addRow(row: Row? = nil) -> Row {
+    open func addRow(_ row: Row? = nil) -> Row {
         let firstSection = section(atIndex: 0)
         return firstSection.addRow(row)
     }
     
     /// Initializes a new row with identifier, add it in the table and returns it. A new section will be added if don't exist yet.
-    public func addRow(identifier: String) -> Row {
+    open func addRow(_ identifier: String) -> Row {
         let firstSection = section(atIndex: 0)
         return firstSection.addRow(identifier)
     }
     
     /// Remove all sections
-    public func clearSections() {
+    open func clearSections() {
         sections.removeAll()
     }
     
     /// Remove all rows from the first section
-    public func clearRows() {
+    open func clearRows() {
         if sections.count > 0 {
             sections[0].clearRows()
         }
     }
     
     /// Convert an indexPath for row with visible: true to an indexPath including all rows
-    func convertToIncludeAllIndexPath(withToRenderIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+    func convertToIncludeAllIndexPath(withToRenderIndexPath indexPath: IndexPath) -> IndexPath? {
         let row = self.row(atIndexPath: indexPath)
         return self.indexPath(forRow: row, includeAll: true)
     }
@@ -160,90 +160,90 @@ public class TableManager: NSObject {
 
 extension TableManager: UITableViewDataSource {
     
-    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return sectionsToRender.count
     }
     
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.section(atIndex: section).rowsToRender.count
     }
     
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = self.row(atIndexPath: indexPath)
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(row.identifier ?? defaultCellIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: row.identifier ?? defaultCellIdentifier, for: indexPath)
         
-        row.configuration?(row: row, cell: cell, indexPath: indexPath)
+        row.configuration?(row, cell, indexPath)
         
         return cell
     }
     
-    public func tableView(tableView: UITableView, titleForHeaderInSection index: Int) -> String? {
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection index: Int) -> String? {
         let section = self.section(atIndex: index)
         
         if let titleForHeader = section.titleForHeader {
-            return titleForHeader(section: section, tableView: tableView, index: index)
+            return titleForHeader(section, tableView, index)
         }
         
         return nil
     }
     
-    public func tableView(tableView: UITableView, titleForFooterInSection index: Int) -> String? {
+    public func tableView(_ tableView: UITableView, titleForFooterInSection index: Int) -> String? {
         let section = self.section(atIndex: index)
         
         if let titleForFooter = section.titleForFooter {
-            return titleForFooter(section: section, tableView: tableView, index: index)
+            return titleForFooter(section, tableView, index)
         }
         
         return nil
     }
     
-    public func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    public func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         let row = self.row(atIndexPath: indexPath)
         
         return row.canMove
     }
     
-    public func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         let row = self.row(atIndexPath: indexPath)
         
         return row.canEdit
     }
     
-    public func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+    public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         let row = self.row(atIndexPath: indexPath)
         
         return row.editingStyle
     }
     
-    public func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+    public func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
         let fromRow = self.row(atIndexPath: fromIndexPath)
         let toRow = self.row(atIndexPath: toIndexPath)
         
         if let fromIndexPathIncludeAll = convertToIncludeAllIndexPath(withToRenderIndexPath: fromIndexPath) {
-            sections[fromIndexPathIncludeAll.section].rows.removeAtIndex(fromIndexPathIncludeAll.row)
+            sections[fromIndexPathIncludeAll.section].rows.remove(at: fromIndexPathIncludeAll.row)
             if let toIndexPathIncludeAll = convertToIncludeAllIndexPath(withToRenderIndexPath: toIndexPath) {
-                sections[toIndexPathIncludeAll.section].rows.insert(fromRow, atIndex: toIndexPathIncludeAll.row)
+                sections[toIndexPathIncludeAll.section].rows.insert(fromRow, at: toIndexPathIncludeAll.row)
                 delegate?.tableManagerDidMove(fromRow, fromIndexPath: fromIndexPath, toRow: toRow, toIndexPath: toIndexPath)
             }
         }
     }
 
-    public func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
+    public func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         let row = self.row(atIndexPath: indexPath)
         
         return row.deleteConfirmation ?? "Delete"
     }
     
-    public func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             
             let row = self.row(atIndexPath: indexPath)
             
             if let includeAllIndexPath = convertToIncludeAllIndexPath(withToRenderIndexPath: indexPath) {
-                sections[includeAllIndexPath.section].rows.removeAtIndex(includeAllIndexPath.row)
+                sections[includeAllIndexPath.section].rows.remove(at: includeAllIndexPath.row)
                 
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
                 delegate?.tableManagerDidDelete(row, atIndexPath: indexPath)
             }
         }
@@ -255,56 +255,56 @@ extension TableManager: UITableViewDataSource {
     
 extension TableManager: UITableViewDelegate {
     
-    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = self.row(atIndexPath: indexPath)
-        row.didSelect?(row: row, tableView: tableView, indexPath: indexPath)
+        row.didSelect?(row, tableView, indexPath)
     }
     
-    public func tableView(tableView: UITableView, heightForHeaderInSection index: Int) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection index: Int) -> CGFloat {
         let section = self.section(atIndex: index)
         
         if let heightForHeader = section.heightForHeader {
-            return CGFloat(heightForHeader(section: section, tableView: tableView, index: index))
+            return CGFloat(heightForHeader(section, tableView, index))
         }
         
         return CGFloat(0.0)
     }
     
-    public func tableView(tableView: UITableView, viewForHeaderInSection index: Int) -> UIView? {
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection index: Int) -> UIView? {
         let section = self.section(atIndex: index)
         
         if let viewForHeader = section.viewForHeader {
-            return viewForHeader(section: section, tableView: tableView, index: index)
+            return viewForHeader(section, tableView, index)
         }
         
         return nil
     }
     
-    public func tableView(tableView: UITableView, heightForFooterInSection index: Int) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForFooterInSection index: Int) -> CGFloat {
         let section = self.section(atIndex: index)
         
         if let heightForFooter = section.heightForFooter {
-            return CGFloat(heightForFooter(section: section, tableView: tableView, index: index))
+            return CGFloat(heightForFooter(section, tableView, index))
         }
         
         return CGFloat(0.0)
     }
     
-    public func tableView(tableView: UITableView, viewForFooterInSection index: Int) -> UIView? {
+    public func tableView(_ tableView: UITableView, viewForFooterInSection index: Int) -> UIView? {
         let section = self.section(atIndex: index)
         
         if let viewForFooter = section.viewForFooter {
-            return viewForFooter(section: section, tableView: tableView, index: index)
+            return viewForFooter(section, tableView, index)
         }
         
         return nil
     }
     
-    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let row = self.row(atIndexPath: indexPath)
         
         if let heightForRow = row.heightForRow {
-            return CGFloat(heightForRow(row: row, tableView: tableView, index: indexPath.row))
+            return CGFloat(heightForRow(row, tableView, indexPath.row))
         }
         
         return -1
@@ -314,55 +314,55 @@ extension TableManager: UITableViewDelegate {
 
 extension TableManager: UIScrollViewDelegate {
     
-    public func scrollViewDidScroll(scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollViewDelegate?.scrollViewDidScroll?(scrollView)
     }
     
-    public func scrollViewDidZoom(scrollView: UIScrollView) {
+    public func scrollViewDidZoom(_ scrollView: UIScrollView) {
         scrollViewDelegate?.scrollViewDidZoom?(scrollView)
     }
     
-    public func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         scrollViewDelegate?.scrollViewWillBeginDragging?(scrollView)
     }
 
-    public func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         scrollViewDelegate?.scrollViewWillEndDragging?(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
     }
 
-    public func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         scrollViewDelegate?.scrollViewDidEndDragging?(scrollView, willDecelerate: decelerate)
     }
     
-    public func scrollViewWillBeginDecelerating(scrollView: UIScrollView) {
+    public func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
         scrollViewDelegate?.scrollViewWillBeginDecelerating?(scrollView)
     }
     
-    public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         scrollViewDelegate?.scrollViewDidEndDecelerating?(scrollView)
     }
     
-    public func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         scrollViewDelegate?.scrollViewDidEndScrollingAnimation?(scrollView)
     }
     
-    public func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-        return scrollViewDelegate?.viewForZoomingInScrollView?(scrollView)
+    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return scrollViewDelegate?.viewForZooming?(in: scrollView)
     }
     
-    public func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView?) {
-        scrollViewDelegate?.scrollViewWillBeginZooming?(scrollView, withView: view)
+    public func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
+        scrollViewDelegate?.scrollViewWillBeginZooming?(scrollView, with: view)
     }
     
-    public func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
-        scrollViewDelegate?.scrollViewDidEndZooming?(scrollView, withView: view, atScale: scale)
+    public func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+        scrollViewDelegate?.scrollViewDidEndZooming?(scrollView, with: view, atScale: scale)
     }
     
-    public func scrollViewShouldScrollToTop(scrollView: UIScrollView) -> Bool {
+    public func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
         return scrollViewDelegate?.scrollViewShouldScrollToTop?(scrollView) ?? true
     }
     
-    public func scrollViewDidScrollToTop(scrollView: UIScrollView) {
+    public func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
         scrollViewDelegate?.scrollViewDidScrollToTop?(scrollView)
     }
     
@@ -370,11 +370,11 @@ extension TableManager: UIScrollViewDelegate {
 
 public extension TableManagerDelegate {
     
-    public func tableManagerDidMove(fromRow: Row, fromIndexPath: NSIndexPath, toRow: Row, toIndexPath: NSIndexPath) {
+    public func tableManagerDidMove(_ fromRow: Row, fromIndexPath: IndexPath, toRow: Row, toIndexPath: IndexPath) {
         // empty implementation to transform the delegate optional
     }
     
-    public func tableManagerDidDelete(row: Row, atIndexPath: NSIndexPath) {
+    public func tableManagerDidDelete(_ row: Row, atIndexPath: IndexPath) {
         // empty implementation to transform the delegate optional
     }
     
