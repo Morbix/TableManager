@@ -30,7 +30,7 @@
 
 ## Requirements
 
-It requires Xcode 7.0+ and Swift 2.0.
+It requires Xcode 8.0+ and Swift 3.0.
 
 Your project deployment target must be `iOS 8.0+`
 
@@ -107,7 +107,7 @@ tableView.addRow(row)
 Or declare a `Row.Configuration` and attribute it to any row:
 ```swift
 let configuration: Row.Configuration = { (row, cell, indexPath) -> Void in
-    if let text = object as? String {
+    if let text = row.object as? String {
         cell.textLabel?.text = text
     }
 }
@@ -179,7 +179,7 @@ class TableViewController: UITableViewController {
         // [...]
     }
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print(scrollView.contentOffset.y)
     }
     
