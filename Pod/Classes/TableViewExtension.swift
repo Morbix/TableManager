@@ -14,7 +14,7 @@ public extension UITableView {
     
     /// The instance of TableManager. A new one will be created if not exist.
     public func tableManagerInstance() -> TableManager {
-        guard let tableManager = self.layer.valueForKey(instanceKey) as? TableManager else {
+        guard let tableManager = self.layer.value(forKey: instanceKey) as? TableManager else {
             let tableManager = TableManager(tableView: self)
             self.layer.setValue(tableManager, forKey: instanceKey)
             return tableManager
@@ -33,7 +33,7 @@ public extension UITableView {
     }
     
     /// Set the reference to the TableManager's delegate
-    public func setTableManagerDelegate(delegate: TableManagerDelegate) {
+    public func setTableManagerDelegate(_ delegate: TableManagerDelegate) {
         self.tableManagerInstance().delegate = delegate
     }
     
@@ -64,7 +64,7 @@ public extension UITableView {
     // MARK: Methods
     
     /// Get the Row by indexPath, includeAll parameter means it will include rows with visible=false too
-    public func row(atIndexPath indexPath: NSIndexPath, includeAll: Bool = false) -> Row {
+    public func row(atIndexPath indexPath: IndexPath, includeAll: Bool = false) -> Row {
         return self.tableManagerInstance().row(atIndexPath: indexPath)
     }
     
@@ -74,8 +74,8 @@ public extension UITableView {
     }
     
     /// Returns the indexPath for the row if exist
-    public func indexPath(forRow row: Row, includeAll: Bool = false) -> NSIndexPath? {
-        return self.tableManagerInstance().indexPath(forRow: row, includeAll: includeAll)
+    public func indexPath(forRow row: Row, includeAll: Bool = false) -> IndexPath? {
+        return self.tableManagerInstance().indexPath(forRow: row, includeAll: includeAll) as IndexPath?
     }
     
     /// Returns the index of the Section if exist
@@ -94,17 +94,17 @@ public extension UITableView {
     }
     
     /// Add a new section in the table. If no section is passed as parameter, a new empty section will be allocated and added in the table.
-    public func addSection(section: Section? = nil) -> Section {
+    public func addSection(_ section: Section? = nil) -> Section {
         return self.tableManagerInstance().addSection(section)
     }
     
     /// Add a new row in the table. A new section will be added if don't exist yet. If any row is passed as parameter, a new empty row will be allocated, added in the first section and returned.
-    public func addRow(row: Row? = nil) -> Row {
+    public func addRow(_ row: Row? = nil) -> Row {
         return self.tableManagerInstance().addRow(row)
     }
     
     /// Initializes a new row with identifier, add it in the table and returns it. A new section will be added if don't exist yet.
-    public func addRow(identifier: String) -> Row {
+    public func addRow(_ identifier: String) -> Row {
         return self.tableManagerInstance().addRow(identifier)
     }
     

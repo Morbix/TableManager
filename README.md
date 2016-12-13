@@ -1,7 +1,7 @@
 # TableManager
 
 [![Build Status](https://travis-ci.org/Morbix/TableManager.svg?branch=master)](https://travis-ci.org/Morbix/TableManager)
-[![Swift 2.2 compatible](https://img.shields.io/badge/Swift_2.2-compatible-4BC51D.svg?style=flat)](https://developer.apple.com/swift)
+[![Swift 3.0 compatible](https://img.shields.io/badge/Swift_3.0-compatible-4BC51D.svg?style=flat)](https://developer.apple.com/swift)
 [![Version](https://img.shields.io/cocoapods/v/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
 [![License](https://img.shields.io/cocoapods/l/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
 [![Platform](https://img.shields.io/cocoapods/p/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
@@ -30,7 +30,7 @@
 
 ## Requirements
 
-It requires Xcode 7.0+ and Swift 2.0.
+It requires Xcode 8.0+ and Swift 3.0.
 
 Your project deployment target must be `iOS 8.0+`
 
@@ -107,7 +107,7 @@ tableView.addRow(row)
 Or declare a `Row.Configuration` and attribute it to any row:
 ```swift
 let configuration: Row.Configuration = { (row, cell, indexPath) -> Void in
-    if let text = object as? String {
+    if let text = row.object as? String {
         cell.textLabel?.text = text
     }
 }
@@ -179,7 +179,7 @@ class TableViewController: UITableViewController {
         // [...]
     }
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print(scrollView.contentOffset.y)
     }
     
