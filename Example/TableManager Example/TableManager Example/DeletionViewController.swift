@@ -14,7 +14,7 @@ class DeletionViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: #selector(barButtonTouched))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(barButtonTouched))
         
         tableView.tableManagerDelegate = self // The delegate is optional. Set just if you want be notified what the row was deleted 
         
@@ -35,14 +35,14 @@ class DeletionViewController: UITableViewController {
     }
     
     final func barButtonTouched() {
-        tableView.editing = !tableView.editing
+        tableView.isEditing = !tableView.isEditing
     }
     
 }
 
 extension DeletionViewController: TableManagerDelegate {
     
-    func tableManagerDidDelete(row: Row, atIndexPath: NSIndexPath) {
+    func tableManagerDidDelete(_ row: Row, atIndexPath: IndexPath) {
         print("delete action: " + atIndexPath.debugDescription)
     }
     

@@ -14,7 +14,7 @@ class DragAndDropViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: #selector(barButtonTouched))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(barButtonTouched))
         
         tableView.tableManagerDelegate = self // The delegate is optional. Set just if you want be notified what the row was moved
         
@@ -32,14 +32,14 @@ class DragAndDropViewController: UITableViewController {
     }
     
     final func barButtonTouched() {
-        tableView.editing = !tableView.editing
+        tableView.isEditing = !tableView.isEditing
     }
     
 }
 
 extension DragAndDropViewController: TableManagerDelegate {
     
-    func tableManagerDidMove(fromRow: Row, fromIndexPath: NSIndexPath, toRow: Row, toIndexPath: NSIndexPath) {
+    func tableManagerDidMove(_ fromRow: Row, fromIndexPath: IndexPath, toRow: Row, toIndexPath: IndexPath) {
         print("move action: " + fromIndexPath.debugDescription + " to " + fromIndexPath.debugDescription)
     }
     

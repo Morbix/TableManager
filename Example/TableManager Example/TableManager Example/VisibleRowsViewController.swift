@@ -13,12 +13,12 @@ class VisibleRowsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Check visible rows", style: .Plain, target: self, action: #selector(barButtonTouched))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Check visible rows", style: .plain, target: self, action: #selector(barButtonTouched))
         
         Fake.basicData().forEach { element in
             let row = tableView.addRow()
             
-            row.object = element
+            row.object = element as AnyObject?
             
             row.setConfiguration { (row, cell, indexPath) in
                 cell.textLabel?.text = element
@@ -28,16 +28,16 @@ class VisibleRowsViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        navigationController?.navigationBar.translucent = false
+        navigationController?.navigationBar.isTranslucent = false
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        navigationController?.navigationBar.translucent = true
+        navigationController?.navigationBar.isTranslucent = true
     }
     
     final func barButtonTouched() {

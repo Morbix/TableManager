@@ -14,12 +14,12 @@ class VisibilityViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Fake.sectionsAndRowsData().enumerate().forEach { index, element in
+        Fake.sectionsAndRowsData().enumerated().forEach { index, element in
             let newSection = tableView.addSection()
             
             newSection.visible = (index % 2 == 0) ? true : false
             
-            element.rows.enumerate().forEach { index, description in
+            element.rows.enumerated().forEach { index, description in
                 
                 let newRow = newSection.addRow()
                     

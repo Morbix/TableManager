@@ -43,9 +43,9 @@ class ViewController: UIViewController {
     
     // MARK: Actions
     
-    final private func navigateTo(screen: Screen) -> Row.DidSelect {
+    final fileprivate func navigateTo(_ screen: Screen) -> Row.DidSelect {
         return { row, tableView, indexPath in
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            tableView.deselectRow(at: indexPath, animated: true)
             self.navigationController?.pushViewController(screen.getViewController(), animated: true)
         }
     }
@@ -92,10 +92,10 @@ private enum Screen: String {
 
 extension UIViewController {
     
-    final func showAlert(message: String) {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
-        presentViewController(alert, animated: true, completion: nil)
+    final func showAlert(_ message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
 }

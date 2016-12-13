@@ -22,7 +22,7 @@ class SelectionViewController: UITableViewController {
             }
             
             row.setDidSelect { (row, tableView, indexPath) in
-                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                tableView.deselectRow(at: indexPath, animated: true)
                 self.showAlert(element + " selected.")
             }
         }

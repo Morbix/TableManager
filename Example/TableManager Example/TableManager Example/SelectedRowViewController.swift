@@ -13,12 +13,12 @@ class SelectedRowViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Check selected row", style: .Plain, target: self, action: #selector(barButtonTouched))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Check selected row", style: .plain, target: self, action: #selector(barButtonTouched))
         
         Fake.basicData().forEach { element in
             let row = tableView.addRow()
             
-            row.object = element
+            row.object = element as AnyObject?
 
             row.setConfiguration { (row, cell, indexPath) in
                 cell.textLabel?.text = element
@@ -29,7 +29,7 @@ class SelectedRowViewController: UITableViewController {
     }
     
     final func barButtonTouched() {
-        if let selectedRow = tableView.selectedRow(), value = selectedRow.object as? String {
+        if let selectedRow = tableView.selectedRow(), let value = selectedRow.object as? String {
             showAlert(value)
         } else {
             showAlert("no one")
