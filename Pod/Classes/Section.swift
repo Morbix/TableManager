@@ -80,6 +80,7 @@ open class Section: Equatable {
     }
     
     /// Add a new row in the section. If any row is passed as parameter, a new empty row will be allocated, added in the section and returned.
+    @discardableResult
     open func addRow(_ row: Row? = nil) -> Row {
         let newRow = row ?? Row()
         if index(forRow: newRow, includeAll: true) == nil {
@@ -89,6 +90,7 @@ open class Section: Equatable {
     }
     
     /// Initializes a new row with identifier, add it in the section and returns it.
+    @discardableResult
     open func addRow(_ identifier: String) -> Row {
         return addRow(Row(identifier: identifier))
     }

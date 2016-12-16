@@ -94,16 +94,19 @@ public extension UITableView {
     }
     
     /// Add a new section in the table. If no section is passed as parameter, a new empty section will be allocated and added in the table.
+    @discardableResult
     public func addSection(_ section: Section? = nil) -> Section {
         return self.tableManagerInstance().addSection(section)
     }
     
     /// Add a new row in the table. A new section will be added if don't exist yet. If any row is passed as parameter, a new empty row will be allocated, added in the first section and returned.
+    @discardableResult
     public func addRow(_ row: Row? = nil) -> Row {
         return self.tableManagerInstance().addRow(row)
     }
     
     /// Initializes a new row with identifier, add it in the table and returns it. A new section will be added if don't exist yet.
+    @discardableResult
     public func addRow(_ identifier: String) -> Row {
         return self.tableManagerInstance().addRow(identifier)
     }
