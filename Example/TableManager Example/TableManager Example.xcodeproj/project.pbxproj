@@ -53,6 +53,7 @@
 		2D43B85E1C42A68000B16E36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D4406141E0AA4DA006371EC /* SpacesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpacesTableViewController.swift; sourceTree = "<group>"; };
 		2D4406171E0AB0FC006371EC /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		2D4406191E0AB8F0006371EC /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../../CHANGELOG.md; sourceTree = "<group>"; };
 		2DA53AE11D03C8570001E6DC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		2DA53AE21D03C8570001E6DC /* TableManager.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = TableManager.podspec; path = ../../TableManager.podspec; sourceTree = "<group>"; };
 		2DA53AEA1D109A0C0001E6DC /* BasicUsageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicUsageViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				2DA53AE11D03C8570001E6DC /* README.md */,
+				2D4406191E0AB8F0006371EC /* CHANGELOG.md */,
 				2DA53AE21D03C8570001E6DC /* TableManager.podspec */,
 				2D4406171E0AB0FC006371EC /* .swiftlint.yml */,
 				2D43B8461C42A68000B16E36 /* TableManager Example */,

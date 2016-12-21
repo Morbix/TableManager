@@ -1,5 +1,14 @@
 # TableManager CHANGELOG
 
+## 1.6.0
+* Added Method Chaining support
+* Added Swiftlint;
+### New Features
+* Added a new type of row: `SpaceRow`
+
+## 1.5.0
+* Swift 3 Conversion
+
 ## 1.4.0
 ### New Features
 * Support to Drag & Drop feature
