@@ -35,3 +35,9 @@ class VisibilityViewController: UITableViewController {
     }
 
 }
+
+extension VisibilityViewController: Screen {
+    static func screenTitle() -> String {
+        return "Visibility"
+    }
+}

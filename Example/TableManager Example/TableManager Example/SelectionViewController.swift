@@ -30,3 +30,9 @@ class SelectionViewController: UITableViewController {
     }
     
 }
+
+extension SelectionViewController: Screen {
+    static func screenTitle() -> String {
+        return "Selection"
+    }
+}

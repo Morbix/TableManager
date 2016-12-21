@@ -41,3 +41,9 @@ class CustomCellViewController: UITableViewController {
     }
 
 }
+
+extension CustomCellViewController: Screen {
+    static func screenTitle() -> String {
+        return "Custom Cell"
+    }
+}

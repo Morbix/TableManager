@@ -25,3 +25,9 @@ class BasicUsageViewController: UITableViewController {
     }
 
 }
+
+extension BasicUsageViewController: Screen {
+    static func screenTitle() -> String {
+        return "Basic Usage"
+    }
+}

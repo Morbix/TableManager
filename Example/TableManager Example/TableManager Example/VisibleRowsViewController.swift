@@ -55,3 +55,9 @@ class VisibleRowsViewController: UITableViewController {
     }
     
 }
+
+extension VisibleRowsViewController: Screen {
+    static func screenTitle() -> String {
+        return "Visible Rows"
+    }
+}

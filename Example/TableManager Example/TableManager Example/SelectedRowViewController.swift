@@ -37,3 +37,9 @@ class SelectedRowViewController: UITableViewController {
     }
     
 }
+
+extension SelectedRowViewController: Screen {
+    static func screenTitle() -> String {
+        return "Selected Row"
+    }
+}

@@ -38,9 +38,13 @@ class DragAndDropViewController: UITableViewController {
 }
 
 extension DragAndDropViewController: TableManagerDelegate {
-    
     func tableManagerDidMove(_ fromRow: Row, fromIndexPath: IndexPath, toRow: Row, toIndexPath: IndexPath) {
         print("move action: " + fromIndexPath.debugDescription + " to " + fromIndexPath.debugDescription)
     }
-    
+}
+
+extension DragAndDropViewController: Screen {
+    static func screenTitle() -> String {
+        return "Drag & Drop"
+    }
 }

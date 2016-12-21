@@ -13,6 +13,7 @@
 		2D43B84F1C42A68000B16E36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D43B84E1C42A68000B16E36 /* Assets.xcassets */; };
 		2D43B8521C42A68000B16E36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D43B8501C42A68000B16E36 /* LaunchScreen.storyboard */; };
 		2D43B85D1C42A68000B16E36 /* TableManager_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D43B85C1C42A68000B16E36 /* TableManager_ExampleTests.swift */; };
+		2D4406151E0AA4DA006371EC /* SpacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4406141E0AA4DA006371EC /* SpacesTableViewController.swift */; };
 		2DA53AEB1D109A0C0001E6DC /* BasicUsageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA53AEA1D109A0C0001E6DC /* BasicUsageViewController.swift */; };
 		2DA53AED1D10A0880001E6DC /* VisibilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA53AEC1D10A0880001E6DC /* VisibilityViewController.swift */; };
 		2DA53AEF1D10D5310001E6DC /* Fake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA53AEE1D10D5310001E6DC /* Fake.swift */; };
@@ -50,6 +51,7 @@
 		2D43B8581C42A68000B16E36 /* TableManager ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TableManager ExampleTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D43B85C1C42A68000B16E36 /* TableManager_ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableManager_ExampleTests.swift; sourceTree = "<group>"; };
 		2D43B85E1C42A68000B16E36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D4406141E0AA4DA006371EC /* SpacesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpacesTableViewController.swift; sourceTree = "<group>"; };
 		2DA53AE11D03C8570001E6DC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		2DA53AE21D03C8570001E6DC /* TableManager.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = TableManager.podspec; path = ../../TableManager.podspec; sourceTree = "<group>"; };
 		2DA53AEA1D109A0C0001E6DC /* BasicUsageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicUsageViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				2DA53B001D1707C40001E6DC /* SelectedRowViewController.swift */,
 				2DA53B021D170B790001E6DC /* VisibleRowsViewController.swift */,
 				2DA53B041D1710BC0001E6DC /* ScrollViewDelegateViewController.swift */,
+				2D4406141E0AA4DA006371EC /* SpacesTableViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -185,12 +188,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D43B8611C42A68000B16E36 /* Build configuration list for PBXNativeTarget "TableManager Example" */;
 			buildPhases = (
-				1664662A425C37CE66D61FEA /* 📦 Check Pods Manifest.lock */,
+				1664662A425C37CE66D61FEA /* [CP] Check Pods Manifest.lock */,
 				2D43B8401C42A68000B16E36 /* Sources */,
 				2D43B8411C42A68000B16E36 /* Frameworks */,
 				2D43B8421C42A68000B16E36 /* Resources */,
-				350743CAFA8D34A1A5B6D6FE /* 📦 Embed Pods Frameworks */,
-				785421AAA8EA14C1D20E570C /* 📦 Copy Pods Resources */,
+				350743CAFA8D34A1A5B6D6FE /* [CP] Embed Pods Frameworks */,
+				785421AAA8EA14C1D20E570C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -282,29 +285,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1664662A425C37CE66D61FEA /* 📦 Check Pods Manifest.lock */ = {
+		1664662A425C37CE66D61FEA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		350743CAFA8D34A1A5B6D6FE /* 📦 Embed Pods Frameworks */ = {
+		350743CAFA8D34A1A5B6D6FE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,14 +315,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TableManager Example/Pods-TableManager Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		785421AAA8EA14C1D20E570C /* 📦 Copy Pods Resources */ = {
+		785421AAA8EA14C1D20E570C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D4406151E0AA4DA006371EC /* SpacesTableViewController.swift in Sources */,
 				2DA53AFB1D15E7C30001E6DC /* DragAndDropViewController.swift in Sources */,
 				2DA53AED1D10A0880001E6DC /* VisibilityViewController.swift in Sources */,
 				2DA53B031D170B790001E6DC /* VisibleRowsViewController.swift in Sources */,

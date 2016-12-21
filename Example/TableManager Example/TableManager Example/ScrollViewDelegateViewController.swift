@@ -27,9 +27,13 @@ class ScrollViewDelegateViewController: UITableViewController {
 }
 
 extension ScrollViewDelegateViewController {
-    
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         print(scrollView.contentOffset.y)
     }
-    
+}
+
+extension ScrollViewDelegateViewController: Screen {
+    static func screenTitle() -> String {
+        return "ScrollView Delegate"
+    }
 }

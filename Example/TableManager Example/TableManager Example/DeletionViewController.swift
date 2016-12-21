@@ -41,9 +41,13 @@ class DeletionViewController: UITableViewController {
 }
 
 extension DeletionViewController: TableManagerDelegate {
-    
     func tableManagerDidDelete(_ row: Row, atIndexPath: IndexPath) {
         print("delete action: " + atIndexPath.debugDescription)
     }
-    
+}
+
+extension DeletionViewController: Screen {
+    static func screenTitle() -> String {
+        return "Deletion"
+    }
 }
