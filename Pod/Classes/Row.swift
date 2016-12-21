@@ -64,51 +64,69 @@ open class Row: Equatable {
     // MARK: Methods
     
     /// Set a identifier to use a custom cell
-    open func setIdentifier(_ identifier: String) {
+    @discardableResult
+    open func setIdentifier(_ identifier: String) -> Row {
         self.identifier = identifier
+        return self
     }
     
     /// Set object that can be used in the closure's impementation.
-    open func setObject(_ object: AnyObject) {
+    @discardableResult
+    open func setObject(_ object: AnyObject) -> Row {
         self.object = object
+        return self
     }
     
     /// Define if the row can be moved
-    open func setCanMove(_ movable: Bool) {
+    @discardableResult
+    open func setCanMove(_ movable: Bool) -> Row {
         self.movable = movable
+        return self
     }
     
     /// Define if the row can be deleted
-    open func setCanDelete(_ deletable: Bool, titleForDeleteConfirmation: String? = nil) {
+    @discardableResult
+    open func setCanDelete(_ deletable: Bool, titleForDeleteConfirmation: String? = nil) -> Row {
         self.editingStyle = deletable ? .delete : .none
         self.deleteConfirmation = titleForDeleteConfirmation
+        return self
     }
     
     /// Define if the row can be inserted (not implemented yet)
-    fileprivate func setCanInsert(_ insertable: Bool) {
+    @discardableResult
+    fileprivate func setCanInsert(_ insertable: Bool) -> Row {
         self.editingStyle = insertable ? .insert : .none
+        return self
     }
     
     /// Set closure that will be called when the table request the cell.
-    open func setConfiguration(_ block: @escaping Configuration) {
+    @discardableResult
+    open func setConfiguration(_ block: @escaping Configuration) -> Row {
         self.configuration = block
+        return self
     }
     
     /// Set closure that will be called when the cell was selected.
-    open func setDidSelect(_ block: @escaping DidSelect) {
+    @discardableResult
+    open func setDidSelect(_ block: @escaping DidSelect) -> Row {
         self.didSelect = block
+        return self
     }
     
     /// Set the row's height using a closure that will be called when the table request the a height
-    open func setHeight(withDynamicHeight dynamicHeight: @escaping HeightForRow) {
+    @discardableResult
+    open func setHeight(withDynamicHeight dynamicHeight: @escaping HeightForRow) -> Row {
         heightForRow = dynamicHeight
+        return self
     }
     
     /// Set the row's height using a static height
-    open func setHeight(withStaticHeight staticHeight: Double) {
-        setHeight { (section, tableView, index) -> Double in
+    @discardableResult
+    open func setHeight(withStaticHeight staticHeight: Double) -> Row {
+        setHeight { _ -> Double in
             return staticHeight
         }
+        return self
     }
     
     public typealias HeightForRow = (_ row: Row, _ tableView: UITableView, _ index: Int) -> Double

@@ -55,8 +55,10 @@ open class Section: Equatable {
     // MARK: Methods
     
     /// Set object that can be used in the closure's impementation.
-    open func setObject(_ object: AnyObject) {
+    @discardableResult
+    open func setObject(_ object: AnyObject) -> Section {
         self.object = object
+        return self
     }
     
     /// Returns the Row by indexPath, includeAll parameter means it will include rows with visible=false too
@@ -96,47 +98,61 @@ open class Section: Equatable {
     }
     
     /// Remove all rows
-    open func clearRows() {
+    @discardableResult
+    open func clearRows() -> Section {
         rows.removeAll()
+        return self
     }
     
     // MARK: Header Configuration
     
     /// Set the header using a closure that will be called when the table request a title
-    open func setHeaderView(withDynamicText dynamicText: @escaping TitleForHeader) {
+    @discardableResult
+    open func setHeaderView(withDynamicText dynamicText: @escaping TitleForHeader) -> Section {
         titleForHeader = dynamicText
+        return self
     }
     
     /// Set the header using a static title
-    open func setHeaderView(withStaticText staticText: String) {
+    @discardableResult
+    open func setHeaderView(withStaticText staticText: String) -> Section {
         setHeaderView { (section, tableView, index) -> String in
             return staticText
         }
+        return self
     }
     
     /// Set the header using a closure that will be called when the table request a view
-    open func setHeaderView(withDynamicView dynamicView: @escaping ViewForHeader) {
+    @discardableResult
+    open func setHeaderView(withDynamicView dynamicView: @escaping ViewForHeader) -> Section {
         viewForHeader = dynamicView
+        return self
     }
     
     
     /// Set the header using a static view
-    open func setHeaderView(withStaticView staticView: UIView) {
+    @discardableResult
+    open func setHeaderView(withStaticView staticView: UIView) -> Section {
         setHeaderView { (section, tableView, index) -> UIView in
             return staticView
         }
+        return self
     }
     
     /// Set the header's height using a closure that will be called when the table request the a height
-    open func setHeaderHeight(withDynamicHeight dynamicHeight: @escaping HeightForHeader) {
+    @discardableResult
+    open func setHeaderHeight(withDynamicHeight dynamicHeight: @escaping HeightForHeader) -> Section {
         heightForHeader = dynamicHeight
+        return self
     }
     
     /// Set the header's height using a static height
-    open func setHeaderHeight(withStaticHeight staticHeight: Double) {
+    @discardableResult
+    open func setHeaderHeight(withStaticHeight staticHeight: Double) -> Section {
         setHeaderHeight { (section, tableView, index) -> Double in
             return staticHeight
         }
+        return self
     }
     
     public typealias HeightForHeader = (_ section: Section, _ tableView: UITableView, _ index: Int) -> Double
@@ -146,39 +162,51 @@ open class Section: Equatable {
     // MARK: Footer Configuration
     
     /// Set the footer using a closure that will be called when the table request a title
-    open func setFooterView(withDynamicText dynamicText: @escaping TitleForFooter) {
+    @discardableResult
+    open func setFooterView(withDynamicText dynamicText: @escaping TitleForFooter) -> Section {
         titleForFooter = dynamicText
+        return self
     }
     
     /// Set the footer using a static title
-    open func setFooterView(withStaticText staticText: String) {
+    @discardableResult
+    open func setFooterView(withStaticText staticText: String) -> Section {
         setFooterView { (section, tableView, index) -> String in
             return staticText
         }
+        return self
     }
     
     /// Set the footer using a closure that will be called when the table request a view
-    open func setFooterView(withDynamicView dynamicView: @escaping ViewForFooter) {
+    @discardableResult
+    open func setFooterView(withDynamicView dynamicView: @escaping ViewForFooter) -> Section {
         viewForFooter = dynamicView
+        return self
     }
     
     /// Set the footer using a static view
-    open func setFooterView(withStaticView staticView: UIView) {
+    @discardableResult
+    open func setFooterView(withStaticView staticView: UIView) -> Section {
         setFooterView { (section, tableView, index) -> UIView in
             return staticView
         }
+        return self
     }
     
     /// Set the footer's height using a closure that will be called when the table request the a height
-    open func setFooterHeight(withDynamicHeight dynamicHeight: @escaping HeightForFooter) {
+    @discardableResult
+    open func setFooterHeight(withDynamicHeight dynamicHeight: @escaping HeightForFooter) -> Section {
         heightForFooter = dynamicHeight
+        return self
     }
     
     /// Set the footer's height using a static height
-    open func setFooterHeight(withStaticHeight staticHeight: Double) {
+    @discardableResult
+    open func setFooterHeight(withStaticHeight staticHeight: Double) -> Section {
         setFooterHeight { (section, tableView, index) -> Double in
             return staticHeight
         }
+        return self
     }
     
     public typealias HeightForFooter = (_ section: Section, _ tableView: UITableView, _ index: Int) -> Double

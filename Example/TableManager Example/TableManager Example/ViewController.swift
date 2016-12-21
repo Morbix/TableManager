@@ -30,15 +30,11 @@ class ViewController: UIViewController {
         ] as [UIViewController.Type]
         
         examples.forEach { screen in
-            let row = tableView.addRow()
-            
-            let title = (screen as? Screen.Type)?.screenTitle()
-
-            row.setConfiguration { _, cell, _ in
-                cell.textLabel?.text = title
-            }
-            
-            row.didSelect = self.navigate(to: screen)
+            tableView.addRow()
+                .setDidSelect(self.navigate(to: screen))
+                .setConfiguration { _, cell, _ in
+                    cell.textLabel?.text = (screen as? Screen.Type)?.screenTitle()
+                }
         }
         
         tableView.reloadData()
