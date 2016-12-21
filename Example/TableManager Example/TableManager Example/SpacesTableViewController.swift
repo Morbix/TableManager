@@ -13,7 +13,25 @@ class SpacesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.separatorStyle = .none
         
+        tableView.addSpace(height: Double(view.bounds.height)/2 - 148)
+        
+        tableView.addRow().setConfiguration { row, cell, indexPath in
+            cell.textLabel?.text = "First Cell"
+        }
+        
+        tableView.addSpace(bgColor: UIColor.lightGray)
+        
+        tableView.addRow().setConfiguration { row, cell, indexPath in
+            cell.textLabel?.text = "Second Cell"
+        }
+        
+        tableView.addSpace(bgColor: UIColor.lightGray)
+        
+        tableView.addRow().setConfiguration { row, cell, indexPath in
+            cell.textLabel?.text = "Third Cell"
+        }
     }
 
 }
