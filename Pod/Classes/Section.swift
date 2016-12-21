@@ -187,6 +187,6 @@ open class Section: Equatable {
     
 }
 
-public func ==(lhs: Section, rhs: Section) -> Bool {
+public func == (lhs: Section, rhs: Section) -> Bool {
     return lhs.id == rhs.id
 }

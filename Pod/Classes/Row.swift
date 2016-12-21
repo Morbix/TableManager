@@ -116,6 +116,6 @@ open class Row: Equatable {
     public typealias DidSelect = (_ row: Row, _ tableView: UITableView, _ indexPath: IndexPath) -> Void
 }
 
-public func ==(lhs: Row, rhs: Row) -> Bool {
+public func == (lhs: Row, rhs: Row) -> Bool {
     return lhs.id == rhs.id
 }

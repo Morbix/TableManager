@@ -51,7 +51,7 @@ open class TableManager: NSObject {
     // MARK: Methods
     
     /// Reload the cells
-    open func reloadData(){
+    open func reloadData() {
         tableView.reloadData()
     }
     

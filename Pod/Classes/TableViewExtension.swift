@@ -56,7 +56,7 @@ public extension UITableView {
         set {
             self.tableManagerInstance().scrollViewDelegate = newValue
         }
-        get{
+        get {
             return self.tableManagerInstance().scrollViewDelegate
         }
     }

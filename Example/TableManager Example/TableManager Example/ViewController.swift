@@ -66,4 +66,3 @@ extension UIViewController {
 protocol Screen {
     static func screenTitle() -> String
 }
-

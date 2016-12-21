@@ -52,6 +52,7 @@
 		2D43B85C1C42A68000B16E36 /* TableManager_ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableManager_ExampleTests.swift; sourceTree = "<group>"; };
 		2D43B85E1C42A68000B16E36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D4406141E0AA4DA006371EC /* SpacesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpacesTableViewController.swift; sourceTree = "<group>"; };
+		2D4406171E0AB0FC006371EC /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		2DA53AE11D03C8570001E6DC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		2DA53AE21D03C8570001E6DC /* TableManager.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = TableManager.podspec; path = ../../TableManager.podspec; sourceTree = "<group>"; };
 		2DA53AEA1D109A0C0001E6DC /* BasicUsageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicUsageViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +96,7 @@
 			children = (
 				2DA53AE11D03C8570001E6DC /* README.md */,
 				2DA53AE21D03C8570001E6DC /* TableManager.podspec */,
+				2D4406171E0AB0FC006371EC /* .swiftlint.yml */,
 				2D43B8461C42A68000B16E36 /* TableManager Example */,
 				2D43B85B1C42A68000B16E36 /* TableManager ExampleTests */,
 				2D43B8451C42A68000B16E36 /* Products */,
@@ -189,6 +191,7 @@
 			buildConfigurationList = 2D43B8611C42A68000B16E36 /* Build configuration list for PBXNativeTarget "TableManager Example" */;
 			buildPhases = (
 				1664662A425C37CE66D61FEA /* [CP] Check Pods Manifest.lock */,
+				2D4406161E0AAFBA006371EC /* Swiftlint */,
 				2D43B8401C42A68000B16E36 /* Sources */,
 				2D43B8411C42A68000B16E36 /* Frameworks */,
 				2D43B8421C42A68000B16E36 /* Resources */,
@@ -299,6 +302,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		2D4406161E0AAFBA006371EC /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		350743CAFA8D34A1A5B6D6FE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
