@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SpacesTableViewController: UITableViewController {
+class SpacesViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,7 @@ class SpacesTableViewController: UITableViewController {
 
 }
 
-extension SpacesTableViewController: Screen {
+extension SpacesViewController: Screen {
     static func screenTitle() -> String {
         return "Space Rows"
     }

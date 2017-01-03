@@ -54,6 +54,10 @@ open class Row: Equatable {
     /// The closure that will be called when the table request the row's height.
     open var heightForRow: HeightForRow?
     
+    weak var tableViewReference: UITableView?
+    
+    var indexPathReference: IndexPath?
+    
     /// Initializes a new Row. All parameters are optionals.
     public required init(identifier: String? = nil, visible: Bool = true, object: AnyObject? = nil) {
         self.identifier = identifier
@@ -134,6 +138,23 @@ open class Row: Equatable {
             return staticHeight
         }
         return self
+    }
+    
+    /// Get the row's height after it has been appeared in the screen
+    open func getHeight() -> Double {
+        guard let heightForRow = heightForRow else {
+            return defaultCellHeight
+        }
+        
+        guard let tableView = tableViewReference else {
+            return defaultCellHeight
+        }
+        
+        guard let indexPath = indexPathReference else {
+            return defaultCellHeight
+        }
+        
+        return heightForRow(self, tableView, indexPath)
     }
     
     public typealias HeightForRow = (_ row: Row, _ tableView: UITableView, _ indexPath: IndexPath) -> Double
