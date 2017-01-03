@@ -307,7 +307,7 @@ extension TableManager: UITableViewDelegate {
         let row = self.row(atIndexPath: indexPath)
         
         if let heightForRow = row.heightForRow {
-            return CGFloat(heightForRow(row, tableView, indexPath.row))
+            return CGFloat(heightForRow(row, tableView, indexPath))
         }
         
         return -1

@@ -129,7 +129,7 @@ open class Row: Equatable {
         return self
     }
     
-    public typealias HeightForRow = (_ row: Row, _ tableView: UITableView, _ index: Int) -> Double
+    public typealias HeightForRow = (_ row: Row, _ tableView: UITableView, _ indexPath: IndexPath) -> Double
     public typealias Configuration = (_ row: Row, _ cell: UITableViewCell, _ indexPath: IndexPath) -> Void
     public typealias DidSelect = (_ row: Row, _ tableView: UITableView, _ indexPath: IndexPath) -> Void
 }
