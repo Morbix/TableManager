@@ -20,7 +20,6 @@ class LastHeightViewController: UITableViewController {
             }
         }
     }
-    
 }
 
 extension LastHeightViewController: Screen {
