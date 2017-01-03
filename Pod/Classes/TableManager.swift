@@ -9,6 +9,7 @@
 import UIKit
 
 internal let defaultCellIdentifier = "DefaultCellIdentifier"
+internal let defaultCellHeight = 44.0
 
 public protocol TableManagerDelegate: NSObjectProtocol {
     func tableManagerDidMove(_ fromRow: Row, fromIndexPath: IndexPath, toRow: Row, toIndexPath: IndexPath)
@@ -34,7 +35,7 @@ open class TableManager: NSObject {
     }
     
     // A redirection for all the scroll events
-    open var scrollViewDelegate: UIScrollViewDelegate?
+    open weak var scrollViewDelegate: UIScrollViewDelegate?
     
     /// Initializes a new manager with the referenced table
     public required init(tableView: UITableView) {
@@ -159,7 +160,7 @@ open class TableManager: NSObject {
     }
 }
 
-// MARK: UITableViewDataSource
+// MARK: - UITableViewDataSource
 
 extension TableManager: UITableViewDataSource {
     
@@ -254,7 +255,7 @@ extension TableManager: UITableViewDataSource {
     
 }
 
-// MARK: UITableViewDelegate
+// MARK: - UITableViewDelegate
     
 extension TableManager: UITableViewDelegate {
     
@@ -306,14 +307,19 @@ extension TableManager: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let row = self.row(atIndexPath: indexPath)
         
+        row.tableViewReference = tableView
+        row.indexPathReference = indexPath
+        
         if let heightForRow = row.heightForRow {
-            return CGFloat(heightForRow(row, tableView, indexPath.row))
+            return CGFloat(heightForRow(row, tableView, indexPath))
         }
         
-        return -1
+        return CGFloat(defaultCellHeight)
     }
     
 }
+
+// MARK: - UIScrollViewDelegate
 
 extension TableManager: UIScrollViewDelegate {
     
@@ -370,6 +376,8 @@ extension TableManager: UIScrollViewDelegate {
     }
     
 }
+
+// MARK: - TableManagerDelegate
 
 public extension TableManagerDelegate {
     

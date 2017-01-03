@@ -23,7 +23,7 @@ public extension UITableView {
     }
     
     /// Set the reference to the TableManager's delegate
-    public var tableManagerDelegate: TableManagerDelegate? {
+    public weak var tableManagerDelegate: TableManagerDelegate? {
         set {
             self.tableManagerInstance().delegate = newValue
         }
@@ -52,7 +52,7 @@ public extension UITableView {
         return self.tableManagerInstance().sectionsToRender
     }
     
-    public var scrollViewDelegate: UIScrollViewDelegate? {
+    public weak var scrollViewDelegate: UIScrollViewDelegate? {
         set {
             self.tableManagerInstance().scrollViewDelegate = newValue
         }

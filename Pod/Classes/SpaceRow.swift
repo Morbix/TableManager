@@ -12,13 +12,14 @@ fileprivate let defaultHeight = 8.0
 
 open class SpaceRow: Row {
     
-    public required init(height: Double = defaultHeight, bgColor: UIColor = .clear) {
+    public required init(height: Double = defaultHeight, bgColor: UIColor = .clear, selectionStyle: UITableViewCellSelectionStyle = .none) {
         super.init(identifier: nil, visible: true, object: nil)
         
         self.setHeight(withStaticHeight: height)
         
-        self.setConfiguration { row, cell, indexPath in
+        self.setConfiguration { _, cell, _ in
             cell.backgroundColor = bgColor
+            cell.selectionStyle = selectionStyle
         }
     }
     

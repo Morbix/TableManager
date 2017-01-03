@@ -54,6 +54,10 @@ open class Row: Equatable {
     /// The closure that will be called when the table request the row's height.
     open var heightForRow: HeightForRow?
     
+    weak var tableViewReference: UITableView?
+    
+    var indexPathReference: IndexPath?
+    
     /// Initializes a new Row. All parameters are optionals.
     public required init(identifier: String? = nil, visible: Bool = true, object: AnyObject? = nil) {
         self.identifier = identifier
@@ -62,6 +66,13 @@ open class Row: Equatable {
     }
     
     // MARK: Methods
+    
+    /// Set row visibility
+    @discardableResult
+    open func setVisible(_ visible: Bool) -> Row {
+        self.visible = visible
+        return self
+    }
     
     /// Set a identifier to use a custom cell
     @discardableResult
@@ -129,7 +140,24 @@ open class Row: Equatable {
         return self
     }
     
-    public typealias HeightForRow = (_ row: Row, _ tableView: UITableView, _ index: Int) -> Double
+    /// Get the row's height after it has been appeared in the screen
+    open func getHeight() -> Double {
+        guard let heightForRow = heightForRow else {
+            return defaultCellHeight
+        }
+        
+        guard let tableView = tableViewReference else {
+            return defaultCellHeight
+        }
+        
+        guard let indexPath = indexPathReference else {
+            return defaultCellHeight
+        }
+        
+        return heightForRow(self, tableView, indexPath)
+    }
+    
+    public typealias HeightForRow = (_ row: Row, _ tableView: UITableView, _ indexPath: IndexPath) -> Double
     public typealias Configuration = (_ row: Row, _ cell: UITableViewCell, _ indexPath: IndexPath) -> Void
     public typealias DidSelect = (_ row: Row, _ tableView: UITableView, _ indexPath: IndexPath) -> Void
 }
