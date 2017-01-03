@@ -17,7 +17,7 @@ open class SpaceRow: Row {
         
         self.setHeight(withStaticHeight: height)
         
-        self.setConfiguration { row, cell, indexPath in
+        self.setConfiguration { _, cell, _ in
             cell.backgroundColor = bgColor
             cell.selectionStyle = selectionStyle
         }

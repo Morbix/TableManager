@@ -35,7 +35,7 @@ open class TableManager: NSObject {
     }
     
     // A redirection for all the scroll events
-    open var scrollViewDelegate: UIScrollViewDelegate?
+    open weak var scrollViewDelegate: UIScrollViewDelegate?
     
     /// Initializes a new manager with the referenced table
     public required init(tableView: UITableView) {

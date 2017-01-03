@@ -123,7 +123,7 @@ open class Section: Equatable {
     /// Set the header using a static title
     @discardableResult
     open func setHeaderView(withStaticText staticText: String) -> Section {
-        setHeaderView { (section, tableView, index) -> String in
+        setHeaderView { _ in
             return staticText
         }
         return self
@@ -136,11 +136,10 @@ open class Section: Equatable {
         return self
     }
     
-    
     /// Set the header using a static view
     @discardableResult
     open func setHeaderView(withStaticView staticView: UIView) -> Section {
-        setHeaderView { (section, tableView, index) -> UIView in
+        setHeaderView { _ in
             return staticView
         }
         return self
@@ -156,7 +155,7 @@ open class Section: Equatable {
     /// Set the header's height using a static height
     @discardableResult
     open func setHeaderHeight(withStaticHeight staticHeight: Double) -> Section {
-        setHeaderHeight { (section, tableView, index) -> Double in
+        setHeaderHeight { _ in
             return staticHeight
         }
         return self
@@ -178,7 +177,7 @@ open class Section: Equatable {
     /// Set the footer using a static title
     @discardableResult
     open func setFooterView(withStaticText staticText: String) -> Section {
-        setFooterView { (section, tableView, index) -> String in
+        setFooterView { _ in
             return staticText
         }
         return self
@@ -194,7 +193,7 @@ open class Section: Equatable {
     /// Set the footer using a static view
     @discardableResult
     open func setFooterView(withStaticView staticView: UIView) -> Section {
-        setFooterView { (section, tableView, index) -> UIView in
+        setFooterView { _ in
             return staticView
         }
         return self
@@ -210,7 +209,7 @@ open class Section: Equatable {
     /// Set the footer's height using a static height
     @discardableResult
     open func setFooterHeight(withStaticHeight staticHeight: Double) -> Section {
-        setFooterHeight { (section, tableView, index) -> Double in
+        setFooterHeight { _ in
             return staticHeight
         }
         return self
