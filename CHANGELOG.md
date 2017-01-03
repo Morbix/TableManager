@@ -1,5 +1,14 @@
 # TableManager CHANGELOG
 
+## 1.6.2
+#### ADD
+- `getHeight` to get the calculated height of the cell;
+- `setVisible` in Row/Section with support to method chaining;
+
+#### FIX
+- `selectionStyle` of SpaceRow;
+- `indexPath` parameter in HeightForRow closure;
+
 ## 1.6.0
 * Added Method Chaining support
 * Added Swiftlint;
