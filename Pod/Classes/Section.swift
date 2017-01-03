@@ -54,6 +54,13 @@ open class Section: Equatable {
     
     // MARK: Methods
     
+    /// Set section visibility
+    @discardableResult
+    open func setVisible(_ visible: Bool) -> Section {
+        self.visible = visible
+        return self
+    }
+    
     /// Set object that can be used in the closure's impementation.
     @discardableResult
     open func setObject(_ object: AnyObject) -> Section {

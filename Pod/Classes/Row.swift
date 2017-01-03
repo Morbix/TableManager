@@ -63,6 +63,13 @@ open class Row: Equatable {
     
     // MARK: Methods
     
+    /// Set row visibility
+    @discardableResult
+    open func setVisible(_ visible: Bool) -> Row {
+        self.visible = visible
+        return self
+    }
+    
     /// Set a identifier to use a custom cell
     @discardableResult
     open func setIdentifier(_ identifier: String) -> Row {
