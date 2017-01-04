@@ -1,5 +1,9 @@
 # TableManager CHANGELOG
 
+## 1.6.3
+#### ADD
+ - `setHeightAutomatic` in Row to set the Height of row to be automatic.
+
 ## 1.6.2
 #### ADD
 - `getHeight` to get the calculated height of the cell;
