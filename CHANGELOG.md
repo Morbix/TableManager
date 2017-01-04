@@ -1,5 +1,9 @@
 # TableManager CHANGELOG
 
+## 1.6.4
+#### FIX
+- `getHeight` returns zero if the visibility of Row is false
+
 ## 1.6.3
 #### ADD
  - `setHeightAutomatic` in Row to set the Height of row to be automatic.
