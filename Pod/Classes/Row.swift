@@ -131,6 +131,13 @@ open class Row: Equatable {
         return self
     }
     
+    /// Set the row's height to automatic
+    @discardableResult
+    open func setHeightAutomatic() -> Row {
+        setHeight(withStaticHeight: Double(UITableViewAutomaticDimension))
+        return self
+    }
+    
     /// Set the row's height using a static height
     @discardableResult
     open func setHeight(withStaticHeight staticHeight: Double) -> Row {
