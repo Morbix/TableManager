@@ -148,7 +148,12 @@ open class Row: Equatable {
     }
     
     /// Get the row's height after it has been appeared in the screen
+    /// Return`s zero if the visibility is false
     open func getHeight() -> Double {
+        if !visible {
+            return 0
+        }
+        
         guard let heightForRow = heightForRow else {
             return defaultCellHeight
         }
