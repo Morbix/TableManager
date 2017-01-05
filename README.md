@@ -1,8 +1,8 @@
 # TableManager
+[![Version](https://img.shields.io/cocoapods/v/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
 [![](http://img.shields.io/badge/ios-8.0+-FC3159.svg)]()
 [![](http://img.shields.io/badge/swift-3.0-FD9426.svg)]()
 [![](http://img.shields.io/badge/xcode-8.0-157EFB.svg)]()
-[![Version](https://img.shields.io/cocoapods/v/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
 [![License](https://img.shields.io/cocoapods/l/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
 [![Platform](https://img.shields.io/cocoapods/p/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
