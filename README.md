@@ -67,9 +67,12 @@ class ViewController: UITableViewController {
             // 2 - Add row 
             tableView.addRow().setConfiguration { _, cell, _ in 
                 cell.textLabel?.text = "Row \(number)"
-            }    
+            } 
+            
         }
+        
     }
+    
 }
 ```
 ![Basic Usage](Example/Images/basic-usage2.png)
