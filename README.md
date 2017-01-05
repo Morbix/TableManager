@@ -13,7 +13,7 @@
 - [Requirements](#requirements)
 - [Installation](#installation)
 - Basic Usage
-    - [Configure a table with only 3 tiny steps](#configure-a-table-with-only-3-tiny-steps)
+    - [Configure a table with only 2 tiny steps](#configure-a-table-with-only-2-tiny-steps)
 - Documentation
     - [Sections & Rows visibility](#sections--rows-visibility)
     - [Configuring a custom cell](#configuring-a-custom-cell)
@@ -52,9 +52,10 @@ You can also install it manually just dragging [TableManager](https://github.com
 
 ## Basic Usage
 
-### Configure a table with only 3 tiny steps
+### Configure a table with only 2 tiny steps
 ```swift
-import TableManager // 1 - import TableManager
+// 1 - Import TableManager
+import TableManager
 
 class ViewController: UITableViewController {
 
@@ -62,14 +63,13 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
 
         (1...1_000).forEach { number in
-            tableView.addRow().setConfiguration { (row, cell, indexPath) in // 2 - Add row 
+        
+            // 2 - Add row 
+            tableView.addRow().setConfiguration { _, cell, _ in 
                 cell.textLabel?.text = "Row \(number)"
-            }
+            }    
         }
-
-        tableView.reloadData() // 3 - Reload table
     }
-
 }
 ```
 ![Basic Usage](Example/Images/basic-usage2.png)
