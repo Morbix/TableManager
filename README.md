@@ -13,8 +13,8 @@
 
 - [Requirements](#requirements)
 - [Installation](#installation)
-- Basic Usage
-    - [Configure a table with only 2 tiny steps](#configure-a-table-with-only-2-tiny-steps)
+- [Basic Usage](#basic-usage)
+    - [Configure the table with only 2 tiny steps](#configure-the-table-with-only-2-tiny-steps)
 - [Documentation](#documentation)
     - [Rows](#rows)
     - Sections
@@ -57,27 +57,34 @@ You can also install it manually just dragging [TableManager](https://github.com
 
 ## Basic Usage
 
-### Configure a table with only 2 tiny steps
+### Configure the table with only 2 tiny steps
+
+##### Step 1 - Import TableManager
 ```swift
-// 1 - Import TableManager
+import TableManager
+```
+
+##### Step 2 - Add a Row with a configuration
+```swift
+tableView.addRow().setConfiguration { _, cell, _ in 
+    cell.textLabel?.text = "Row \(number)"
+}
+```
+
+##### Complete Example
+```swift
 import TableManager
 
 class ViewController: UITableViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        (1...1_000).forEach { number in
-        
-            // 2 - Add row 
+        (1...10).forEach { n in
             tableView.addRow().setConfiguration { _, cell, _ in 
-                cell.textLabel?.text = "Row \(number)"
-            } 
-            
+                cell.textLabel?.text = "Row \(n)"
+            }    
         }
-        
     }
-    
 }
 ```
 ![Basic Usage](Example/Images/basic-usage2.png)
