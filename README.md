@@ -15,8 +15,10 @@
 - [Installation](#installation)
 - Basic Usage
     - [Configure a table with only 2 tiny steps](#configure-a-table-with-only-2-tiny-steps)
-- Documentation
-    - [Sections & Rows visibility](#sections--rows-visibility)
+- [Documentation](#documentation)
+    - [Rows](#rows)
+    - Sections
+    - [Visibility](#visibility)
     - [Configuring a custom cell](#configuring-a-custom-cell)
     - [Row selection event](#row-selection-event)
     - [Selected row](#selected-row)
@@ -24,6 +26,8 @@
     - [UIScrollViewDelegate events](#uiscrollviewdelegate-events)
     - [Drag & Drop feature or Reordering](#drag--drop-feature-or-reordering)
     - [Deletion](#deletion)
+    - Method Chaining
+    - Get Height
 - [CHANGELOG](CHANGELOG.md)
 - [Contribute](#contribute)
 - [Contributors](#contributors)
@@ -80,19 +84,27 @@ class ViewController: UITableViewController {
 
 ## Documentation
 
-### Sections & Rows Visibility
-You can change the property `visible` from any Section and any Row. In the example below the only elements that will appear in the table will be the `sectionA` and `rowB`.
+### Rows
+The magic starts here: adding Rows.
+
+##### Directly using UITableView's extension
 ```swift
-let sectionA = tableView.addSection()
-sectionA.visible = true
-
-let rowA = tableView.addRow()
-rowA.visible = false
-
-let rowB = tableView.addRow()
-rowB.visible = true
+tableView.addRow()
 ```
 
+##### Or instance a row and add it in the table
+```swift
+let someRow = Row()
+tableView.addRow(someRow)
+```
+
+### Visibility
+You can change the property `visible` from any Section and any Row. 
+```swift
+someRow.setVisible(true)
+
+someSection.setVisible(false)
+```
 
 ### Configuring a custom cell
 You can set a identifier and the `configuration` property:
