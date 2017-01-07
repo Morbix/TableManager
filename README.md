@@ -71,7 +71,7 @@ tableView.addRow().setConfiguration { _, cell, _ in
 }
 ```
 
-##### Complete Example
+#### Complete Example
 ```swift
 import TableManager
 
