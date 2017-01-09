@@ -105,6 +105,12 @@ let someRow = Row()
 tableView.addRow(someRow)
 ```
 
+##### You can add a row in a specific section, e.g. the last section
+```swift
+let someRow = Row()
+tableView.sections.last?.addRow(someRow)
+```
+
 ### Visibility
 You can change the property `visible` from any Section and any Row. 
 ```swift
