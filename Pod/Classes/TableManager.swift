@@ -322,7 +322,6 @@ extension TableManager: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
-        
         guard let section = (sections.filter { $0.indexTitle == title }.first) else {
             return 0
         }

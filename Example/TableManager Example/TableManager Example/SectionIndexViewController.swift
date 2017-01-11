@@ -14,21 +14,20 @@ class SectionIndexViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
+        let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
         
         alphabet.forEach { letter in
-            let newSection = tableView.addSection().setIndexTitle(letter)
-            
+            let newSection = tableView.addSection()
+                .setIndexTitle(letter)
+                .setHeaderView(withStaticText: letter)
+                .setHeaderHeight(withStaticHeight: 20)
+
             Fake.basicData().forEach { element in
-                let newRow = newSection.addRow()
-                
-                newRow.setConfiguration({ (row, cell, indexPath) in
-                    cell.textLabel?.text = letter + " - " + element
-                })
+                newSection.addRow().setConfiguration { _, cell, _ in
+                    cell.textLabel?.text = element
+                }
             }
         }
-        
-        tableView.reloadData()
     }
 }
 
