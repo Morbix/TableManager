@@ -317,6 +317,22 @@ extension TableManager: UITableViewDelegate {
         return CGFloat(defaultCellHeight)
     }
     
+    public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return sections.flatMap { $0.indexTitle }
+    }
+    
+    public func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        
+        guard let section = (sections.filter { $0.indexTitle == title }.first) else {
+            return 0
+        }
+        
+        guard let indexOfSection = sections.index(of: section) else {
+            return 0
+        }
+        
+        return indexOfSection
+    }
 }
 
 // MARK: - UIScrollViewDelegate
