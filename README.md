@@ -247,6 +247,15 @@ row.setCanDelete(true, titleForDeleteConfirmation: "Go away")
 ```
 ![Go Away](Example/Images/go-away.png)
 
+### Index Titles
+You can make an Index Title(like contacts list on iOS) by just passing the `title` for each section that you want to show in indexTitles, calling the method `setIndexTitle`:
+```swift
+let section = tableView.addSection()
+
+section.setIndexTitle("A")
+```
+![Index Titles](Example/Images/indextitles.png)
+
 ## CHANGELOG
 [Go to CHANGELOG](CHANGELOG.md)
 
