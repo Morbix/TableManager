@@ -18,6 +18,9 @@ open class Section: Equatable {
     /// The object that can be used in the closure's impementation.
     open var object: AnyObject?
     
+    /// Defines if it needs to be showed in vertical scrollbar.
+    open var indexTitle: String?
+    
     /// The rows added to this section
     open var rows = [Row]()
     
@@ -65,6 +68,13 @@ open class Section: Equatable {
     @discardableResult
     open func setObject(_ object: AnyObject) -> Section {
         self.object = object
+        return self
+    }
+    
+    /// Set indexTitle to be showed in vertical scrollbar.
+    @discardableResult
+    open func setIndexTitle(_ title: String) -> Section {
+        self.indexTitle = title
         return self
     }
     

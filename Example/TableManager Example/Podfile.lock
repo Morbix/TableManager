@@ -1,5 +1,5 @@
 PODS:
-  - TableManager (1.6.2)
+  - TableManager (1.6.4)
 
 DEPENDENCIES:
   - TableManager (from `../../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../../
 
 SPEC CHECKSUMS:
-  TableManager: 70cef7f701e234a5ad33aa4142159eb3882ceb27
+  TableManager: 0990d8316981d2d33cf2d1687da3a7987b6ac590
 
 PODFILE CHECKSUM: 3a68fc5873dbe26bb244345e13a80fc933dfcfed
 

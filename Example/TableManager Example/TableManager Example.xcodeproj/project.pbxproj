@@ -28,6 +28,7 @@
 		2DA53B051D1710BC0001E6DC /* ScrollViewDelegateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA53B041D1710BC0001E6DC /* ScrollViewDelegateViewController.swift */; };
 		2DECA1951E1BF9EA00C8548F /* LastHeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DECA1941E1BF9EA00C8548F /* LastHeightViewController.swift */; };
 		8CC7604FB6EAF26CA9994C74 /* Pods_TableManager_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A66A9FABE3B404B0E6BCA6 /* Pods_TableManager_Example.framework */; };
+		BE1ECB301E25A8B6006AB0E1 /* SectionIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECB2F1E25A8B6006AB0E1 /* SectionIndexViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		2DA53B041D1710BC0001E6DC /* ScrollViewDelegateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewDelegateViewController.swift; sourceTree = "<group>"; };
 		2DECA1941E1BF9EA00C8548F /* LastHeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastHeightViewController.swift; sourceTree = "<group>"; };
 		A08A9B9C8070F4A086E8AD6F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE1ECB2F1E25A8B6006AB0E1 /* SectionIndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionIndexViewController.swift; sourceTree = "<group>"; };
 		CF7C3108F3A8089697C950A8 /* Pods-TableManager Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableManager Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-TableManager Example/Pods-TableManager Example.release.xcconfig"; sourceTree = "<group>"; };
 		F9A2324CB62ACDFE987C4BF5 /* Pods-TableManager Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableManager Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TableManager Example/Pods-TableManager Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,6 +159,7 @@
 				2DA53B041D1710BC0001E6DC /* ScrollViewDelegateViewController.swift */,
 				2D4406141E0AA4DA006371EC /* SpacesTableViewController.swift */,
 				2DECA1941E1BF9EA00C8548F /* LastHeightViewController.swift */,
+				BE1ECB2F1E25A8B6006AB0E1 /* SectionIndexViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				2DA53AF91D10E6620001E6DC /* SelectionViewController.swift in Sources */,
 				2DA53AEB1D109A0C0001E6DC /* BasicUsageViewController.swift in Sources */,
 				2DECA1951E1BF9EA00C8548F /* LastHeightViewController.swift in Sources */,
+				BE1ECB301E25A8B6006AB0E1 /* SectionIndexViewController.swift in Sources */,
 				2D43B8481C42A68000B16E36 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

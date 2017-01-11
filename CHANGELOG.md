@@ -1,5 +1,15 @@
 # TableManager CHANGELOG
 
+## 1.7.0
+### New Feature
+* Support to IndexTitles feature
+* **TableManager**
+  * Added `sectionIndexTitles(for tableView: UITableView) -> [String]?` to get the title list
+  * Added `tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int` to get the index of section
+* **Section**
+  * Added `setIndexTitle(_ title: String) -> Section` to make a title indexable
+
+
 ## 1.6.4
 #### FIX
 - `getHeight` returns zero if the visibility of Row is false
