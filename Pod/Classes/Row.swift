@@ -58,6 +58,8 @@ open class Row: Equatable {
     
     var indexPathReference: IndexPath?
     
+    open weak var cell: UITableViewCell?
+    
     /// Initializes a new Row. All parameters are optionals.
     public required init(identifier: String? = nil, visible: Bool = true, object: AnyObject? = nil) {
         self.identifier = identifier

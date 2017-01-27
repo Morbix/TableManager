@@ -177,6 +177,7 @@ extension TableManager: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: row.identifier ?? defaultCellIdentifier, for: indexPath)
         
+        row.cell = cell
         row.configuration?(row, cell, indexPath)
         
         return cell
@@ -331,6 +332,11 @@ extension TableManager: UITableViewDelegate {
         }
         
         return indexOfSection
+    }
+    
+    public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let row = self.row(atIndexPath: indexPath)
+        row.cell = nil
     }
 }
 
