@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "TableManager"
-  s.version      = "1.7.0"
+  s.version      = "1.7.1"
   s.summary      = "An extension of UITableView. The table the way it should be."
 
   # This description is used to generate tags and improve search results.
