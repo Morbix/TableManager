@@ -178,7 +178,7 @@ open class Row: Equatable {
             return defaultCellHeight
         }
         
-        return Double(contentHeight) ?? defaultCellHeight
+        return Double(contentHeight)
     }
     
     public typealias HeightForRow = (_ row: Row, _ tableView: UITableView, _ indexPath: IndexPath) -> Double
