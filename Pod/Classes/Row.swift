@@ -168,7 +168,17 @@ open class Row: Equatable {
             return defaultCellHeight
         }
         
-        return heightForRow(self, tableView, indexPath)
+        let height = heightForRow(self, tableView, indexPath)
+        
+        if height > Double(UITableViewAutomaticDimension) {
+            return height
+        }
+        
+        guard let contentHeight = self.cell?.contentView.frame.height else {
+            return defaultCellHeight
+        }
+        
+        return Double(contentHeight) ?? defaultCellHeight
     }
     
     public typealias HeightForRow = (_ row: Row, _ tableView: UITableView, _ indexPath: IndexPath) -> Double
