@@ -1,6 +1,6 @@
 {
   "name": "TableManager",
-  "version": "1.7.0",
+  "version": "1.7.3",
   "summary": "An extension of UITableView. The table the way it should be.",
   "description": "TableManager is an extension of UITableView. Manipulate your table in an easier way. Add sections and rows. Configure headers and footers. Hide and show rows individually. And this library will handle all the protocols for you. The table the way it should be.",
   "homepage": "https://github.com/Morbix/TableManager",
@@ -14,7 +14,7 @@
   },
   "source": {
     "git": "https://github.com/Morbix/TableManager.git",
-    "tag": "1.7.0"
+    "tag": "1.7.3"
   },
   "source_files": "Pod/Classes/**/*"
 }
