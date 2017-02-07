@@ -69,7 +69,7 @@ open class TableManager: NSObject {
         if objects.count > index {
             return objects[index]
         } else {
-            return addSection()
+            return Section()
         }
     }
     
@@ -130,15 +130,20 @@ open class TableManager: NSObject {
     /// Add a new row in the table. A new section will be added if don't exist yet. If any row is passed as parameter, a new empty row will be allocated, added in the first section and returned.
     @discardableResult
     open func addRow(_ row: Row? = nil) -> Row {
-        let firstSection = section(atIndex: 0)
+        let firstSection: Section
+        if sections.count > 0 {
+            firstSection = section(atIndex: 0)
+        } else {
+            firstSection = addSection()
+        }
+        
         return firstSection.addRow(row)
     }
     
     /// Initializes a new row with identifier, add it in the table and returns it. A new section will be added if don't exist yet.
     @discardableResult
     open func addRow(_ identifier: String) -> Row {
-        let firstSection = section(atIndex: 0)
-        return firstSection.addRow(identifier)
+        return addRow(Row(identifier: identifier))
     }
     
     /// Remove all sections

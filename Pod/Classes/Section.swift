@@ -85,7 +85,7 @@ open class Section: Equatable {
         if objects.count > index {
             return objects[index]
         } else {
-            return addRow()
+            return Row()
         }
     }
     
