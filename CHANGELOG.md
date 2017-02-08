@@ -1,5 +1,12 @@
 # TableManager CHANGELOG
 
+## 1.7.4
+
+### Fix
+- Stop adding new row when there is not find any row at index path:     
+function: `row(atIndex index: Int, includeAll: Bool = false)`   
+class: `Section`
+
 ## 1.7.0
 ### New Feature
 * Support to IndexTitles feature
