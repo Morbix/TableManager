@@ -258,6 +258,12 @@ extension TableManager: UITableViewDataSource {
             }
         }
     }
+
+    public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let row = self.row(atIndexPath: indexPath)
+
+        return row.actions
+    }
     
 }
 
