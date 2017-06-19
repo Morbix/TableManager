@@ -15,27 +15,18 @@ class ActionsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+        Fake.basicData().forEach { element in
+            let row = tableView.addRow()
+            let update = UITableViewRowAction(style: .normal, title: "Editar") { action, index in
+                print("Editar")
+            }
+            let delete = UITableViewRowAction(style: .default, title: "Excluir") { action, index in
+                print("Excluir")
+            }
+            row.setActions([delete, update])
 
-        alphabet.forEach { letter in
-            let newSection = tableView.addSection()
-                .setIndexTitle(letter)
-                .setHeaderView(withStaticText: letter)
-                .setHeaderHeight(withStaticHeight: 20)
-
-            Fake.basicData().forEach { element in
-                let row = newSection.addRow()
-                let update = UITableViewRowAction(style: .normal, title: "Editar") { action, index in
-                    print("Editar")
-                }
-                let delete = UITableViewRowAction(style: .default, title: "Excluir") { action, index in
-                    print("Excluir")
-                }
-                row.setActions([delete, update])
-
-                row.setConfiguration { _, cell, _ in
-                    cell.textLabel?.text = element
-                }
+            row.setConfiguration { _, cell, _ in
+                cell.textLabel?.text = element
             }
         }
     }

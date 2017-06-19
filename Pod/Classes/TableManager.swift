@@ -210,19 +210,16 @@ extension TableManager: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         let row = self.row(atIndexPath: indexPath)
-        
         return row.canMove
     }
     
     public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         let row = self.row(atIndexPath: indexPath)
-        
         return row.canEdit
     }
     
     public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         let row = self.row(atIndexPath: indexPath)
-        
         return row.editingStyle
     }
     
@@ -241,7 +238,6 @@ extension TableManager: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         let row = self.row(atIndexPath: indexPath)
-        
         return row.deleteConfirmation ?? "Delete"
     }
     
@@ -261,7 +257,6 @@ extension TableManager: UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let row = self.row(atIndexPath: indexPath)
-
         return row.actions
     }
     
