@@ -21,6 +21,7 @@ open class Row: Equatable {
     var editingStyle = UITableViewCellEditingStyle.none
     var movable = false
     var deleteConfirmation: String?
+    var actions: [UITableViewRowAction]?
     
     /// Read only property that indicate if the row is movable.
     open var canMove: Bool {
@@ -39,6 +40,9 @@ open class Row: Equatable {
     
     /// Read only property that indicate if the row is editable. Will be true if the row can perform any of this actions: move, delete or insert.
     open var canEdit: Bool {
+        if let actions = actions {
+            return !actions.isEmpty
+        }
         return canMove || canDelete || canInsert
     }
     
@@ -111,6 +115,22 @@ open class Row: Equatable {
         self.editingStyle = insertable ? .insert : .none
         return self
     }
+
+    /// Define if the row have a custom swipe
+    @discardableResult
+    open func setActions(_ actions: [UITableViewRowAction]) -> Row {
+        self.actions = actions
+        self.editingStyle = .delete
+        return self
+    }
+
+    /// Clear row actions
+    @discardableResult
+    open func clearActions() -> Row {
+        self.actions = nil
+        self.editingStyle = .none
+        return self
+    }
     
     /// Set closure that will be called when the table request the cell.
     @discardableResult
@@ -180,6 +200,8 @@ open class Row: Equatable {
         
         return Double(contentHeight)
     }
+
+
     
     public typealias HeightForRow = (_ row: Row, _ tableView: UITableView, _ indexPath: IndexPath) -> Double
     public typealias Configuration = (_ row: Row, _ cell: UITableViewCell, _ indexPath: IndexPath) -> Void

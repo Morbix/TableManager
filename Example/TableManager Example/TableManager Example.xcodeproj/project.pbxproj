@@ -28,6 +28,7 @@
 		2DA53B051D1710BC0001E6DC /* ScrollViewDelegateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA53B041D1710BC0001E6DC /* ScrollViewDelegateViewController.swift */; };
 		2DECA1951E1BF9EA00C8548F /* LastHeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DECA1941E1BF9EA00C8548F /* LastHeightViewController.swift */; };
 		8CC7604FB6EAF26CA9994C74 /* Pods_TableManager_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A66A9FABE3B404B0E6BCA6 /* Pods_TableManager_Example.framework */; };
+		A08C80781EF806AD0043EE73 /* ActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08C80771EF806AD0043EE73 /* ActionsViewController.swift */; };
 		BE1ECB301E25A8B6006AB0E1 /* SectionIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECB2F1E25A8B6006AB0E1 /* SectionIndexViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		2DA53B041D1710BC0001E6DC /* ScrollViewDelegateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewDelegateViewController.swift; sourceTree = "<group>"; };
 		2DECA1941E1BF9EA00C8548F /* LastHeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastHeightViewController.swift; sourceTree = "<group>"; };
 		A08A9B9C8070F4A086E8AD6F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A08C80771EF806AD0043EE73 /* ActionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionsViewController.swift; sourceTree = "<group>"; };
 		BE1ECB2F1E25A8B6006AB0E1 /* SectionIndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionIndexViewController.swift; sourceTree = "<group>"; };
 		CF7C3108F3A8089697C950A8 /* Pods-TableManager Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableManager Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-TableManager Example/Pods-TableManager Example.release.xcconfig"; sourceTree = "<group>"; };
 		F9A2324CB62ACDFE987C4BF5 /* Pods-TableManager Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableManager Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TableManager Example/Pods-TableManager Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				2D4406141E0AA4DA006371EC /* SpacesTableViewController.swift */,
 				2DECA1941E1BF9EA00C8548F /* LastHeightViewController.swift */,
 				BE1ECB2F1E25A8B6006AB0E1 /* SectionIndexViewController.swift */,
+				A08C80771EF806AD0043EE73 /* ActionsViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -245,7 +248,6 @@
 				TargetAttributes = {
 					2D43B8431C42A68000B16E36 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = U4D7MD5WUL;
 						LastSwiftMigration = 0810;
 					};
 					2D43B8571C42A68000B16E36 = {
@@ -308,7 +310,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		2D4406161E0AAFBA006371EC /* Swiftlint */ = {
@@ -374,6 +376,7 @@
 				2DA53AFD1D15FC530001E6DC /* DeletionViewController.swift in Sources */,
 				2DA53B011D1707C40001E6DC /* SelectedRowViewController.swift in Sources */,
 				2DA53AF91D10E6620001E6DC /* SelectionViewController.swift in Sources */,
+				A08C80781EF806AD0043EE73 /* ActionsViewController.swift in Sources */,
 				2DA53AEB1D109A0C0001E6DC /* BasicUsageViewController.swift in Sources */,
 				2DECA1951E1BF9EA00C8548F /* LastHeightViewController.swift in Sources */,
 				BE1ECB301E25A8B6006AB0E1 /* SectionIndexViewController.swift in Sources */,
@@ -512,7 +515,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = U4D7MD5WUL;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "TableManager Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.morbix.TableManager-Example";
@@ -530,7 +533,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = U4D7MD5WUL;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "TableManager Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.morbix.TableManager-Example";

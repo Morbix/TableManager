@@ -28,7 +28,8 @@ class ViewController: UIViewController {
             ScrollViewDelegateViewController.self,
             SpacesViewController.self,
             LastHeightViewController.self,
-            SectionIndexViewController.self
+            SectionIndexViewController.self,
+            ActionsViewController.self
         ] as [UIViewController.Type]
         
         examples.forEach { screen in
