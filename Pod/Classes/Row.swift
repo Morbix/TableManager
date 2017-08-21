@@ -55,6 +55,9 @@ open class Row: Equatable {
     /// The closure that will be called when the cell was selected.
     open var didSelect: DidSelect?
     
+    /// The closure that will be called when the cell is going to be displayed.
+    open var willDisplay: WillDisplay?
+    
     /// The closure that will be called when the table request the row's height.
     open var heightForRow: HeightForRow?
     
@@ -146,6 +149,13 @@ open class Row: Equatable {
         return self
     }
     
+    /// Set closure that will be called when the cell is going to be displayed.
+    @discardableResult
+    open func setWillDisplay(_ block: @escaping WillDisplay) -> Row {
+        self.willDisplay = block
+        return self
+    }
+    
     /// Set the row's height using a closure that will be called when the table request the a height
     @discardableResult
     open func setHeight(withDynamicHeight dynamicHeight: @escaping HeightForRow) -> Row {
@@ -201,11 +211,10 @@ open class Row: Equatable {
         return Double(contentHeight)
     }
 
-
-    
     public typealias HeightForRow = (_ row: Row, _ tableView: UITableView, _ indexPath: IndexPath) -> Double
     public typealias Configuration = (_ row: Row, _ cell: UITableViewCell, _ indexPath: IndexPath) -> Void
     public typealias DidSelect = (_ row: Row, _ tableView: UITableView, _ indexPath: IndexPath) -> Void
+    public typealias WillDisplay = (_ row: Row, _ tableView: UITableView, _ cell: UITableViewCell, _ indexPath: IndexPath) -> Void
 }
 
 public func == (lhs: Row, rhs: Row) -> Bool {

@@ -266,6 +266,11 @@ extension TableManager: UITableViewDataSource {
     
 extension TableManager: UITableViewDelegate {
     
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let row = self.row(atIndexPath: indexPath)
+        row.willDisplay?(row, tableView, cell, indexPath)
+    }
+    
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = self.row(atIndexPath: indexPath)
         row.didSelect?(row, tableView, indexPath)
