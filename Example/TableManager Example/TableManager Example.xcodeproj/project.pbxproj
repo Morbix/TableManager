@@ -28,6 +28,7 @@
 		2DA53B051D1710BC0001E6DC /* ScrollViewDelegateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA53B041D1710BC0001E6DC /* ScrollViewDelegateViewController.swift */; };
 		2DECA1951E1BF9EA00C8548F /* LastHeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DECA1941E1BF9EA00C8548F /* LastHeightViewController.swift */; };
 		8CC7604FB6EAF26CA9994C74 /* Pods_TableManager_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A66A9FABE3B404B0E6BCA6 /* Pods_TableManager_Example.framework */; };
+		9232D19D1F4B150200E28BB0 /* WillDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9232D19C1F4B150200E28BB0 /* WillDisplayViewController.swift */; };
 		A08C80781EF806AD0043EE73 /* ActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08C80771EF806AD0043EE73 /* ActionsViewController.swift */; };
 		BE1ECB301E25A8B6006AB0E1 /* SectionIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1ECB2F1E25A8B6006AB0E1 /* SectionIndexViewController.swift */; };
 /* End PBXBuildFile section */
@@ -72,6 +73,7 @@
 		2DA53B021D170B790001E6DC /* VisibleRowsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisibleRowsViewController.swift; sourceTree = "<group>"; };
 		2DA53B041D1710BC0001E6DC /* ScrollViewDelegateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewDelegateViewController.swift; sourceTree = "<group>"; };
 		2DECA1941E1BF9EA00C8548F /* LastHeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LastHeightViewController.swift; sourceTree = "<group>"; };
+		9232D19C1F4B150200E28BB0 /* WillDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WillDisplayViewController.swift; sourceTree = "<group>"; };
 		A08A9B9C8070F4A086E8AD6F /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A08C80771EF806AD0043EE73 /* ActionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionsViewController.swift; sourceTree = "<group>"; };
 		BE1ECB2F1E25A8B6006AB0E1 /* SectionIndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionIndexViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				2DECA1941E1BF9EA00C8548F /* LastHeightViewController.swift */,
 				BE1ECB2F1E25A8B6006AB0E1 /* SectionIndexViewController.swift */,
 				A08C80771EF806AD0043EE73 /* ActionsViewController.swift */,
+				9232D19C1F4B150200E28BB0 /* WillDisplayViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				2DECA1951E1BF9EA00C8548F /* LastHeightViewController.swift in Sources */,
 				BE1ECB301E25A8B6006AB0E1 /* SectionIndexViewController.swift in Sources */,
 				2D43B8481C42A68000B16E36 /* AppDelegate.swift in Sources */,
+				9232D19D1F4B150200E28BB0 /* WillDisplayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

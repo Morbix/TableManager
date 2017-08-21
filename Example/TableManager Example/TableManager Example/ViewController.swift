@@ -29,7 +29,8 @@ class ViewController: UIViewController {
             SpacesViewController.self,
             LastHeightViewController.self,
             SectionIndexViewController.self,
-            ActionsViewController.self
+            ActionsViewController.self,
+            WillDisplayViewController.self
         ] as [UIViewController.Type]
         
         examples.forEach { screen in
