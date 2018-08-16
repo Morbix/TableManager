@@ -129,21 +129,26 @@ open class TableManager: NSObject {
     
     /// Add a new row in the table. A new section will be added if don't exist yet. If any row is passed as parameter, a new empty row will be allocated, added in the first section and returned.
     @discardableResult
-    open func addRow(_ row: Row? = nil) -> Row {
+    open func addRow(_ row: Row? = nil, at indexPath: IndexPath? = nil) -> Row {
         let firstSection: Section
-        if sections.count > 0 {
-            firstSection = section(atIndex: 0)
+        
+        if let indexPath = indexPath, indexPath.section < sections.count {
+            firstSection = section(atIndex: indexPath.section)
         } else {
-            firstSection = addSection()
+            if sections.count > 0 {
+                firstSection = section(atIndex: 0)
+            } else {
+                firstSection = addSection()
+            }
         }
         
-        return firstSection.addRow(row)
+        return firstSection.addRow(row, at: indexPath)
     }
     
     /// Initializes a new row with identifier, add it in the table and returns it. A new section will be added if don't exist yet.
     @discardableResult
-    open func addRow(_ identifier: String) -> Row {
-        return addRow(Row(identifier: identifier))
+    open func addRow(_ identifier: String, at indexPath: IndexPath? = nil) -> Row {
+        return addRow(Row(identifier: identifier), at: indexPath)
     }
     
     /// Remove all sections

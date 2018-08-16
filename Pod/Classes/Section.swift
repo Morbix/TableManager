@@ -100,10 +100,14 @@ open class Section: Equatable {
     
     /// Add a new row in the section. If any row is passed as parameter, a new empty row will be allocated, added in the section and returned.
     @discardableResult
-    open func addRow(_ row: Row? = nil) -> Row {
+    open func addRow(_ row: Row? = nil, at indexPath: IndexPath? = nil) -> Row {
         let newRow = row ?? Row()
         if index(forRow: newRow, includeAll: true) == nil {
-            rows.append(newRow)
+            if let indexPath = indexPath {
+                rows.insert(newRow, at: indexPath.row)
+            } else {
+                rows.append(newRow)
+            }
         }
         return newRow
     }
