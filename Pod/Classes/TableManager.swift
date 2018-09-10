@@ -330,7 +330,7 @@ extension TableManager: UITableViewDelegate {
     }
     
     public func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return sections.flatMap { $0.indexTitle }
+        return sections.compactMap { $0.indexTitle }
     }
     
     public func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
