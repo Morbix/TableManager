@@ -40,7 +40,7 @@ class VisibleRowsViewController: UITableViewController {
         navigationController?.navigationBar.isTranslucent = true
     }
     
-    final func barButtonTouched() {
+    @objc final func barButtonTouched() {
         if let visibleRows = tableView.visibleRows() {
             let message: String = visibleRows.reduce("") { current, row in
                 if let object = row.object as? String {

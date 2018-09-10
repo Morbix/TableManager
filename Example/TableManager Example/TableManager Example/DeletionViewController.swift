@@ -34,7 +34,7 @@ class DeletionViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    final func barButtonTouched() {
+    @objc final func barButtonTouched() {
         tableView.isEditing = !tableView.isEditing
     }
     

@@ -28,7 +28,7 @@ class SelectedRowViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    final func barButtonTouched() {
+    @objc final func barButtonTouched() {
         if let selectedRow = tableView.selectedRow(), let value = selectedRow.object as? String {
             showAlert(value)
         } else {
