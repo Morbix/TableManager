@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "TableManager"
-  s.version      = "1.10.1"
+  s.version      = "1.10.2"
   s.summary      = "An extension of UITableView. The table the way it should be."
   s.description  = <<-DESC
 TableManager is an extension of UITableView. Manipulate your table in an easier way. Add sections and rows. Configure headers and footers. Hide and show rows individually. And this library will handle all the protocols for you. The table the way it should be.
