@@ -8,11 +8,9 @@
 
 import Foundation
 
-fileprivate let defaultHeight = 8.0
-
 open class SpaceRow: Row {
     
-    public required init(height: Double = defaultHeight, bgColor: UIColor = .clear, selectionStyle: UITableViewCellSelectionStyle = .none) {
+    public required init(height: Double = 8.0, bgColor: UIColor = .clear, selectionStyle: UITableViewCellSelectionStyle = .none) {
         super.init(identifier: nil, visible: true, object: nil)
         
         self.setHeight(withStaticHeight: height)
@@ -31,14 +29,14 @@ open class SpaceRow: Row {
 
 extension UITableView {
     @discardableResult
-    public func addSpace(height: Double = defaultHeight, bgColor: UIColor = .clear) -> Row {
+    public func addSpace(height: Double = 8.0, bgColor: UIColor = .clear) -> Row {
         return addRow(SpaceRow(height: height, bgColor: bgColor))
     }
 }
 
 extension Section {
     @discardableResult
-    public func addSpace(height: Double = defaultHeight, bgColor: UIColor = .clear) -> Row {
+    public func addSpace(height: Double = 8.0, bgColor: UIColor = .clear) -> Row {
         return addRow(SpaceRow(height: height, bgColor: bgColor))
     }
 }
