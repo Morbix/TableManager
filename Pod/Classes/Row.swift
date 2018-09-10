@@ -173,7 +173,7 @@ open class Row: Equatable {
     /// Set the row's height using a static height
     @discardableResult
     open func setHeight(withStaticHeight staticHeight: Double) -> Row {
-        setHeight { _ -> Double in
+        setHeight { _,_,_  -> Double in
             return staticHeight
         }
         return self
