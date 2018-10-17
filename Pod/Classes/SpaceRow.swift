@@ -10,7 +10,7 @@ import Foundation
 
 open class SpaceRow: Row {
     
-    public required init(height: Double = 8.0, bgColor: UIColor = .clear, selectionStyle: UITableViewCellSelectionStyle = .none) {
+    public required init(height: Double = 8.0, bgColor: UIColor = .clear, selectionStyle: UITableViewCell.SelectionStyle = .none) {
         super.init(identifier: nil, visible: true, object: nil)
         
         self.setHeight(withStaticHeight: height)

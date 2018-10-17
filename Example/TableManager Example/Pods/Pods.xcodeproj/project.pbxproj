@@ -327,7 +327,39 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		881F30AFD644C3DABE711C99527798EF /* Release */ = {
+		1EE76985EE9F127478FE1716B9F55359 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 096721EFBA03F2A84DEA4BD19EAB0AD3 /* TableManager.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/TableManager/TableManager-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/TableManager/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/TableManager/TableManager.modulemap";
+				PRODUCT_MODULE_NAME = TableManager;
+				PRODUCT_NAME = TableManager;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3F138450BA01A91D12778D1C3852E9A4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 096721EFBA03F2A84DEA4BD19EAB0AD3 /* TableManager.xcconfig */;
 			buildSettings = {
@@ -353,7 +385,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.1;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -555,38 +587,6 @@
 			};
 			name = Release;
 		};
-		EE2FDE5BBE05B365838E7738A0FF07E7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 096721EFBA03F2A84DEA4BD19EAB0AD3 /* TableManager.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/TableManager/TableManager-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/TableManager/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/TableManager/TableManager.modulemap";
-				PRODUCT_MODULE_NAME = TableManager;
-				PRODUCT_NAME = TableManager;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -602,8 +602,8 @@
 		90A59971151CF78566391C76E0DFD0E8 /* Build configuration list for PBXNativeTarget "TableManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EE2FDE5BBE05B365838E7738A0FF07E7 /* Debug */,
-				881F30AFD644C3DABE711C99527798EF /* Release */,
+				1EE76985EE9F127478FE1716B9F55359 /* Debug */,
+				3F138450BA01A91D12778D1C3852E9A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

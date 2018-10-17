@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../../"
 
 SPEC CHECKSUMS:
-  TableManager: 0c1e20aeb59e904e5d9aee9675598392d8e5ce40
+  TableManager: 30405c9acb98b7c0425b9f70c11e99ccb71ce82b
 
 PODFILE CHECKSUM: 3a68fc5873dbe26bb244345e13a80fc933dfcfed
 

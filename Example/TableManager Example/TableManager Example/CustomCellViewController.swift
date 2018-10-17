@@ -17,7 +17,7 @@ class CustomCellViewController: UITableViewController {
         let identifier = "CellCustomA"
         
         tableView.register(UINib.init(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
 
         Fake.sectionsAndRowsData().forEach { element in
