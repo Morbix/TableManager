@@ -35,7 +35,7 @@
 
 ## Requirements
 
-It requires Xcode 8.0+ and Swift 3.0.
+It requires Xcode 10.0 and Swift 4.2.
 
 Your project deployment target must be `iOS 8.0+`
 
