@@ -218,7 +218,7 @@ extension TableManager: UITableViewDataSource {
         return row.canEdit
     }
     
-    public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         let row = self.row(atIndexPath: indexPath)
         return row.editingStyle
     }
@@ -241,7 +241,7 @@ extension TableManager: UITableViewDataSource {
         return row.deleteConfirmation ?? "Delete"
     }
     
-    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
             let row = self.row(atIndexPath: indexPath)
