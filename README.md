@@ -1,8 +1,8 @@
 # TableManager
 [![Version](https://img.shields.io/cocoapods/v/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
 [![](http://img.shields.io/badge/ios-8.0+-FC3159.svg)]()
-[![](http://img.shields.io/badge/swift-3.0-FD9426.svg)]()
-[![](http://img.shields.io/badge/xcode-8.0-157EFB.svg)]()
+[![](http://img.shields.io/badge/swift-4.2-FD9426.svg)]()
+[![](http://img.shields.io/badge/xcode-10.0-157EFB.svg)]()
 [![License](https://img.shields.io/cocoapods/l/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
 [![Platform](https://img.shields.io/cocoapods/p/TableManager.svg?style=flat)](http://cocoapods.org/pods/TableManager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
@@ -35,7 +35,7 @@
 
 ## Requirements
 
-It requires Xcode 8.0+ and Swift 3.0.
+It requires Xcode 10.0 and Swift 4.2.
 
 Your project deployment target must be `iOS 8.0+`
 

@@ -18,7 +18,7 @@ open class Row: Equatable {
     /// Defines if it need be rendered or not when reload the table.
     open var visible = true
     
-    var editingStyle = UITableViewCellEditingStyle.none
+    var editingStyle = UITableViewCell.EditingStyle.none
     var movable = false
     var deleteConfirmation: String?
     var actions: [UITableViewRowAction]?
@@ -166,7 +166,7 @@ open class Row: Equatable {
     /// Set the row's height to automatic
     @discardableResult
     open func setHeightAutomatic() -> Row {
-        setHeight(withStaticHeight: Double(UITableViewAutomaticDimension))
+        setHeight(withStaticHeight: Double(UITableView.automaticDimension))
         return self
     }
     
@@ -200,7 +200,7 @@ open class Row: Equatable {
         
         let height = heightForRow(self, tableView, indexPath)
         
-        if height > Double(UITableViewAutomaticDimension) {
+        if height > Double(UITableView.automaticDimension) {
             return height
         }
         
